@@ -1,4 +1,4 @@
-# Iti-CookingProject
+# Iti-BiteGuide
 
 #### Developers:
 - Fatma Omara
