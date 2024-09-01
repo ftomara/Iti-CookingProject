@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "524404964921",
+    "project_id": "cooking-app-e6531",
+    "storage_bucket": "cooking-app-e6531.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:524404964921:android:97a78fc7c891b05df297e8",
+        "android_client_info": {
+          "package_name": "com.example.cooking_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW8imfo3o4Ak66KwVMFYHz49CKwBVPG4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
