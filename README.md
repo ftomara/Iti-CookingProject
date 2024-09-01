@@ -1,6 +1,6 @@
 # Iti-CookingProject
 
-##Developers:
--Fatma Omara
--Nourhan Osama
--Hla Khaled
+#### Developers:
+- Fatma Omara
+- Nourhan Osama
+- Hla Khaled
