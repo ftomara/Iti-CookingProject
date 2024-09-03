@@ -2,7 +2,6 @@
 
 import 'package:cooking_app/features/home/ui/widgets/nav_bar.dart';
 import 'package:cooking_app/features/home/ui/widgets/search.dart';
-import 'package:cooking_app/features/home/ui/widgets/users_card.dart';
 import 'package:cooking_app/features/home/ui/widgets/users_card_gen.dart';
 import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +14,12 @@ class UsersPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyColors.butterycolor,
       body: Padding(
-        padding: const EdgeInsets.only(top: 36 ),
+        padding: const EdgeInsets.only(top: 36),
         child: Column(
-          children: [
-           const Search(),
-          //  UsersCard(),
-            Expanded(child:   UsersCardGen()),
+          children: const [
+            Search(),
+            //  UsersCard(),
+            Expanded(child: UsersCardGen()),
             // SizedBox(height:500,),
           ],
         ),
