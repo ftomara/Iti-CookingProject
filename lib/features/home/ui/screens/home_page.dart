@@ -1,4 +1,9 @@
+// ignore_for_file: unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:cooking_app/features/home/ui/widgets/catigories.dart';
+import 'package:cooking_app/features/home/ui/widgets/nav_bar.dart';
+import 'package:cooking_app/features/home/ui/widgets/recipe_card.dart';
+import 'package:cooking_app/features/home/ui/widgets/recipe_card_gen.dart';
 import 'package:cooking_app/features/home/ui/widgets/search.dart';
 import 'package:cooking_app/features/home/ui/widgets/welcoming_bar.dart';
 import 'package:cooking_app/my_colors.dart';
@@ -16,15 +21,18 @@ return SafeArea(
   child: Scaffold(
     backgroundColor: MyColors.butterycolor,
     body: Padding(
-      padding: EdgeInsets.only(top: 64),
+      padding: const EdgeInsets.only(top: 64),
       child: Column(
         children: [
-          WelcomingBar(),
-          Search(),
+          const WelcomingBar(),
+          const Search(),
           Catigories(),
+         const Expanded(child: RecipeCardGen()),
+          // SizedBox(height:500,),
         ],
       ),
     ),
+    bottomNavigationBar:  NavBar(),
   ),
 );
   }

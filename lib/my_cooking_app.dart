@@ -1,4 +1,9 @@
+// ignore_for_file: unused_import
+
+import 'package:cooking_app/features/home/ui/screens/favorite_page.dart';
 import 'package:cooking_app/features/home/ui/screens/home_page.dart';
+import 'package:cooking_app/features/home/ui/screens/user_profile_page.dart';
+import 'package:cooking_app/features/home/ui/screens/users_page.dart';
 import 'package:cooking_app/my_colors.dart';
 // import 'package:cooking_app/features/home/ui/screens/on_boarding.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +25,7 @@ class MyCookingApp extends StatelessWidget {
         useMaterial3: true,
       ),
         debugShowCheckedModeBanner: false,
-        home: const HomePage(),
+        home: const UserProfilePage(),
       ),
     );
   }
