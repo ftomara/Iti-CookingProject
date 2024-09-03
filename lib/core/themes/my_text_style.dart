@@ -132,6 +132,17 @@ class MyTextStyle {
   static TextStyle haveAccount = GoogleFonts.oswald(
       color: MyColors.black, fontSize: 16.sp, fontWeight: FontWeight.w300);
 
+  static TextStyle instructionsAndIngreadiants = GoogleFonts.oswald(
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+    color: MyColors.black,
+  );
+
+  static TextStyle serving = GoogleFonts.oswald(
+    color: MyColors.black,
+    fontSize: 18,
+  );
+
   static TextStyle signUpButton = GoogleFonts.oswald(
       color: MyColors.orangecolor,
       fontSize: 16.sp,
