@@ -48,7 +48,8 @@ dependencies:
   flutter_screenutil: ^5.9.3
   google_fonts: ^6.2.1
   flutter_gen:
-  
+  dotted_border: ^2.1.0
+  image_picker:
 
 
 dev_dependencies:
@@ -57,6 +58,7 @@ dev_dependencies:
   build_runner:
   flutter_gen_runner:
   json_serializable:
+  flutter_launcher_icons: "^0.13.1"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -65,6 +67,11 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/appIcon2.png"
+  min_sdk_android: 21 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

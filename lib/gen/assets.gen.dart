@@ -18,12 +18,15 @@ class $AssetsAnimationsGen {
   /// File path: assets/animations/DsaIGmBy0d.json
   String get dsaIGmBy0d => 'assets/animations/DsaIGmBy0d.json';
 
-  String get letsCook => 'assets/animations/lets_cook_animation.json';
+  /// File path: assets/animations/lets_cook_animation.json
+  String get letsCookAnimation => 'assets/animations/lets_cook_animation.json';
 
-  String get rateMeal => 'assets/animations/rate_meal_animation.json';
+  /// File path: assets/animations/rate_meal_animation.json
+  String get rateMealAnimation => 'assets/animations/rate_meal_animation.json';
 
   /// List of all assets
-  List<String> get values => [a5qdZDIR369, dsaIGmBy0d, letsCook, rateMeal];
+  List<String> get values =>
+      [a5qdZDIR369, dsaIGmBy0d, letsCookAnimation, rateMealAnimation];
 }
 
 class $AssetsColorsGen {
@@ -38,6 +41,10 @@ class $AssetsColorsGen {
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/appIcon2.png
+  AssetGenImage get appIcon2 =>
+      const AssetGenImage('assets/images/appIcon2.png');
 
   /// File path: assets/images/calories.svg
   String get calories => 'assets/images/calories.svg';
@@ -70,17 +77,29 @@ class $AssetsImagesGen {
   /// File path: assets/images/minus.svg
   String get minus => 'assets/images/minus.svg';
 
+  /// File path: assets/images/pancakes_dummy.png
+  AssetGenImage get pancakesDummy =>
+      const AssetGenImage('assets/images/pancakes_dummy.png');
+
   /// File path: assets/images/play_button.svg
   String get playButton => 'assets/images/play_button.svg';
 
   /// File path: assets/images/plus.svg
   String get plus => 'assets/images/plus.svg';
 
+  /// File path: assets/images/ramen_dummy.png
+  AssetGenImage get ramenDummy =>
+      const AssetGenImage('assets/images/ramen_dummy.png');
+
   /// File path: assets/images/searchicon.svg
   String get searchicon => 'assets/images/searchicon.svg';
 
   /// File path: assets/images/servings.svg
   String get servings => 'assets/images/servings.svg';
+
+  /// File path: assets/images/spaghetti_dummy.png
+  AssetGenImage get spaghettiDummy =>
+      const AssetGenImage('assets/images/spaghetti_dummy.png');
 
   /// File path: assets/images/star.svg
   String get star => 'assets/images/star.svg';
@@ -96,6 +115,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
+        appIcon2,
         calories,
         chef,
         dummyRecipe,
@@ -106,10 +126,13 @@ class $AssetsImagesGen {
         home,
         iconProfileFill,
         minus,
+        pancakesDummy,
         playButton,
         plus,
+        ramenDummy,
         searchicon,
         servings,
+        spaghettiDummy,
         star,
         timer,
         uplaodArrow,

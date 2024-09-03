@@ -20,6 +20,7 @@ class MyTextStyle {
     fontSize: 18,
     fontWeight: FontWeight.w300,
   );
+  
 
   static TextStyle category_not_selected = GoogleFonts.oswald(
     textStyle: TextStyle(
@@ -42,6 +43,13 @@ class MyTextStyle {
       color: MyColors.greycolor,
     ),
     fontSize: 22,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle add_recipe= GoogleFonts.oswald(
+    textStyle: TextStyle(
+      color: MyColors.greycolor,
+    ),
+    fontSize: 30,
     fontWeight: FontWeight.w400,
   );
   static TextStyle search = GoogleFonts.oswald(

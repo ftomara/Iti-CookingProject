@@ -2,6 +2,7 @@
 
 import 'package:cooking_app/features/home/ui/screens/favorite_page.dart';
 import 'package:cooking_app/features/home/ui/screens/home_page.dart';
+import 'package:cooking_app/features/home/ui/screens/upload_recipe_page.dart';
 import 'package:cooking_app/features/home/ui/screens/user_profile_page.dart';
 import 'package:cooking_app/features/home/ui/screens/users_page.dart';
 import 'package:cooking_app/features/home/ui/screens/on_boarding_page.dart';
@@ -26,8 +27,7 @@ class MyCookingApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: const UserProfilePage(),
-        // home: const OnBoardingPage(),
+        home: const UploadRecipePage(),
       ),
     );
   }
