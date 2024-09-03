@@ -1,6 +1,8 @@
 import 'package:cooking_app/core/common_widgets/button_widget.dart';
+import 'package:cooking_app/core/helper/navigation%20.dart';
 import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/ui/screens/BiteGuide_page.dart';
+import 'package:cooking_app/features/home/ui/screens/on_boarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
@@ -50,17 +52,12 @@ class OnBoardingWidget extends StatelessWidget {
               height: 49.5.h,
               text: "Get Started",
               onPress: () {
-                onTap(context);
+                PushNavigation(context, BiteguidePage());
               },
             ),
           )
         ],
       ),
     );
-  }
-
-  void onTap(BuildContext context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const BiteguidePage()));
   }
 }

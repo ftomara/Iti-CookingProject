@@ -1,4 +1,6 @@
+import 'package:cooking_app/core/common_widgets/account_status_widget.dart';
 import 'package:cooking_app/core/common_widgets/button_widget.dart';
+import 'package:cooking_app/core/helper/navigation%20.dart';
 import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/ui/screens/login_page.dart';
 import 'package:cooking_app/features/home/ui/screens/sign_up_page.dart';
@@ -31,34 +33,18 @@ class BiteguideWidget extends StatelessWidget {
             style: MyTextStyle.textButton,
             text: "LogIn",
             onPress: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => LoginPage()));
+              PushNavigation(context, LoginPage());
             },
             width: 306.w,
             height: 55.h,
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(left: 128.w, right: 120.w, top: 8.h),
-          child: Row(
-            children: [
-              Text(
-                "Don’t have an account ?",
-                style: MyTextStyle.haveAccount,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignUpPage()));
-                },
-                child: Text(
-                  "SignUp",
-                  style: MyTextStyle.signUpButton,
-                ),
-              ),
-            ],
-          ),
-        )
+            padding: EdgeInsets.only(left: 128.w, right: 120.w, top: 8.h),
+            child: AccountStatusWidget(
+                nextPage: () => PushNavigation(context, SignUpPage()),
+                text1: "Don’t have an account ?",
+                text2: "SignUp"))
       ],
     );
   }
