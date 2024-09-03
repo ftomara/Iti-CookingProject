@@ -18,8 +18,12 @@ class $AssetsAnimationsGen {
   /// File path: assets/animations/DsaIGmBy0d.json
   String get dsaIGmBy0d => 'assets/animations/DsaIGmBy0d.json';
 
+  String get letsCook => 'assets/animations/lets_cook_animation.json';
+
+  String get rateMeal => 'assets/animations/rate_meal_animation.json';
+
   /// List of all assets
-  List<String> get values => [a5qdZDIR369, dsaIGmBy0d];
+  List<String> get values => [a5qdZDIR369, dsaIGmBy0d, letsCook, rateMeal];
 }
 
 class $AssetsColorsGen {
