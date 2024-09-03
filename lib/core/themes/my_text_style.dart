@@ -150,7 +150,8 @@ class MyTextStyle {
     color: MyColors.black,
     fontSize: 18,
   );
-
+  static TextStyle textfield = GoogleFonts.oswald(
+      color: MyColors.black, fontSize: 24.sp, fontWeight: FontWeight.w300);
   static TextStyle signUpButton = GoogleFonts.oswald(
       color: MyColors.orangecolor,
       fontSize: 16.sp,
