@@ -1,25 +1,28 @@
-class Recipe { // might get editted 
-  String? title = '';
-  String? chef = '';
-  int? rate = 0;
-  String? time = '';
-  String? calories = '';
-  String? type = '';
-  String? imgPath = '';
-  String? vidURL = '';
-  bool? isFav = false;
-  List<String>? instructions = [];
-  List<String>? ingreadiants = [];
-  Recipe(
-      {this.title,
-      this.time,
-      this.calories,
-      this.chef,
-      this.imgPath,
-      this.ingreadiants,
-      this.instructions,
-      this.isFav,
-      this.rate,
-      this.type,
-      this.vidURL});
+import 'recipe_types.dart';
+import 'time.dart';
+
+class Recipe {
+  Recipe({
+    required this.title,
+    required this.chef,
+    required this.rate,
+    required this.calories,
+    required this.ingreadiants,
+    required this.instructions,
+    required this.type,
+    required this.impPath,
+    required this.time,
+    isFav = false,
+  });
+
+  final String title;
+  final String chef;
+  final int rate;
+  final double calories;
+  final List<String> ingreadiants;
+  final List<String> instructions;
+  final RecipeTypes type;
+  final String impPath;
+  final Time time;
+  bool isFav = false;
 }
