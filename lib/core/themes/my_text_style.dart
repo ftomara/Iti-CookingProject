@@ -54,7 +54,6 @@ class MyTextStyle {
     fontWeight: FontWeight.w200,
   );
 
-<<<<<<< HEAD
   static TextStyle recipe_title = GoogleFonts.oswald(
     textStyle: TextStyle(
       color: MyColors.butterycolor,
@@ -120,7 +119,6 @@ class MyTextStyle {
 
 
 
-=======
   static TextStyle welcome = GoogleFonts.oswald(
       color: MyColors.greycolor, fontSize: 36.sp, fontWeight: FontWeight.w600);
 
@@ -147,5 +145,4 @@ class MyTextStyle {
       decorationThickness: 1.5,
       decoration: TextDecoration.underline,
       fontWeight: FontWeight.w600);
->>>>>>> abc09e40b116c429f895080e61da136db7ffca11
 }
