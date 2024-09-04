@@ -49,7 +49,7 @@ class SignUpPage extends StatelessWidget {
                   controller: password,
                   password: true,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 64,
                 ),
                 Center(

@@ -32,8 +32,8 @@ class _UploadBoxState extends State<UploadBox>
     )..repeat(reverse: true); // Repeats the animation in reverse
 
     _animation = Tween<Offset>(
-      begin: Offset(0, 0.2),
-      end: Offset(0, -0.2),
+      begin: const Offset(0, 0.2),
+      end: const Offset(0, -0.2),
     ).animate(CurvedAnimation(
       parent: _controller,
       curve: Curves.easeInOut,
@@ -91,7 +91,8 @@ class _UploadBoxState extends State<UploadBox>
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SvgPicture.asset($AssetsImagesGen().uploadImage),
+                            SvgPicture.asset(
+                                const $AssetsImagesGen().uploadImage),
                             SizedBox(
                               width: 6.w,
                             ),

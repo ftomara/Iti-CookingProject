@@ -22,7 +22,7 @@ class MyCookingApp extends StatefulWidget {
 class _MyCookingAppState extends State<MyCookingApp> {
   int _currentIndex = 0;
 
-  final List<Widget> _Pages = [
+  final List<Widget> _pages = [
     const HomePage(),
     const UsersPage(),
     const UploadRecipePage(),
@@ -52,7 +52,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
         home: SafeArea(
           child: Scaffold(
             backgroundColor: MyColors.butterycolor,
-            body: _Pages[_currentIndex],
+            body: _pages[_currentIndex],
             bottomNavigationBar: NavBar(
               currentIndex: _currentIndex,
               onTap: _onNavBarTap,

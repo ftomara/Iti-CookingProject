@@ -13,14 +13,20 @@ class MyTextStyle {
     fontSize: 18,
     fontWeight: FontWeight.normal,
   );
+  static TextStyle input = GoogleFonts.oswald(
+    textStyle: TextStyle(
+      color: MyColors.hintColor,
+    ),
+    fontSize: 16,
+    fontWeight: FontWeight.normal,
+  );
   static TextStyle hellothin = GoogleFonts.oswald(
     textStyle: TextStyle(
       color: MyColors.greycolor,
     ),
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: FontWeight.w300,
   );
-  
 
   static TextStyle category_not_selected = GoogleFonts.oswald(
     textStyle: TextStyle(
@@ -45,7 +51,7 @@ class MyTextStyle {
     fontSize: 22,
     fontWeight: FontWeight.w400,
   );
-  static TextStyle add_recipe= GoogleFonts.oswald(
+  static TextStyle add_recipe = GoogleFonts.oswald(
     textStyle: TextStyle(
       color: MyColors.greycolor,
     ),
@@ -133,6 +139,12 @@ class MyTextStyle {
       color: MyColors.butterycolor,
       fontSize: 36.sp,
       fontWeight: FontWeight.w400);
+
+  static TextStyle add_recipe_button = GoogleFonts.oswald(
+    color: MyColors.butterycolor,
+    fontWeight: FontWeight.normal,
+    fontSize: 28,
+  );
 
   static TextStyle biteguide = GoogleFonts.oswald(
       color: MyColors.black, fontSize: 50.sp, fontWeight: FontWeight.w400);
