@@ -29,7 +29,7 @@ class FavoritePage extends StatelessWidget {
           FavoriteBar(),
           Expanded(
               child: RecipeCardGen(
-            recipeList: recipes,
+            // recipeList: recipes,
           )),
           // SizedBox(height:500,),
         ],

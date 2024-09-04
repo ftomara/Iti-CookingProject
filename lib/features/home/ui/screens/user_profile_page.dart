@@ -28,7 +28,7 @@ class UserProfilePage extends StatelessWidget {
           ),
           Expanded(
               child: RecipeCardGen(
-            recipeList: recipes,
+            // recipeList: recipes,
           )),
           // SizedBox(height:500,),
         ],

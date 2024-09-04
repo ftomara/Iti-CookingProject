@@ -1,5 +1,6 @@
 import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/model/recipe.dart';
+import 'package:cooking_app/features/home/model/recipe_api.dart';
 import 'package:cooking_app/gen/assets.gen.dart';
 import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +10,8 @@ import 'package:flutter_svg/svg.dart';
 import '../screens/cooking_instructions_screen.dart';
 
 class RecipeCard extends StatefulWidget {
-  const RecipeCard({super.key, required this.recipe});
-
-  final Recipe recipe;
+  const RecipeCard({super.key, required this.result});
+  final Result result;
 
   @override
   State<RecipeCard> createState() => _RecipeCardState();
@@ -38,14 +38,16 @@ class _RecipeCardState extends State<RecipeCard> {
             child: Row(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    widget.recipe.impPath,
-                    width: 90,
-                    height: 120,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.network(
+                      widget.result.image,
+                      width: 90,
+                      height: 90,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Icon(Icons
+                            .error); // Display an error icon or a placeholder
+                      },
+                    )),
                 const SizedBox(
                   width: 8,
                 ),
@@ -60,28 +62,34 @@ class _RecipeCardState extends State<RecipeCard> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                widget.recipe.title,
-                                style: MyTextStyle.recipe_title,
-                              ),
-                              Text(
-                                widget.recipe.chef,
-                                style: MyTextStyle.recipe_author,
-                              ),
+                              Container(
+                                width: 160
+                                    .w, // Makes the container take the full width
+                                child: Text(
+                                  widget.result.label,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: MyTextStyle.recipe_title,
+                                ),
+                              )
+                              // Text(
+                              //   widget.recipe.chef,
+                              //   style: MyTextStyle.recipe_author,
+                              // ),
                             ],
                           ),
                           IconButton(
                             onPressed: () {
                               setState(() {
-                                widget.recipe.isFav = !widget.recipe.isFav;
+                                widget.result.isFav = !widget.result.isFav;
                               });
                             },
                             icon: SvgPicture.asset(
-                              widget.recipe.isFav
+                              widget.result.isFav
                                   ? const $AssetsImagesGen().filledHeart
                                   : const $AssetsImagesGen().heart,
                               colorFilter: ColorFilter.mode(
-                                widget.recipe.isFav == false
+                                widget.result.isFav == false
                                     ? MyColors.butterycolor
                                     : MyColors.butterycolor,
                                 BlendMode.srcIn,
@@ -104,7 +112,7 @@ class _RecipeCardState extends State<RecipeCard> {
                             width: 4.w,
                           ),
                           Text(
-                            widget.recipe.time.toString(),
+                            '${widget.result.calories} Mins',
                             style: MyTextStyle.recipe_time,
                           ),
                           SizedBox(
@@ -119,44 +127,44 @@ class _RecipeCardState extends State<RecipeCard> {
                             width: 4.w,
                           ),
                           Text(
-                            widget.recipe.calories.toString(),
+                            '${widget.result.calories} C',
                             style: MyTextStyle.recipe_time,
                           ),
                         ],
                       ),
                       const SizedBox(height: 8),
-                      Row(
-                        children: List.generate(
-                          5,
-                          (index) {
-                            return widget.recipe.rate > index
-                                ? SvgPicture.asset(
-                                    const $AssetsImagesGen().filledStar,
-                                    width: 12, // Adjust width as needed
-                                    height: 12, // Adjust height as needed
-                                  )
-                                : SvgPicture.asset(
-                                    const $AssetsImagesGen().star,
-                                    width: 12, // Adjust width as needed
-                                    height: 12, // Adjust height as needed
-                                  );
-                          },
-                        ),
-                      ),
+                      // Row(
+                      //   children: List.generate(
+                      //     5,
+                      //     (index) {
+                      //       return widget.recipe.rate > index
+                      //           ? SvgPicture.asset(
+                      //               const $AssetsImagesGen().filledStar,
+                      //               width: 12, // Adjust width as needed
+                      //               height: 12, // Adjust height as needed
+                      //             )
+                      //           : SvgPicture.asset(
+                      //               const $AssetsImagesGen().star,
+                      //               width: 12, // Adjust width as needed
+                      //               height: 12, // Adjust height as needed
+                      //             );
+                      //     },
+                      //   ),
+                      // ),
                       Expanded(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        CookingInstructionsScreen(
-                                            recipe: widget.recipe),
-                                  ),
-                                );
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) =>
+                                //         CookingInstructionsScreen(
+                                //             recipe: widget.recipe),
+                                //   ),
+                                // );
                               },
                               child: Container(
                                 width: 108.w,

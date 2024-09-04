@@ -1,9 +1,12 @@
 // ignore_for_file: unused_import
 
 import 'package:cooking_app/core/themes/my_text_style.dart';
+import 'package:cooking_app/features/home/logic/item_cubit.dart';
+import 'package:cooking_app/features/home/ui/screens/home_page.dart';
 import 'package:cooking_app/my_colors.dart';
 import 'package:cooking_app/my_cooking_app.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Catigories extends StatefulWidget {
   const Catigories({super.key});
@@ -15,7 +18,7 @@ class Catigories extends StatefulWidget {
 class _CatigoriesState extends State<Catigories> {
   Radius radius = const Radius.circular(16);
   List<String> text = ['BreakFast', 'Lunch', 'Dinner', 'Dessert'];
-  int _index = -1; // handle cubit state mangement 
+  int _index = -1; // handle cubit state mangement
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +35,16 @@ class _CatigoriesState extends State<Catigories> {
     );
   }
 
-   Widget _buildTab(String title, int index) {
+  Widget _buildTab(String title, int index) {
     bool isSelected = _index == index;
 
     return GestureDetector(
       onTap: () {
         setState(() {
-          _index = index; // Update the selected tab index
+          _index = index;
+          context
+              .read<ItemCubit>()
+              .change(text[_index],""); // Update the selected tab index
         });
       },
       child: Stack(
@@ -49,7 +55,9 @@ class _CatigoriesState extends State<Catigories> {
             height: isSelected ? 54 : 40, // Adjust height based on selection
             width: 90,
             decoration: BoxDecoration(
-              color: isSelected ? MyColors.orangecolor : MyColors.butterycolor, // Adjust color based on selection
+              color: isSelected
+                  ? MyColors.orangecolor
+                  : MyColors.butterycolor, // Adjust color based on selection
               borderRadius: BorderRadius.only(
                 topLeft: radius,
                 topRight: radius,
@@ -57,7 +65,8 @@ class _CatigoriesState extends State<Catigories> {
               border: Border.all(color: Colors.black, width: 1),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.5), // Shadow color with opacity
+                  color:
+                      Colors.grey.withOpacity(0.5), // Shadow color with opacity
                   spreadRadius: 2, // How much the shadow spreads
                   blurRadius: 4, // How much the shadow is blurred
                   offset: const Offset(0, 3), // Position of the shadow (x, y)
@@ -68,7 +77,8 @@ class _CatigoriesState extends State<Catigories> {
               child: Text(
                 title,
                 style: isSelected
-                    ? MyTextStyle.category_selected // Adjust text style based on selection
+                    ? MyTextStyle
+                        .category_selected // Adjust text style based on selection
                     : MyTextStyle.category_not_selected,
               ),
             ),
@@ -77,6 +87,4 @@ class _CatigoriesState extends State<Catigories> {
       ),
     );
   }
-  
-
 }

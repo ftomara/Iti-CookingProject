@@ -59,9 +59,9 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 18,
-        vertical: 36,
+      padding: EdgeInsets.symmetric(
+        horizontal: 10.w,
+        vertical: 36.h,
       ),
       child: SingleChildScrollView(
         child: Column(
@@ -98,8 +98,8 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
                   hoursController: hoursController,
                   minutesController: minutesController,
                 ),
-                const SizedBox(
-                  width: 18,
+                SizedBox(
+                  width: 18.w,
                 ),
                 CaloriesInputField(caloriesController: caloriesController),
               ],

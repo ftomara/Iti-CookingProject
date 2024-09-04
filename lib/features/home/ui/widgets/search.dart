@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Search extends StatelessWidget {
-  const Search({super.key});
+  TextEditingController controller;
+  Search({super.key, required this.onchange,required this.controller});
+  ValueChanged<String> onchange;
 
   @override
   Widget build(BuildContext context) {
@@ -18,37 +20,40 @@ class Search extends StatelessWidget {
         color: MyColors.butterycolor,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5), // Shadow color with opacity
-            spreadRadius: 2, // How much the shadow spreads
-            blurRadius: 4, // How much the shadow is blurred
-            offset: const Offset(0, 3), // Position of the shadow (x, y)
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Form(
-        
+
           child: TextFormField(
-            
+            controller: controller,
+              onFieldSubmitted: (query) {
+                onchange(query);
+              },
               decoration: InputDecoration(
                 hintText: 'Search',
                 hintStyle: MyTextStyle.search,
-        prefixIcon: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          child: SvgPicture.asset(
-            const $AssetsImagesGen().searchicon,
-            height: 16,
-            width: 16,
-          ),
-        ),
-        border: OutlineInputBorder(
-          borderRadius:
-              BorderRadius.circular(16.0), // Adjust the radius as needed
-          borderSide: BorderSide(
-            color: MyColors.greycolor, // Border color
-            width: 2.0, // Border width
-          ),
-        ),
-      ))),
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: SvgPicture.asset(
+                    const $AssetsImagesGen().searchicon,
+                    height: 16,
+                    width: 16,
+                  ),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                      16.0), // Adjust the radius as needed
+                  borderSide: BorderSide(
+                    color: MyColors.greycolor, // Border color
+                    width: 2.0, // Border width
+                  ),
+                ),
+              ))),
     );
   }
 }
