@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextFieldWidget extends StatefulWidget {
-  TextEditingController controller;
-  
+  final TextEditingController controller;
+
   final bool password;
-  TextFieldWidget({super.key, required this.password,required this.controller});
+  const TextFieldWidget(
+      {super.key, required this.password, required this.controller});
 
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
@@ -25,8 +26,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             ? []
             : [
                 BoxShadow(
-                  color: Color(0x40000000),
-                  offset: Offset(0, 4),
+                  color: const Color(0x40000000),
+                  offset: const Offset(0, 4),
                   blurRadius: 4.r,
                   spreadRadius: 0,
                 ),

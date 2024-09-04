@@ -1,20 +1,17 @@
-import 'dart:math';
-
 import 'package:cooking_app/core/common_widgets/account_status_widget.dart';
 import 'package:cooking_app/core/common_widgets/button_widget.dart';
 import 'package:cooking_app/core/helper/navigation%20.dart';
 import 'package:cooking_app/core/network/firebase/authenticate%20.dart';
 import 'package:cooking_app/core/themes/my_text_style.dart';
-import 'package:cooking_app/features/home/ui/screens/login_page.dart';
 import 'package:cooking_app/features/home/ui/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignUpPage extends StatelessWidget {
-  GlobalKey<FormState> _key = GlobalKey();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
-  TextEditingController username = TextEditingController();
+  final GlobalKey<FormState> _key = GlobalKey();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+  final TextEditingController username = TextEditingController();
 
   SignUpPage({super.key});
 

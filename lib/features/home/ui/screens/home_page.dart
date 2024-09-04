@@ -10,31 +10,22 @@ import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget
-{
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-     
-return SafeArea(
-  child: Scaffold(
-    backgroundColor: MyColors.butterycolor,
-    body: Padding(
+    return Padding(
       padding: const EdgeInsets.only(top: 64),
       child: Column(
         children: [
           const WelcomingBar(),
           const Search(),
           Catigories(),
-         const Expanded(child: RecipeCardGen()),
+          const Expanded(child: RecipeCardGen()),
           // SizedBox(height:500,),
         ],
       ),
-    ),
-    bottomNavigationBar:  NavBar(),
-  ),
-);
+    );
   }
-  
 }

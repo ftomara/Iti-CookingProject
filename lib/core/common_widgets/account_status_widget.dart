@@ -1,5 +1,4 @@
 import 'package:cooking_app/core/themes/my_text_style.dart';
-import 'package:cooking_app/features/home/ui/screens/sign_up_page.dart';
 import 'package:flutter/material.dart';
 
 class AccountStatusWidget extends StatelessWidget {
@@ -18,7 +17,7 @@ class AccountStatusWidget extends StatelessWidget {
     return Row(
       children: [
         Text(
-          "$text1",
+          text1,
           style: MyTextStyle.haveAccount,
         ),
         GestureDetector(
@@ -26,7 +25,7 @@ class AccountStatusWidget extends StatelessWidget {
             nextPage();
           },
           child: Text(
-            "$text2",
+            text2,
             style: MyTextStyle.signUpButton,
           ),
         ),

@@ -18,19 +18,15 @@ class FavoritePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MyColors.butterycolor,
-      body: const Padding(
-        padding: EdgeInsets.only(top: 36 ),
-        child: Column(
-          children: [
-            FavoriteBar(),
-            Expanded(child: RecipeCardGen()),
-            // SizedBox(height:500,),
-          ],
-        ),
+    return const Padding(
+      padding: EdgeInsets.only(top: 36),
+      child: Column(
+        children: [
+          FavoriteBar(),
+          Expanded(child: RecipeCardGen()),
+          // SizedBox(height:500,),
+        ],
       ),
-      bottomNavigationBar: NavBar(),
     );
   }
 }

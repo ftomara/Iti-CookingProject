@@ -9,11 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginPage extends StatelessWidget {
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
 
   LoginPage({super.key});
-  GlobalKey<FormState> _key = GlobalKey();
+  final GlobalKey<FormState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -85,7 +85,7 @@ class LoginPage extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 6.h, top: 12.h),
       child: Text(
-        "$text",
+        text,
         style: MyTextStyle.textfield,
       ),
     );

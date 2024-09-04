@@ -19,48 +19,42 @@ class UploadRecipePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: MyColors.butterycolor,
-        body: Column(
+    return Column(
+      children: [
+        SizedBox(
+          height: 36.h,
+        ),
+        Row(
           children: [
             SizedBox(
-              height: 36.h,
+              width: 18.w,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 18.w,
-                ),
-                Text(
-                  'Add Recipe',
-                  style: MyTextStyle.add_recipe,
-                ),
-              ],
+            Text(
+              'Add Recipe',
+              style: MyTextStyle.add_recipe,
             ),
-            UploadBox(),
-            SizedBox(
-              height: 18.h,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 18.w,
-                ),
-                Text(
-                  'Recipe Type',
-                  style: MyTextStyle.question,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 12.h,
-            ),
-            RecipeType(),
           ],
         ),
-        bottomNavigationBar: NavBar(),
-      ),
+        UploadBox(),
+        SizedBox(
+          height: 18.h,
+        ),
+        Row(
+          children: [
+            SizedBox(
+              width: 18.w,
+            ),
+            Text(
+              'Recipe Type',
+              style: MyTextStyle.question,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 12.h,
+        ),
+        RecipeType(),
+      ],
     );
   }
 }
