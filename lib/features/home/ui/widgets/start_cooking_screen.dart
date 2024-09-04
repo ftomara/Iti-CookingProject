@@ -14,56 +14,58 @@ class StartCookingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        children: [
-          const BackButtonAppbar(),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                right: 18,
-                left: 18,
-                top: 60,
-                bottom: 160,
-              ),
-              child: Container(
-                width: 352,
-                height: 572,
-                decoration: BoxDecoration(
-                  color: MyColors.orangecolor,
-                  borderRadius: BorderRadius.circular(24),
+      child: Center(
+        child: Column(
+          children: [
+            const BackButtonAppbar(),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  // right: 18,
+                  // left: 18,
+                  top: 60,
+                  bottom: 160,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 55,
-                    vertical: 64,
+                child: Container(
+                  width: 352,
+                  height: 572,
+                  decoration: BoxDecoration(
+                    color: MyColors.orangecolor,
+                    borderRadius: BorderRadius.circular(24),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        '''Hey!
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 55,
+                      vertical: 64,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          '''Hey!
 Let’s Enjoy Some Cookin’''',
-                        style: GoogleFonts.oswald(
-                          color: MyColors.butterycolor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 36,
+                          style: GoogleFonts.oswald(
+                            color: MyColors.butterycolor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 36,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                      Lottie.asset(
-                          'assets/animations/lets_cook_animation.json'),
-                      const Spacer(),
-                      AnimatedButton(
-                        pageController: pageController,
-                      ),
-                    ],
+                        Lottie.asset(
+                            'assets/animations/lets_cook_animation.json'),
+                        const Spacer(),
+                        AnimatedButton(
+                          pageController: pageController,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

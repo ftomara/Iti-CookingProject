@@ -65,7 +65,9 @@ class IngreadientsScreen extends StatelessWidget {
                                 SvgPicture.asset('assets/images/servings.svg'),
                                 const SizedBox(width: 4),
                                 Text(
-                                  "1 Serving",
+                                  recipe.servings == 1
+                                      ? "${recipe.servings} Serving"
+                                      : "${recipe.servings} Servings",
                                   style: MyTextStyle.serving,
                                 ),
                               ],

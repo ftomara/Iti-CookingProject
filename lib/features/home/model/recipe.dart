@@ -12,12 +12,14 @@ class Recipe {
     required this.type,
     required this.impPath,
     required this.time,
-    isFav = false,
+    this.isFav = false,
+    this.servings = 1,
   });
 
   final String title;
   final String chef;
   final int rate;
+  final int servings;
   final double calories;
   final List<String> ingreadiants;
   final List<String> instructions;

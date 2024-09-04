@@ -146,6 +146,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
       type: RecipeTypes.dessert,
       impPath: 'assets/images/chocolate_cake_dummy.png',
       time: const Time(hours: 0, min: 45),
+      servings: 6,
     ),
     Recipe(
       title: 'Grilled Salmon',
