@@ -10,8 +10,14 @@ import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../model/recipe.dart';
+import '../../model/recipe_types.dart';
+import '../../model/time.dart';
+
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required this.recipes});
+
+  final List<Recipe> recipes;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +28,10 @@ class HomePage extends StatelessWidget {
           const WelcomingBar(),
           const Search(),
           Catigories(),
-          const Expanded(child: RecipeCardGen()),
+          Expanded(
+              child: RecipeCardGen(
+            recipeList: recipes,
+          )),
           // SizedBox(height:500,),
         ],
       ),

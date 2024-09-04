@@ -13,17 +13,24 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../model/recipe.dart';
+
 class FavoritePage extends StatelessWidget {
-  const FavoritePage({super.key});
+  const FavoritePage({super.key, required this.recipes});
+
+  final List<Recipe> recipes;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.only(top: 36),
       child: Column(
         children: [
           FavoriteBar(),
-          Expanded(child: RecipeCardGen()),
+          Expanded(
+              child: RecipeCardGen(
+            recipeList: recipes,
+          )),
           // SizedBox(height:500,),
         ],
       ),

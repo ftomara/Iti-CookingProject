@@ -37,30 +37,27 @@ class StartCookingScreen extends StatelessWidget {
                     horizontal: 55,
                     vertical: 64,
                   ),
-                  child: Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          '''Hey!
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        '''Hey!
 Let’s Enjoy Some Cookin’''',
-                          style: GoogleFonts.oswald(
-                            color: MyColors.butterycolor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 36,
-                          ),
-                          textAlign: TextAlign.center,
+                        style: GoogleFonts.oswald(
+                          color: MyColors.butterycolor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 36,
                         ),
-                        Lottie.asset(
-                            'assets/animations/lets_cook_animation.json'),
-                        const Spacer(),
-                        AnimatedButton(
-                          pageController: pageController,
-                        ),
-                      ],
-                    ),
+                        textAlign: TextAlign.center,
+                      ),
+                      Lottie.asset(
+                          'assets/animations/lets_cook_animation.json'),
+                      const Spacer(),
+                      AnimatedButton(
+                        pageController: pageController,
+                      ),
+                    ],
                   ),
                 ),
               ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../../my_cooking_app.dart';
 import 'back_button_appbar.dart';
 import 'rating_stars.dart';
 
@@ -70,7 +71,14 @@ class RateMealScreen extends StatelessWidget {
                     height: 20,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MyCookingApp(),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: MyColors.orangecolor,
                       padding: const EdgeInsets.symmetric(

@@ -7,8 +7,12 @@ import 'package:cooking_app/features/home/ui/widgets/user_profile_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../model/recipe.dart';
+
 class UserProfilePage extends StatelessWidget {
-  const UserProfilePage({super.key});
+  const UserProfilePage({super.key, required this.recipes});
+
+  final List<Recipe> recipes;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +26,10 @@ class UserProfilePage extends StatelessWidget {
           SizedBox(
             height: 8.h,
           ),
-          Expanded(child: RecipeCardGen()),
+          Expanded(
+              child: RecipeCardGen(
+            recipeList: recipes,
+          )),
           // SizedBox(height:500,),
         ],
       ),

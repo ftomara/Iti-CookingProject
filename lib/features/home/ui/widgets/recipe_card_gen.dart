@@ -3,26 +3,28 @@
 import 'package:cooking_app/features/home/ui/widgets/recipe_card.dart';
 import 'package:flutter/material.dart';
 
-class RecipeCardGen extends StatefulWidget
-{
-  const RecipeCardGen({super.key});
+import '../../model/recipe.dart';
+
+class RecipeCardGen extends StatefulWidget {
+  const RecipeCardGen({super.key, required this.recipeList});
+
+  final List<Recipe> recipeList;
 
   @override
-  State<StatefulWidget> createState() => _RecipeCardGenState();
-    
-  
-
+  State<RecipeCardGen> createState() => _RecipeCardGenState();
 }
 
-class _RecipeCardGenState extends State<RecipeCardGen>{
+class _RecipeCardGenState extends State<RecipeCardGen> {
   @override
-  Widget build(BuildContext context) { /// takes a recipeinfo object to generate 
-   return ListView.builder( itemCount: 30, itemBuilder: (context,index)
-   {
-    // print('list generated');
-       return RecipeCard();
-   });
+  Widget build(BuildContext context) {
+    /// takes a recipeinfo object to generate
+    return ListView.builder(
+        itemCount: widget.recipeList.length,
+        itemBuilder: (context, index) {
+          // print('list generated');
+          return RecipeCard(
+            recipe: widget.recipeList[index],
+          );
+        });
   }
-
-
 }
