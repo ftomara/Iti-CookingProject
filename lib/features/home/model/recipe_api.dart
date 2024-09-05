@@ -3,8 +3,8 @@ part 'recipe_api.g.dart';
 
 @JsonSerializable()
 class RecipeApi {
-  @JsonKey(name: "hits")
-  List<Hit> result = [];
+  @JsonKey(name: "results")
+  List<Result> ?result = [];
 
   RecipeApi(this.result);
 
@@ -12,37 +12,19 @@ class RecipeApi {
       _$RecipeApiFromJson(json);
 }
 
-@JsonSerializable()
-class Hit {
-  @JsonKey(name: "recipe")
-  Result recipe;
-
-  Hit(this.recipe);
-
-  factory Hit.fromJson(Map<String, dynamic> json) =>
-      _$HitFromJson(json);
-}
 
 @JsonSerializable()
 class Result {
-    bool isFav = false;
+  //bool isFav = false;
   @JsonKey(name: "image")
-  String image;
+  String? image;
 
-  @JsonKey(name: "label")
-  String label;
+  @JsonKey(name: "title")
+  String ?title;
 
-  @JsonKey(name: "ingredientLines")
-  List<String> ingredientLines;
 
-  @JsonKey(name: "calories")
-  int calories;
 
-  @JsonKey(name: "totalTime")
-  int totalTime;
+  Result(this.image,this.title);
 
-  Result(this.calories, this.image, this.ingredientLines, this.label, this.totalTime);
-
-  factory Result.fromJson(Map<String, dynamic> json) =>
-      _$ResultFromJson(json);
+  factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(json);
 }

@@ -40,7 +40,7 @@ class _RecipeCardState extends State<RecipeCard> {
                 ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: Image.network(
-                      widget.result.image,
+                      widget.result.image!,
                       width: 90,
                       height: 90,
                       errorBuilder: (context, error, stackTrace) {
@@ -66,7 +66,7 @@ class _RecipeCardState extends State<RecipeCard> {
                                 width: 160
                                     .w, // Makes the container take the full width
                                 child: Text(
-                                  widget.result.label,
+                                  widget.result.title!,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: MyTextStyle.recipe_title,
@@ -78,60 +78,60 @@ class _RecipeCardState extends State<RecipeCard> {
                               // ),
                             ],
                           ),
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                widget.result.isFav = !widget.result.isFav;
-                              });
-                            },
-                            icon: SvgPicture.asset(
-                              widget.result.isFav
-                                  ? const $AssetsImagesGen().filledHeart
-                                  : const $AssetsImagesGen().heart,
-                              colorFilter: ColorFilter.mode(
-                                widget.result.isFav == false
-                                    ? MyColors.butterycolor
-                                    : MyColors.butterycolor,
-                                BlendMode.srcIn,
-                              ),
-                              width: 20, // Adjust width as needed
-                              height: 20, // Adjust height as needed
-                            ),
-                          ),
+                          // IconButton(
+                          //   onPressed: () {
+                          //     setState(() {
+                          //       widget.result.isFav = !widget.result.isFav;
+                          //     });
+                          //   },
+                          //   icon: SvgPicture.asset(
+                          //     widget.result.isFav
+                          //         ? const $AssetsImagesGen().filledHeart
+                          //         : const $AssetsImagesGen().heart,
+                          //     colorFilter: ColorFilter.mode(
+                          //       widget.result.isFav == false
+                          //           ? MyColors.butterycolor
+                          //           : MyColors.butterycolor,
+                          //       BlendMode.srcIn,
+                          //     ),
+                          //     width: 20, // Adjust width as needed
+                          //     height: 20, // Adjust height as needed
+                          //   ),
+                          // ),
                         ],
                       ),
                       const SizedBox(height: 4),
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            const $AssetsImagesGen().timer,
-                            width: 12, // Adjust width as needed
-                            height: 12, // Adjust height as needed
-                          ),
-                          SizedBox(
-                            width: 4.w,
-                          ),
-                          Text(
-                            '${widget.result.calories} Mins',
-                            style: MyTextStyle.recipe_time,
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          SvgPicture.asset(
-                            const $AssetsImagesGen().calories,
-                            width: 12, // Adjust width as needed
-                            height: 12, // Adjust height as needed
-                          ),
-                          SizedBox(
-                            width: 4.w,
-                          ),
-                          Text(
-                            '${widget.result.calories} C',
-                            style: MyTextStyle.recipe_time,
-                          ),
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     SvgPicture.asset(
+                      //       const $AssetsImagesGen().timer,
+                      //       width: 12, // Adjust width as needed
+                      //       height: 12, // Adjust height as needed
+                      //     ),
+                      //     SizedBox(
+                      //       width: 4.w,
+                      //     ),
+                      //     Text(
+                      //       '${widget.result.calories} Mins',
+                      //       style: MyTextStyle.recipe_time,
+                      //     ),
+                      //     SizedBox(
+                      //       width: 8.w,
+                      //     ),
+                      //     SvgPicture.asset(
+                      //       const $AssetsImagesGen().calories,
+                      //       width: 12, // Adjust width as needed
+                      //       height: 12, // Adjust height as needed
+                      //     ),
+                      //     SizedBox(
+                      //       width: 4.w,
+                      //     ),
+                      //     Text(
+                      //       '${widget.result.calories} C',
+                      //       style: MyTextStyle.recipe_time,
+                      //     ),
+                      //   ],
+                      // ),
                       const SizedBox(height: 8),
                       // Row(
                       //   children: List.generate(

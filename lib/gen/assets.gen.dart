@@ -46,11 +46,19 @@ class $AssetsImagesGen {
   AssetGenImage get appIcon2 =>
       const AssetGenImage('assets/images/appIcon2.png');
 
+  /// File path: assets/images/caesar_salad_dummy.png
+  AssetGenImage get caesarSaladDummy =>
+      const AssetGenImage('assets/images/caesar_salad_dummy.png');
+
   /// File path: assets/images/calories.svg
   String get calories => 'assets/images/calories.svg';
 
   /// File path: assets/images/chef.svg
   String get chef => 'assets/images/chef.svg';
+
+  /// File path: assets/images/chocolate_cake_dummy.png
+  AssetGenImage get chocolateCakeDummy =>
+      const AssetGenImage('assets/images/chocolate_cake_dummy.png');
 
   /// File path: assets/images/dummy_recipe.png
   AssetGenImage get dummyRecipe =>
@@ -64,6 +72,10 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/followicon.svg
   String get followicon => 'assets/images/followicon.svg';
+
+  /// File path: assets/images/grilled_salmon_dummy.png
+  AssetGenImage get grilledSalmonDummy =>
+      const AssetGenImage('assets/images/grilled_salmon_dummy.png');
 
   /// File path: assets/images/heart.svg
   String get heart => 'assets/images/heart.svg';
@@ -116,12 +128,15 @@ class $AssetsImagesGen {
   /// List of all assets
   List<dynamic> get values => [
         appIcon2,
+        caesarSaladDummy,
         calories,
         chef,
+        chocolateCakeDummy,
         dummyRecipe,
         filledHeart,
         filledStar,
         followicon,
+        grilledSalmonDummy,
         heart,
         home,
         iconProfileFill,

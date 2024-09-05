@@ -22,8 +22,8 @@ class RecipeCardGen extends StatelessWidget {
               child: Text("Failed to load recipes: ${state.e.message}"));
         } else if (state is RecipeStateLoaded) {
           RecipeApi recipeData = state.data;
-          List<Result> results =
-              recipeData.result.map((hit) => hit.recipe).toList();
+          List<Result> results = recipeData.result!;
+       
 
           return ListView.builder(
             physics: BouncingScrollPhysics(),

@@ -18,19 +18,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<ItemCubit>(
-          create: (context) => ItemCubit(),
-        ),
-        BlocProvider<RecipeCubit>(
-          create: (context) => get<RecipeCubit>(),
-        ),
-        BlocProvider<SearchCubit>(
-          create: (context) => get<SearchCubit>(),
-        ),
-      ],
-      child: BlocListener<ItemCubit, String>(
+    return BlocListener<ItemCubit, String>(
         listener: (context, itemState) {
           final searchTerm = context.read<ItemCubit>().searchItem;
           final category = context.read<ItemCubit>().category;
@@ -62,7 +50,7 @@ class HomePage extends StatelessWidget {
             ),
           );
         }),
-      ),
+  
     );
   }
 }
