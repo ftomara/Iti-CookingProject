@@ -10,41 +10,39 @@ class CaloriesInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Row(
-        children: [
-          Text(
-            'Calories :',
-            style: MyTextStyle.question,
-          ),
-          const SizedBox(
-            width: 8,
-          ),
-          Expanded(
-            child: TextField(
-              controller: caloriesController,
-              keyboardType: TextInputType.number,
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 8,
-                ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: MyColors.greycolor, width: 2),
-                  borderRadius: BorderRadius.circular(18),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(18),
-                  borderSide: BorderSide(color: MyColors.greycolor, width: 2),
-                ),
-                hintText: '600 kcl',
+    return Row(
+      children: [
+        Text(
+          'Calories :',
+          style: MyTextStyle.question,
+        ),
+        const SizedBox(
+          width: 8,
+        ),
+        Expanded(
+          child: TextField(
+            controller: caloriesController,
+            keyboardType: TextInputType.number,
+            // textAlign: TextAlign.center,
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 8,
               ),
-              style: MyTextStyle.input,
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: MyColors.greycolor, width: 2),
+                borderRadius: BorderRadius.circular(18),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(18),
+                borderSide: BorderSide(color: MyColors.greycolor, width: 2),
+              ),
+              hintText: 'Ex: 600 kcal',
             ),
+            style: MyTextStyle.input,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

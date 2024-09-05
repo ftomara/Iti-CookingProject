@@ -30,7 +30,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
     Recipe(
       title: 'Spicy Ramen Noodles',
       chef: 'Mady Miller',
-      rate: 2,
+      // rate: 2,
       calories: 602,
       ingreadiants: [
         '1 tbsp Garlic',
@@ -52,12 +52,12 @@ class _MyCookingAppState extends State<MyCookingApp> {
       ],
       type: RecipeTypes.lunch,
       impPath: 'assets/images/ramen_dummy.png',
-      time: const Time(hours: 0, min: 20),
+      // time: const Time(hours: 0, min: 20),
     ),
     Recipe(
       title: 'Pancakes',
       chef: 'Chef John',
-      rate: 3,
+      // rate: 3,
       calories: 200.0,
       ingreadiants: [
         'Flour',
@@ -73,12 +73,12 @@ class _MyCookingAppState extends State<MyCookingApp> {
       ],
       type: RecipeTypes.breakfast,
       impPath: 'assets/images/pancakes_dummy.png',
-      time: const Time(hours: 0, min: 25),
+      // time: const Time(hours: 0, min: 25),
     ),
     Recipe(
       title: 'Spaghetti Bolognese',
       chef: 'Chef Anna',
-      rate: 4,
+      // rate: 4,
       calories: 450.0,
       ingreadiants: [
         'Pasta',
@@ -94,12 +94,12 @@ class _MyCookingAppState extends State<MyCookingApp> {
       ],
       type: RecipeTypes.lunch,
       impPath: 'assets/images/spaghetti_dummy.png',
-      time: const Time(hours: 1, min: 30),
+      // time: const Time(hours: 1, min: 30),
     ),
     Recipe(
       title: 'Caesar Salad',
       chef: 'Chef Emma',
-      rate: 5,
+      // rate: 5,
       calories: 150.0,
       ingreadiants: [
         'Romaine lettuce',
@@ -117,12 +117,12 @@ class _MyCookingAppState extends State<MyCookingApp> {
       ],
       type: RecipeTypes.dinner,
       impPath: 'assets/images/caesar_salad_dummy.png',
-      time: const Time(hours: 0, min: 15),
+      // time: const Time(hours: 0, min: 15),
     ),
     Recipe(
       title: 'Chocolate Cake',
       chef: 'Chef Sophia',
-      rate: 5,
+      // rate: 5,
       calories: 400.0,
       ingreadiants: [
         'Flour',
@@ -145,13 +145,13 @@ class _MyCookingAppState extends State<MyCookingApp> {
       ],
       type: RecipeTypes.dessert,
       impPath: 'assets/images/chocolate_cake_dummy.png',
-      time: const Time(hours: 0, min: 45),
+      // time: const Time(hours: 0, min: 45),
       servings: 6,
     ),
     Recipe(
       title: 'Grilled Salmon',
       chef: 'Chef Liam',
-      rate: 4,
+      // rate: 4,
       calories: 300.0,
       ingreadiants: [
         'Salmon fillets',
@@ -170,7 +170,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
       ],
       type: RecipeTypes.dinner,
       impPath: 'assets/images/grilled_salmon_dummy.png',
-      time: const Time(hours: 0, min: 20),
+      // time: const Time(hours: 0, min: 20),
     ),
   ];
 
