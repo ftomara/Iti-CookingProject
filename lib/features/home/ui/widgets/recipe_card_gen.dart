@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RecipeCardGen extends StatelessWidget {
+  const RecipeCardGen({super.key});
+
   @override
   Widget build(BuildContext context) {
     /// takes a recipeinfo object to generate
