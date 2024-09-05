@@ -19,38 +19,37 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<ItemCubit, String>(
-        listener: (context, itemState) {
-          final searchTerm = context.read<ItemCubit>().searchItem;
-          final category = context.read<ItemCubit>().category;
+      listener: (context, itemState) {
+        final searchTerm = context.read<ItemCubit>().searchItem;
+        final category = context.read<ItemCubit>().category;
 
-          if (searchTerm.isNotEmpty) {
-            context.read<RecipeCubit>().emitState(searchTerm);
-          } else {
-            controller.clear();
-            context.read<RecipeCubit>().emitState(category);
-          }
-        },
-        child: Builder(builder: (context) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 64),
-            child: Column(
-              children: [
-                const WelcomingBar(),
-                Search(
-                  controller: controller,
-                  onchange: (value) {
-                    context
-                        .read<ItemCubit>()
-                        .change(context.read<ItemCubit>().category, value);
-                  },
-                ),
-                Catigories(),
-                Expanded(child: RecipeCardGen()),
-              ],
-            ),
-          );
-        }),
-  
+        if (searchTerm.isNotEmpty) {
+          context.read<RecipeCubit>().emitState(searchTerm);
+        } else {
+          controller.clear();
+          context.read<RecipeCubit>().emitState(category);
+        }
+      },
+      child: Builder(builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.only(top: 64),
+          child: Column(
+            children: [
+              const WelcomingBar(),
+              Search(
+                controller: controller,
+                onchange: (value) {
+                  context
+                      .read<ItemCubit>()
+                      .change(context.read<ItemCubit>().category, value);
+                },
+              ),
+              const Catigories(),
+              const Expanded(child: RecipeCardGen()),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

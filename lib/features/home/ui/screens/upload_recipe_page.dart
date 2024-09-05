@@ -18,8 +18,8 @@ class UploadRecipePage extends StatefulWidget {
 }
 
 class _UploadRecipePageState extends State<UploadRecipePage> {
-  // final TextEditingController hoursController = TextEditingController();
-  // final TextEditingController minutesController = TextEditingController();
+  final TextEditingController hoursController = TextEditingController();
+  final TextEditingController minutesController = TextEditingController();
   final TextEditingController caloriesController = TextEditingController();
   final TextEditingController titleController = TextEditingController();
   final List<String> ingreadientsList = [];
@@ -31,8 +31,8 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
   void initState() {
     super.initState();
     // Add listeners to controllers
-    // hoursController.addListener(_validateFields);
-    // minutesController.addListener(_validateFields);
+    hoursController.addListener(_validateFields);
+    minutesController.addListener(_validateFields);
     caloriesController.addListener(_validateFields);
     titleController.addListener(_validateFields);
   }
@@ -40,8 +40,8 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
   @override
   void dispose() {
     // Dispose controllers
-    // hoursController.dispose();
-    // minutesController.dispose();
+    hoursController.dispose();
+    minutesController.dispose();
     caloriesController.dispose();
     titleController.dispose();
     super.dispose();
@@ -49,9 +49,10 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
 
   void _validateFields() {
     setState(() {
-      isButtonEnabled = //(hoursController.text.isNotEmpty ||
-          // minutesController.text.isNotEmpty) &&
-          caloriesController.text.isNotEmpty && titleController.text.isNotEmpty;
+      isButtonEnabled = (hoursController.text.isNotEmpty ||
+              minutesController.text.isNotEmpty) &&
+          caloriesController.text.isNotEmpty &&
+          titleController.text.isNotEmpty;
     });
   }
 
@@ -91,18 +92,18 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
             SizedBox(
               height: 20.h,
             ),
-            // Row(
-            //   children: [
-            //     TimeInputField(
-            //       hoursController: hoursController,
-            //       minutesController: minutesController,
-            //     ),
-            //     SizedBox(
-            //       width: 18.w,
-            //     ),
-            //   ],
-            // ),
-            CaloriesInputField(caloriesController: caloriesController),
+            Row(
+              children: [
+                TimeInputField(
+                  hoursController: hoursController,
+                  minutesController: minutesController,
+                ),
+                SizedBox(
+                  width: 12.w,
+                ),
+                CaloriesInputField(caloriesController: caloriesController),
+              ],
+            ),
             SizedBox(
               height: 18.h,
             ),

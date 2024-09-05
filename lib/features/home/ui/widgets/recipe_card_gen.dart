@@ -23,7 +23,6 @@ class RecipeCardGen extends StatelessWidget {
         } else if (state is RecipeStateLoaded) {
           RecipeApi recipeData = state.data;
           List<Result> results = recipeData.result!;
-       
 
           return ListView.builder(
             physics: BouncingScrollPhysics(),

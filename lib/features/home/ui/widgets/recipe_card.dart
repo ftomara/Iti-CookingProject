@@ -26,183 +26,278 @@ class _RecipeCardState extends State<RecipeCard> {
           height: 20.h,
         ),
         Container(
-          margin: const EdgeInsets.only(left: 36, right: 36, bottom: 4),
-          height: 157.h,
-          width: 379.w,
+          margin: const EdgeInsets.only(left: 40, right: 40),
+          height: 248.h,
+          width: 164.w,
           decoration: BoxDecoration(
             color: MyColors.orangecolor,
             borderRadius: BorderRadius.circular(16),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              children: [
-                ClipRRect(
+            padding: const EdgeInsets.all(20),
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Expanded(
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.end,
+                  //     children: [
+                  //       IconButton(
+                  //         onPressed: () {
+                  //           setState(() {
+                  //             // widget.result.isFav = !widget.result.isFav;
+                  //           });
+                  //         },
+                  //         icon: SvgPicture.asset(
+                  //           // widget.result.isFav?
+                  //           const $AssetsImagesGen().filledHeart,
+                  //           // : const $AssetsImagesGen().heart,
+                  //           colorFilter: ColorFilter.mode(
+                  //             // widget.result.isFav == false?
+                  //             MyColors.butterycolor,
+                  //             // : MyColors.butterycolor,
+                  //             BlendMode.srcIn,
+                  //           ),
+                  //           width: 16, // Adjust width as needed
+                  //           height: 16, // Adjust height as needed
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: Image.network(
                       widget.result.image!,
-                      width: 90,
-                      height: 90,
+                      width: 112,
+                      height: 112,
+                      fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
-                        return Icon(Icons
+                        return const Icon(Icons
                             .error); // Display an error icon or a placeholder
                       },
-                    )),
-                const SizedBox(
-                  width: 8,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 160
-                                    .w, // Makes the container take the full width
-                                child: Text(
-                                  widget.result.title!,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: MyTextStyle.recipe_title,
-                                ),
-                              )
-                              // Text(
-                              //   widget.recipe.chef,
-                              //   style: MyTextStyle.recipe_author,
-                              // ),
-                            ],
-                          ),
-                          // IconButton(
-                          //   onPressed: () {
-                          //     setState(() {
-                          //       widget.result.isFav = !widget.result.isFav;
-                          //     });
-                          //   },
-                          //   icon: SvgPicture.asset(
-                          //     widget.result.isFav
-                          //         ? const $AssetsImagesGen().filledHeart
-                          //         : const $AssetsImagesGen().heart,
-                          //     colorFilter: ColorFilter.mode(
-                          //       widget.result.isFav == false
-                          //           ? MyColors.butterycolor
-                          //           : MyColors.butterycolor,
-                          //       BlendMode.srcIn,
-                          //     ),
-                          //     width: 20, // Adjust width as needed
-                          //     height: 20, // Adjust height as needed
-                          //   ),
-                          // ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  Text(
+                    widget.result.title!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: MyTextStyle.recipe_title,
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>
+                      //         CookingInstructionsScreen(
+                      //             recipe: widget.recipe),
+                      //   ),
+                      // );
+                    },
+                    child: Container(
+                      width: 108.w,
+                      height: 28.h,
+                      decoration: BoxDecoration(
+                        color: MyColors.butterycolor,
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(255, 40, 40, 40)
+                                .withOpacity(0.5), // Shadow color with opacity
+                            spreadRadius: 0, // How much the shadow spreads
+                            blurRadius: 2, // How much the shadow is blurred
+                            offset: const Offset(0, 2),
+                          )
                         ],
                       ),
-                      const SizedBox(height: 4),
-                      // Row(
-                      //   children: [
-                      //     SvgPicture.asset(
-                      //       const $AssetsImagesGen().timer,
-                      //       width: 12, // Adjust width as needed
-                      //       height: 12, // Adjust height as needed
-                      //     ),
-                      //     SizedBox(
-                      //       width: 4.w,
-                      //     ),
-                      //     Text(
-                      //       '${widget.result.calories} Mins',
-                      //       style: MyTextStyle.recipe_time,
-                      //     ),
-                      //     SizedBox(
-                      //       width: 8.w,
-                      //     ),
-                      //     SvgPicture.asset(
-                      //       const $AssetsImagesGen().calories,
-                      //       width: 12, // Adjust width as needed
-                      //       height: 12, // Adjust height as needed
-                      //     ),
-                      //     SizedBox(
-                      //       width: 4.w,
-                      //     ),
-                      //     Text(
-                      //       '${widget.result.calories} C',
-                      //       style: MyTextStyle.recipe_time,
-                      //     ),
-                      //   ],
-                      // ),
-                      const SizedBox(height: 8),
-                      // Row(
-                      //   children: List.generate(
-                      //     5,
-                      //     (index) {
-                      //       return widget.recipe.rate > index
-                      //           ? SvgPicture.asset(
-                      //               const $AssetsImagesGen().filledStar,
-                      //               width: 12, // Adjust width as needed
-                      //               height: 12, // Adjust height as needed
-                      //             )
-                      //           : SvgPicture.asset(
-                      //               const $AssetsImagesGen().star,
-                      //               width: 12, // Adjust width as needed
-                      //               height: 12, // Adjust height as needed
-                      //             );
-                      //     },
-                      //   ),
-                      // ),
-                      Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) =>
-                                //         CookingInstructionsScreen(
-                                //             recipe: widget.recipe),
-                                //   ),
-                                // );
-                              },
-                              child: Container(
-                                width: 108.w,
-                                height: 28.h,
-                                decoration: BoxDecoration(
-                                  color: MyColors.butterycolor,
-                                  borderRadius: BorderRadius.circular(8),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: const Color.fromARGB(
-                                              255, 40, 40, 40)
-                                          .withOpacity(
-                                              0.5), // Shadow color with opacity
-                                      spreadRadius:
-                                          0, // How much the shadow spreads
-                                      blurRadius:
-                                          2, // How much the shadow is blurred
-                                      offset: const Offset(0, 2),
-                                    )
-                                  ],
-                                ),
-                                child: Center(
-                                    child: Text(
-                                  "Cook",
-                                  style: MyTextStyle.cook,
-                                )),
-                              ),
-                            )
-                          ],
+                      child: Center(
+                        child: Text(
+                          "Cook",
+                          style: MyTextStyle.cook,
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-          // child: Stack(children: [
+          //   child: Row(
+          //     children: [
+          //       ClipRRect(
+          //           borderRadius: BorderRadius.circular(12),
+          //           child: Image.network(
+          //             widget.result.image!,
+          //             width: 90,
+          //             height: 90,
+          //             errorBuilder: (context, error, stackTrace) {
+          //               return const Icon(Icons
+          //                   .error); // Display an error icon or a placeholder
+          //             },
+          //           ),),
+          //       const SizedBox(
+          //         width: 8,
+          //       ),
+          //       Expanded(
+          //         child: Column(
+          //           crossAxisAlignment: CrossAxisAlignment.start,
+          //           mainAxisAlignment: MainAxisAlignment.start,
+          //           children: [
+          //             Row(
+          //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //               children: [
+          //                 Column(
+          //                   crossAxisAlignment: CrossAxisAlignment.start,
+          //                   children: [
+          //                     Container(
+          //                       width: 160
+          //                           .w, // Makes the container take the full width
+          //                       child: Text(
+          //                         widget.result.title!,
+          //                         maxLines: 1,
+          //                         overflow: TextOverflow.ellipsis,
+          //                         style: MyTextStyle.recipe_title,
+          //                       ),
+          //                     )
+          //                     // Text(
+          //                     //   widget.recipe.chef,
+          //                     //   style: MyTextStyle.recipe_author,
+          //                     // ),
+          //                   ],
+          //                 ),
+          //                 // IconButton(
+          //                 //   onPressed: () {
+          //                 //     setState(() {
+          //                 //       widget.result.isFav = !widget.result.isFav;
+          //                 //     });
+          //                 //   },
+          //                 //   icon: SvgPicture.asset(
+          //                 //     widget.result.isFav
+          //                 //         ? const $AssetsImagesGen().filledHeart
+          //                 //         : const $AssetsImagesGen().heart,
+          //                 //     colorFilter: ColorFilter.mode(
+          //                 //       widget.result.isFav == false
+          //                 //           ? MyColors.butterycolor
+          //                 //           : MyColors.butterycolor,
+          //                 //       BlendMode.srcIn,
+          //                 //     ),
+          //                 //     width: 20, // Adjust width as needed
+          //                 //     height: 20, // Adjust height as needed
+          //                 //   ),
+          //                 // ),
+          //               ],
+          //             ),
+          //             const SizedBox(height: 4),
+          //             // Row(
+          //             //   children: [
+          //             //     SvgPicture.asset(
+          //             //       const $AssetsImagesGen().timer,
+          //             //       width: 12, // Adjust width as needed
+          //             //       height: 12, // Adjust height as needed
+          //             //     ),
+          //             //     SizedBox(
+          //             //       width: 4.w,
+          //             //     ),
+          //             //     Text(
+          //             //       '${widget.result.calories} Mins',
+          //             //       style: MyTextStyle.recipe_time,
+          //             //     ),
+          //             //     SizedBox(
+          //             //       width: 8.w,
+          //             //     ),
+          //             //     SvgPicture.asset(
+          //             //       const $AssetsImagesGen().calories,
+          //             //       width: 12, // Adjust width as needed
+          //             //       height: 12, // Adjust height as needed
+          //             //     ),
+          //             //     SizedBox(
+          //             //       width: 4.w,
+          //             //     ),
+          //             //     Text(
+          //             //       '${widget.result.calories} C',
+          //             //       style: MyTextStyle.recipe_time,
+          //             //     ),
+          //             //   ],
+          //             // ),
+          //             const SizedBox(height: 8),
+          //             // Row(
+          //             //   children: List.generate(
+          //             //     5,
+          //             //     (index) {
+          //             //       return widget.recipe.rate > index
+          //             //           ? SvgPicture.asset(
+          //             //               const $AssetsImagesGen().filledStar,
+          //             //               width: 12, // Adjust width as needed
+          //             //               height: 12, // Adjust height as needed
+          //             //             )
+          //             //           : SvgPicture.asset(
+          //             //               const $AssetsImagesGen().star,
+          //             //               width: 12, // Adjust width as needed
+          //             //               height: 12, // Adjust height as needed
+          //             //             );
+          //             //     },
+          //             //   ),
+          //             // ),
+          //             Expanded(
+          //               child: Row(
+          //                 mainAxisAlignment: MainAxisAlignment.end,
+          //                 children: [
+          //                   GestureDetector(
+          //                     onTap: () {
+          //                       // Navigator.push(
+          //                       //   context,
+          //                       //   MaterialPageRoute(
+          //                       //     builder: (context) =>
+          //                       //         CookingInstructionsScreen(
+          //                       //             recipe: widget.recipe),
+          //                       //   ),
+          //                       // );
+          //                     },
+          //                     child: Container(
+          //                       width: 108.w,
+          //                       height: 28.h,
+          //                       decoration: BoxDecoration(
+          //                         color: MyColors.butterycolor,
+          //                         borderRadius: BorderRadius.circular(8),
+          //                         boxShadow: [
+          //                           BoxShadow(
+          //                             color: const Color.fromARGB(
+          //                                     255, 40, 40, 40)
+          //                                 .withOpacity(
+          //                                     0.5), // Shadow color with opacity
+          //                             spreadRadius:
+          //                                 0, // How much the shadow spreads
+          //                             blurRadius:
+          //                                 2, // How much the shadow is blurred
+          //                             offset: const Offset(0, 2),
+          //                           )
+          //                         ],
+          //                       ),
+          //                       child: Center(
+          //                           child: Text(
+          //                         "Cook",
+          //                         style: MyTextStyle.cook,
+          //                       )),
+          //                     ),
+          //                   )
+          //                 ],
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // // child: Stack(children: [
           //   Positioned(
           //     left: 16,
           //     top: 16,

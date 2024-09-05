@@ -10,24 +10,32 @@ class WelcomingBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-        children: [
-          const SizedBox(width: 24,),
-          CircleAvatar(
-            radius: 30,
-            backgroundColor: MyColors.orangecolor,
-          ),
-          const SizedBox(width: 12,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start, 
-            children: [
-              Text('Hello , Sherly!' , style: MyTextStyle.hello,),
-              Text('What do you Want to Eat Today ?' , style: MyTextStyle.question,overflow: TextOverflow.ellipsis)
-              
-              ],
-          ),
-          const SizedBox(width: 16,),
-        ],
-      
+      children: [
+        const SizedBox(
+          width: 24,
+        ),
+        CircleAvatar(
+          radius: 30,
+          backgroundColor: MyColors.orangecolor,
+        ),
+        const SizedBox(
+          width: 12,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Hello , Sherly!',
+              style: MyTextStyle.hello,
+            ),
+            Text('What do you Want to Eat Today ?',
+                style: MyTextStyle.question, overflow: TextOverflow.ellipsis)
+          ],
+        ),
+        const SizedBox(
+          width: 16,
+        ),
+      ],
     );
   }
 }
