@@ -17,6 +17,7 @@ class _BackButtonAppbarState extends State<BackButtonAppbar> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         IconButton(
           onPressed: () {
@@ -37,12 +38,14 @@ class _BackButtonAppbarState extends State<BackButtonAppbar> {
           width: 14,
         ),
         if (widget.title != '')
-          Text(
-            widget.title,
-            style: GoogleFonts.oswald(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: MyColors.black,
+          Expanded(
+            child: Text(
+              widget.title,
+              style: GoogleFonts.oswald(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: MyColors.black,
+              ),
             ),
           ),
       ],

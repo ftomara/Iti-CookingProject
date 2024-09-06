@@ -28,51 +28,25 @@ class _RecipeCardState extends State<RecipeCard> {
           height: 20.h,
         ),
         Container(
-          // margin: const EdgeInsets.only(left: 18, right: 16),
-          height: 248.h,
+          height: 232.h,
           width: 164.w,
           decoration: BoxDecoration(
             color: MyColors.orangecolor,
             borderRadius: BorderRadius.circular(16),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(20),
+          child: //Stack(
+              // children: [
+              Padding(
+            padding: const EdgeInsets.all(18),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Expanded(
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.end,
-                //     children: [
-                //       IconButton(
-                //         onPressed: () {
-                //           setState(() {
-                //             // widget.result.isFav = !widget.result.isFav;
-                //           });
-                //         },
-                //         icon: SvgPicture.asset(
-                //           // widget.result.isFav?
-                //           const $AssetsImagesGen().filledHeart,
-                //           // : const $AssetsImagesGen().heart,
-                //           colorFilter: ColorFilter.mode(
-                //             // widget.result.isFav == false?
-                //             MyColors.butterycolor,
-                //             // : MyColors.butterycolor,
-                //             BlendMode.srcIn,
-                //           ),
-                //           width: 16, // Adjust width as needed
-                //           height: 16, // Adjust height as needed
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.network(
                     widget.result.image!,
                     width: 112,
-                    height: 90,
+                    height: 112,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return const Icon(Icons
@@ -81,7 +55,7 @@ class _RecipeCardState extends State<RecipeCard> {
                   ),
                 ),
                 const SizedBox(
-                  height: 0,
+                  height: 8,
                 ),
                 Text(
                   widget.result.title!,
@@ -90,13 +64,12 @@ class _RecipeCardState extends State<RecipeCard> {
                   style: MyTextStyle.recipe_title,
                 ),
                 const SizedBox(
-                  height: 12,
+                  height: 8,
                 ),
                 GestureDetector(
                   onTap: () {
                     context.read<IdRecipe>().setId(widget.result.id!);
 
-                    print(context.read<IdRecipe>().getId);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -131,11 +104,34 @@ class _RecipeCardState extends State<RecipeCard> {
               ],
             ),
           ),
+          // Positioned(
+          //   top: 4, // 20 from the top
+          //   right: 8, // 20 from the right
+          //   child: IconButton(
+          //     onPressed: () {
+          //       setState(() {
+          //         // Toggle favorite state here
+          //       });
+          //     },
+          //     icon: SvgPicture.asset(
+          //       const $AssetsImagesGen().filledHeart,
+          //       colorFilter: ColorFilter.mode(
+          //         MyColors.butterycolor,
+          //         BlendMode.srcIn,
+          //       ),
+          //       width: 16, // Adjust width as needed
+          //       height: 16, // Adjust height as needed
+          //     ),
+          //   ),
+          // ),
+          //   ],
+          // ),
         ),
       ],
     );
   }
 }
+
           //   child: Row(
         //     children: [
         //       ClipRRect(

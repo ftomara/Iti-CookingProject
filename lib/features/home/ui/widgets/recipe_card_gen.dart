@@ -30,7 +30,7 @@ class RecipeCardGen extends StatelessWidget {
             itemCount: results.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, // Two cards per row
-              childAspectRatio: 0.65, // Aspect ratio to make the cards taller
+              childAspectRatio: 0.75, // Aspect ratio to make the cards taller
             ),
             itemBuilder: (context, index) {
               return RecipeCard(result: results[index]);
