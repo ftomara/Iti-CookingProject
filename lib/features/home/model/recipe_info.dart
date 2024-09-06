@@ -102,4 +102,15 @@ class Equipment {
 
   factory Equipment.fromJson(Map<String, dynamic> json) =>
       _$EquipmentFromJson(json);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Equipment && other.name == name && other.image == image;
+  }
+
+  // Override hashCode to compute based on name and image
+  @override
+  int get hashCode => name.hashCode ^ image.hashCode;
 }

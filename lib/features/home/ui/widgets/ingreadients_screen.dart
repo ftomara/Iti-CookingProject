@@ -31,7 +31,8 @@ class IngreadientsScreen extends StatelessWidget {
     final equipmentList = recipe.analyzedInstructions
         ?.expand((instruction) => instruction.steps ?? [])
         .expand((step) => step.equipment ?? [])
-        .toList();
+        .toSet() // Convert to Set to remove duplicates
+        .toList(); // Convert back to List for displaying
 
     return SafeArea(
       child: SingleChildScrollView(

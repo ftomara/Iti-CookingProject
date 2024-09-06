@@ -7,8 +7,8 @@ import '../../../../my_cooking_app.dart';
 import 'back_button_appbar.dart';
 import 'rating_stars.dart';
 
-class RateMealScreen extends StatelessWidget {
-  const RateMealScreen({super.key});
+class FinishCookingScreen extends StatelessWidget {
+  const FinishCookingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +19,14 @@ class RateMealScreen extends StatelessWidget {
             const BackButtonAppbar(),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(
-                  right: 18,
-                  left: 18,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                       width: 352,
-                      height: 572,
+                      height: 480,
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: MyColors.orangecolor,
@@ -39,26 +36,32 @@ class RateMealScreen extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 52,
+                          horizontal: 40,
                           vertical: 64,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
+                          mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              'Did you Enjoy Your Meal?',
+                              'Enjoyed Your Meal?',
                               style: GoogleFonts.oswald(
                                 color: MyColors.orangecolor,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 36,
+                                fontSize: 32,
                               ),
                               textAlign: TextAlign.center,
                             ),
-                            const SizedBox(height: 24),
-                            const RatingStars(),
-                            const Spacer(),
+                            Text(
+                              ' Keep It Close for Next Time!',
+                              style: GoogleFonts.oswald(
+                                color: MyColors.greycolor,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 24,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
                             Lottie.asset(
                               'assets/animations/rate_meal_animation.json',
                               height: 260,
@@ -90,9 +93,41 @@ class RateMealScreen extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        'Thank You',
+                        'Add To My Favoraites!',
                         style: GoogleFonts.oswald(
                           color: MyColors.butterycolor,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 28,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MyCookingApp(),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        // backgroundColor: MyColors.orangecolor,
+
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 28, vertical: 4),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          side: BorderSide(
+                            color: MyColors.orangecolor,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        'Maybe later',
+                        style: GoogleFonts.oswald(
+                          color: MyColors.orangecolor,
                           fontWeight: FontWeight.normal,
                           fontSize: 28,
                         ),

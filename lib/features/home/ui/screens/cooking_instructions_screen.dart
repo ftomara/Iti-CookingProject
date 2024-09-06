@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../my_colors.dart';
 import '../widgets/incstructions_screen.dart';
 import '../widgets/ingreadients_screen.dart';
-import '../widgets/rate_meal_screen.dart';
+import '../widgets/finish_cooking_screen.dart';
 import '../widgets/start_cooking_screen.dart';
 
 class CookingInstructionsScreen extends StatelessWidget {
@@ -45,11 +45,11 @@ class CookingInstructionsScreen extends StatelessWidget {
                     StartCookingScreen(pageController: _pageController),
                     IngreadientsScreen(recipe: recipeInfo),
                     IncstructionsScreen(recipe: recipeInfo),
-                    const RateMealScreen(),
+                    const FinishCookingScreen(),
                   ],
                 );
               } else {
-                return Center(child: Text("Unexpected state"));
+                return const Center(child: Text("Unexpected state"));
               }
             },
           );
