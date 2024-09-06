@@ -1,3 +1,4 @@
+import 'package:cooking_app/features/home/model/recipe_info.dart';
 import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,11 +10,14 @@ import 'back_button_appbar.dart';
 import 'instrcutions_listview.dart';
 
 class IngreadientsScreen extends StatelessWidget {
-  const IngreadientsScreen({super.key, required this.recipe});
-  final Recipe recipe;
+  const IngreadientsScreen({super.key,required this.recipe});
+final RecipeInfo recipe;
 
   @override
   Widget build(BuildContext context) {
+       final steps = recipe.analyzedInstructions
+        ?.expand((instruction) => instruction.steps ?? [])
+        .toList() ?? [];
     return SafeArea(
       child: Column(
         children: [
@@ -35,8 +39,8 @@ class IngreadientsScreen extends StatelessWidget {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(16),
-                        child: Image.asset(
-                          recipe.impPath,
+                        child: Image.network(
+                         recipe.image!,
                           width: 130,
                           height: 160,
                           fit: BoxFit.cover,
@@ -51,8 +55,8 @@ class IngreadientsScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              recipe.title,
+                            Text("${recipe.title}",
+                          //    recipe.title,
                               style: GoogleFonts.oswald(
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
@@ -64,11 +68,11 @@ class IngreadientsScreen extends StatelessWidget {
                               children: [
                                 SvgPicture.asset('assets/images/servings.svg'),
                                 const SizedBox(width: 4),
-                                Text(
-                                  recipe.servings == 1
-                                      ? "${recipe.servings} Serving"
-                                      : "${recipe.servings} Servings",
-                                  style: MyTextStyle.serving,
+                                Text("serving"
+                                  // recipe.servings == 1
+                                  //     ? "${recipe.servings} Serving"
+                                  //     : "${recipe.servings} Servings",
+                                  // style: MyTextStyle.serving,
                                 ),
                               ],
                             ),
@@ -83,7 +87,7 @@ class IngreadientsScreen extends StatelessWidget {
                     style: MyTextStyle.instructionsAndIngreadiants,
                   ),
                   const SizedBox(height: 16),
-                  InstrcutionsListview(contentList: recipe.ingreadiants),
+                 InstrcutionsListview(recipe:recipe,isIngredients: true,),
                 ],
               ),
             ),

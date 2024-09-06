@@ -4,14 +4,13 @@ part 'recipe_api.g.dart';
 @JsonSerializable()
 class RecipeApi {
   @JsonKey(name: "results")
-  List<Result> ?result = [];
+  List<Result>? result = [];
 
   RecipeApi(this.result);
 
   factory RecipeApi.fromJson(Map<String, dynamic> json) =>
       _$RecipeApiFromJson(json);
 }
-
 
 @JsonSerializable()
 class Result {
@@ -20,11 +19,12 @@ class Result {
   String? image;
 
   @JsonKey(name: "title")
-  String ?title;
+  String? title;
 
+  @JsonKey(name: "id")
+  int? id;
 
-
-  Result(this.image,this.title);
+  Result(this.image, this.title,this.id);
 
   factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(json);
 }

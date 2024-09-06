@@ -1,9 +1,11 @@
 // ignore_for_file: unused_import
 
 import 'package:cooking_app/core/di/module.dart';
+import 'package:cooking_app/features/home/logic/id_recipe.dart';
 import 'package:cooking_app/features/home/logic/item_cubit.dart';
 import 'package:cooking_app/features/home/logic/recipe_cubit.dart';
-import 'package:cooking_app/features/home/logic/search_cubit.dart';
+import 'package:cooking_app/features/home/logic/recipe_info_cubit.dart';
+
 import 'package:cooking_app/features/home/ui/screens/favorite_page.dart';
 import 'package:cooking_app/features/home/ui/screens/home_page.dart';
 import 'package:cooking_app/features/home/ui/screens/upload_recipe_page.dart';
@@ -213,17 +215,20 @@ class _MyCookingAppState extends State<MyCookingApp> {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MultiBlocProvider(
-      providers: [
-        BlocProvider<ItemCubit>(
-          create: (context) => ItemCubit(),
-        ),
-        BlocProvider<RecipeCubit>(
-          create: (context) => get<RecipeCubit>(),
-        ),
-        BlocProvider<SearchCubit>(
-          create: (context) => get<SearchCubit>(),
-        ),
-      ],
+     providers: [
+    BlocProvider<IdRecipe>(
+      create: (context) => IdRecipe(),
+    ),
+    BlocProvider<RecipeInfoCubit>(
+      create: (context) => get<RecipeInfoCubit>(),
+    ),
+    BlocProvider<ItemCubit>(
+      create: (context) => ItemCubit(),
+    ),
+    BlocProvider<RecipeCubit>(
+      create: (context) => get<RecipeCubit>(),
+    ),
+  ],
         child: MaterialApp(
           theme: ThemeData(
             scaffoldBackgroundColor: MyColors.butterycolor,

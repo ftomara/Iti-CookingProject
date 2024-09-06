@@ -1,4 +1,5 @@
 import 'package:cooking_app/core/themes/my_text_style.dart';
+import 'package:cooking_app/features/home/model/recipe_info.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/recipe.dart';
@@ -6,8 +7,10 @@ import 'back_button_appbar.dart';
 import 'instrcutions_listview.dart';
 
 class IncstructionsScreen extends StatelessWidget {
-  const IncstructionsScreen({super.key, required this.recipe});
-  final Recipe recipe;
+   IncstructionsScreen({super.key,required this.recipe});
+
+ final RecipeInfo  recipe;
+  //final List< String> recipe=["i","u"];
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +24,16 @@ class IncstructionsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BackButtonAppbar(
-              title: recipe.title,
+              title: "${recipe.title}"
+              //recipe.title,
             ),
             const SizedBox(
               height: 16,
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Image.asset(
-                recipe.impPath,
+              child: Image.network(
+                recipe.image!,
                 width: double.infinity,
                 height: 224,
                 fit: BoxFit.cover,
@@ -41,7 +45,8 @@ class IncstructionsScreen extends StatelessWidget {
               style: MyTextStyle.instructionsAndIngreadiants,
             ),
             const SizedBox(height: 16),
-            InstrcutionsListview(contentList: recipe.instructions),
+            InstrcutionsListview(recipe: recipe,isIngredients: false,)
+            // ),
           ],
         ),
       ),

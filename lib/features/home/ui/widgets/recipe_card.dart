@@ -1,9 +1,11 @@
 import 'package:cooking_app/core/themes/my_text_style.dart';
+import 'package:cooking_app/features/home/logic/id_recipe.dart';
 import 'package:cooking_app/features/home/model/recipe.dart';
 import 'package:cooking_app/features/home/model/recipe_api.dart';
 import 'package:cooking_app/gen/assets.gen.dart';
 import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -70,7 +72,7 @@ class _RecipeCardState extends State<RecipeCard> {
                   child: Image.network(
                     widget.result.image!,
                     width: 112,
-                    height: 112,
+                    height: 90,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return const Icon(Icons
@@ -79,7 +81,7 @@ class _RecipeCardState extends State<RecipeCard> {
                   ),
                 ),
                 const SizedBox(
-                  height: 6,
+                  height: 0,
                 ),
                 Text(
                   widget.result.title!,
@@ -92,14 +94,15 @@ class _RecipeCardState extends State<RecipeCard> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) =>
-                    //         CookingInstructionsScreen(
-                    //             recipe: widget.recipe),
-                    //   ),
-                    // );
+                    context.read<IdRecipe>().setId(widget.result.id!);
+
+                    print(context.read<IdRecipe>().getId);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CookingInstructionsScreen(),
+                      ),
+                    );
                   },
                   child: Container(
                     width: 108.w,

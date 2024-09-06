@@ -1,35 +1,52 @@
+import 'package:cooking_app/features/home/model/recipe_info.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class InstrcutionsListview extends StatefulWidget {
-  const InstrcutionsListview({super.key, required this.contentList});
+  const InstrcutionsListview({
+    super.key,
+    required this.recipe,
+    required this.isIngredients,
+  });
 
-  final List<String> contentList;
+  final RecipeInfo recipe;
+  final bool isIngredients;
 
   @override
   State<InstrcutionsListview> createState() => _InstrcutionsListviewState();
 }
 
 class _InstrcutionsListviewState extends State<InstrcutionsListview> {
+  late List<dynamic> _items; 
   late List<bool> _checked;
 
   @override
   void initState() {
     super.initState();
-    _checked = List<bool>.filled(widget.contentList.length, false);
+    _items = widget.isIngredients
+        ? widget.recipe.extendedIngredients!
+        : widget.recipe.analyzedInstructions!
+            .expand((instruction) => instruction.steps ?? [])
+            .toList();
+    _checked = List<bool>.filled(_items.length, false);
   }
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        itemCount: widget.contentList.length,
+        itemCount: _items.length,
         itemBuilder: (context, index) {
+          final item = _items[index];
+          final title = widget.isIngredients
+              ? item.name
+              : item.step; 
+
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 0.1),
             child: CheckboxListTile(
               title: Text(
-                widget.contentList[index],
+                title,
                 style: GoogleFonts.oswald(
                   fontSize: 20,
                   fontWeight: FontWeight.w300,

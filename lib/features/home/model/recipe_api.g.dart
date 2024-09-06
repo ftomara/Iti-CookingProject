@@ -19,9 +19,11 @@ Map<String, dynamic> _$RecipeApiToJson(RecipeApi instance) => <String, dynamic>{
 Result _$ResultFromJson(Map<String, dynamic> json) => Result(
       json['image'] as String?,
       json['title'] as String?,
+      (json['id'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$ResultToJson(Result instance) => <String, dynamic>{
       'image': instance.image,
       'title': instance.title,
+      'id': instance.id,
     };

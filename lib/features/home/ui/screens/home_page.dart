@@ -1,7 +1,7 @@
 import 'package:cooking_app/core/di/module.dart';
 import 'package:cooking_app/features/home/logic/item_cubit.dart';
 import 'package:cooking_app/features/home/logic/recipe_cubit.dart';
-import 'package:cooking_app/features/home/logic/search_cubit.dart';
+
 import 'package:cooking_app/features/home/ui/widgets/catigories.dart';
 import 'package:cooking_app/features/home/ui/widgets/nav_bar.dart';
 import 'package:cooking_app/features/home/ui/widgets/recipe_card.dart';
