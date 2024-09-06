@@ -26,13 +26,11 @@ class _MainPageState extends State<MainPage> {
     super.initState();
     _pages = [
       HomePage(),
-      FavoritePage(
-
-      ),
-      UploadRecipePage(),
       UserProfilePage(
         recipes: recipes,
       ),
+      UploadRecipePage(),
+      FavoritePage(),
       UsersPage(),
     ];
   }
