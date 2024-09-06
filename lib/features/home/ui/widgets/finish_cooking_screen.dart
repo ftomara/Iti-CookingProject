@@ -1,4 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cooking_app/core/helper/navigation%20.dart';
+import 'package:cooking_app/core/network/firebase/authenticate%20.dart';
+import 'package:cooking_app/core/network/firebase/favourite.dart';
+import 'package:cooking_app/features/home/model/recipe_info.dart';
+import 'package:cooking_app/features/home/ui/screens/home_page.dart';
+import 'package:cooking_app/features/home/ui/screens/main_page.dart';
 import 'package:cooking_app/my_colors.dart';
+import 'package:cooking_app/util/extentions/snackbar_extention.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -8,7 +17,8 @@ import 'back_button_appbar.dart';
 import 'rating_stars.dart';
 
 class FinishCookingScreen extends StatelessWidget {
-  const FinishCookingScreen({super.key});
+  FinishCookingScreen({super.key, required this.recipe});
+  final RecipeInfo recipe;
 
   @override
   Widget build(BuildContext context) {
@@ -77,12 +87,9 @@ class FinishCookingScreen extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MyCookingApp(),
-                          ),
-                        );
+                        FavouriteImp().addData(recipe, context);
+
+                        PushNavigation(context, MainPage());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: MyColors.orangecolor,
@@ -93,7 +100,7 @@ class FinishCookingScreen extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        'Add To My Favoraites!',
+                        'Add To My Favorites!',
                         style: GoogleFonts.oswald(
                           color: MyColors.butterycolor,
                           fontWeight: FontWeight.normal,
@@ -107,13 +114,11 @@ class FinishCookingScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const MyCookingApp(),
+                            builder: (context) => MainPage(),
                           ),
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        // backgroundColor: MyColors.orangecolor,
-
                         padding: const EdgeInsets.symmetric(
                             horizontal: 28, vertical: 4),
                         shape: RoundedRectangleBorder(

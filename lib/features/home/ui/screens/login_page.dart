@@ -3,6 +3,7 @@ import 'package:cooking_app/core/common_widgets/button_widget.dart';
 import 'package:cooking_app/core/helper/navigation%20.dart';
 import 'package:cooking_app/core/network/firebase/authenticate%20.dart';
 import 'package:cooking_app/core/themes/my_text_style.dart';
+import 'package:cooking_app/features/home/ui/screens/home_page.dart';
 import 'package:cooking_app/features/home/ui/screens/sign_up_page.dart';
 import 'package:cooking_app/features/home/ui/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +58,7 @@ class LoginPage extends StatelessWidget {
                           if (_key.currentState!.validate()) {
                             AuthenticateImpl()
                                 .signInUser(email.text, password.text, context);
+                         
                           }
                         },
                         height: 55.h,

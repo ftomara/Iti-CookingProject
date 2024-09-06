@@ -34,8 +34,8 @@ class _InstrcutionsListviewState extends State<InstrcutionsListview> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      shrinkWrap: true, // Ensure ListView only takes up as much space as needed
-      physics: NeverScrollableScrollPhysics(), // Disable ListView scrolling
+      shrinkWrap: true, 
+      physics: NeverScrollableScrollPhysics(), 
       itemCount: _items.length,
       itemBuilder: (context, index) {
         final item = _items[index];

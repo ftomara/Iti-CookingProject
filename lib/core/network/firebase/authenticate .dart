@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cooking_app/core/helper/navigation%20.dart';
+import 'package:cooking_app/features/home/ui/screens/home_page.dart';
+import 'package:cooking_app/features/home/ui/screens/main_page.dart';
 import 'package:cooking_app/util/extentions/snackbar_extention.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +56,7 @@ class AuthenticateImpl extends Authenticate {
         password: password,
       );
       context.snackbar("Log In Successful!");
+      PushNavigation(context, MainPage());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         context.snackbar("No user found for that email");

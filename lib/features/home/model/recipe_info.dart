@@ -10,7 +10,11 @@ class RecipeInfo {
   @JsonKey(name: "analyzedInstructions")
   List<AnalyzedInstruction>? analyzedInstructions;
 
-  @JsonKey(name: "title")
+
+
+  @JsonKey(name: "id")
+  int? id;
+    @JsonKey(name: "title")
   String? title;
 
   @JsonKey(name: "servings")
@@ -22,11 +26,13 @@ class RecipeInfo {
   @JsonKey(name: "image")
   String? image;
 
-  RecipeInfo(this.extendedIngredients, this.analyzedInstructions, this.image,
+  RecipeInfo(this.extendedIngredients, this.analyzedInstructions, this.image,this.id,
       this.readyInMinutes, this.servings, this.title);
 
   factory RecipeInfo.fromJson(Map<String, dynamic> json) =>
       _$RecipeInfoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RecipeInfoToJson(this);
 }
 
 @JsonSerializable()
@@ -47,6 +53,8 @@ class ExtendedIngredient {
 
   factory ExtendedIngredient.fromJson(Map<String, dynamic> json) =>
       _$ExtendedIngredientFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ExtendedIngredientToJson(this);
 }
 
 @JsonSerializable()
@@ -58,6 +66,7 @@ class AnalyzedInstruction {
 
   factory AnalyzedInstruction.fromJson(Map<String, dynamic> json) =>
       _$AnalyzedInstructionFromJson(json);
+  Map<String, dynamic> toJson() => _$AnalyzedInstructionToJson(this);
 }
 
 @JsonSerializable()
@@ -77,6 +86,8 @@ class Step {
   Step(this.number, this.step, this.ingredients, this.equipment);
 
   factory Step.fromJson(Map<String, dynamic> json) => _$StepFromJson(json);
+
+  Map<String, dynamic> toJson() => _$StepToJson(this);
 }
 
 @JsonSerializable()
@@ -88,6 +99,8 @@ class Ingredient {
 
   factory Ingredient.fromJson(Map<String, dynamic> json) =>
       _$IngredientFromJson(json);
+
+  Map<String, dynamic> toJson() => _$IngredientToJson(this);
 }
 
 @JsonSerializable()
@@ -103,6 +116,8 @@ class Equipment {
   factory Equipment.fromJson(Map<String, dynamic> json) =>
       _$EquipmentFromJson(json);
 
+  Map<String, dynamic> toJson() => _$EquipmentToJson(this);
+
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
@@ -110,7 +125,6 @@ class Equipment {
     return other is Equipment && other.name == name && other.image == image;
   }
 
-  // Override hashCode to compute based on name and image
   @override
   int get hashCode => name.hashCode ^ image.hashCode;
 }

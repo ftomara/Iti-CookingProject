@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class Search extends StatelessWidget {
   TextEditingController controller;
-  Search({super.key, required this.onchange,required this.controller});
+  Search({super.key, required this.onchange, required this.controller});
   ValueChanged<String> onchange;
 
   @override
@@ -28,9 +28,8 @@ class Search extends StatelessWidget {
         ],
       ),
       child: Form(
-
           child: TextFormField(
-            controller: controller,
+              controller: controller,
               onFieldSubmitted: (query) {
                 onchange(query);
               },
