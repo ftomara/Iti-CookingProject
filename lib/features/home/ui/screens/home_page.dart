@@ -1,7 +1,7 @@
 import 'package:cooking_app/core/di/module.dart';
 import 'package:cooking_app/features/home/logic/item_cubit.dart';
 import 'package:cooking_app/features/home/logic/recipe_cubit.dart';
-import 'package:cooking_app/features/home/logic/search_cubit.dart';
+
 import 'package:cooking_app/features/home/ui/widgets/catigories.dart';
 import 'package:cooking_app/features/home/ui/widgets/nav_bar.dart';
 import 'package:cooking_app/features/home/ui/widgets/recipe_card.dart';
@@ -18,52 +18,38 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return MultiBlocProvider(
-    //   providers: [
-    //     BlocProvider<ItemCubit>(
-    //       create: (context) => ItemCubit(),
-    //     ),
-    //     BlocProvider<RecipeCubit>(
-    //       create: (context) => get<RecipeCubit>(),
-    //     ),
-    //     BlocProvider<SearchCubit>(
-    //       create: (context) => get<SearchCubit>(),
-    //     ),
-    //   ],
-    //   child: 
     return BlocListener<ItemCubit, String>(
-        listener: (context, itemState) {
-          final searchTerm = context.read<ItemCubit>().searchItem;
-          final category = context.read<ItemCubit>().category;
+      listener: (context, itemState) {
+        final searchTerm = context.read<ItemCubit>().searchItem;
+        final category = context.read<ItemCubit>().category;
 
-          if (searchTerm.isNotEmpty) {
-            context.read<RecipeCubit>().emitState(searchTerm);
-          } else {
-            controller.clear();
-            context.read<RecipeCubit>().emitState(category);
-          }
-        },
-        child: Builder(builder: (context) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 64),
-            child: Column(
-              children: [
-                const WelcomingBar(),
-                Search(
-                  controller: controller,
-                  onchange: (value) {
-                    context
-                        .read<ItemCubit>()
-                        .change(context.read<ItemCubit>().category, value);
-                  },
-                ),
-                Catigories(),
-                Expanded(child: RecipeCardGen()),
-              ],
-            ),
-          );
-        }),
-     
+        if (searchTerm.isNotEmpty) {
+          context.read<RecipeCubit>().emitState(searchTerm);
+        } else {
+          controller.clear();
+          context.read<RecipeCubit>().emitState(category);
+        }
+      },
+      child: Builder(builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.only(top: 64),
+          child: Column(
+            children: [
+              const WelcomingBar(),
+              Search(
+                controller: controller,
+                onchange: (value) {
+                  context
+                      .read<ItemCubit>()
+                      .change(context.read<ItemCubit>().category, value);
+                },
+              ),
+              const Catigories(),
+              const Expanded(child: RecipeCardGen()),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

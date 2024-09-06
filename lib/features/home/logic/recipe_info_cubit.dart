@@ -2,15 +2,16 @@ import 'package:bloc/bloc.dart';
 import 'package:cooking_app/core/network/api/api_result.dart';
 import 'package:cooking_app/features/home/logic/recipe_state.dart';
 import 'package:cooking_app/features/home/model/recipe_api.dart';
+import 'package:cooking_app/features/home/model/recipe_info.dart';
 import 'package:cooking_app/features/home/repository/repository.dart';
 
-class RecipeCubit extends Cubit<RecipeState> {
+class RecipeInfoCubit extends Cubit<RecipeState> {
   Repository repo;
 
-  RecipeCubit(this.repo) : super(RecipeState.intial());
-  void emitState(String recipe) async {
+  RecipeInfoCubit(this.repo) : super(RecipeState.intial());
+  void emitState(int id) async {
     emit(RecipeState.loading());
-    ApiResult<RecipeApi> apiState = await repo.getRecipeCategory(recipe);
+    ApiResult<RecipeInfo> apiState = await repo.getRecipeInfo(id);
     apiState.when(
         success: (data) => emit(RecipeState.loaded(data)),
         failure: (e) => emit(RecipeState.error(e)));

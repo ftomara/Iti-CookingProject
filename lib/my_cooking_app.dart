@@ -1,5 +1,11 @@
 // ignore_for_file: unused_import
 
+import 'package:cooking_app/core/di/module.dart';
+import 'package:cooking_app/features/home/logic/id_recipe.dart';
+import 'package:cooking_app/features/home/logic/item_cubit.dart';
+import 'package:cooking_app/features/home/logic/recipe_cubit.dart';
+import 'package:cooking_app/features/home/logic/recipe_info_cubit.dart';
+
 import 'package:cooking_app/features/home/ui/screens/favorite_page.dart';
 import 'package:cooking_app/features/home/ui/screens/home_page.dart';
 import 'package:cooking_app/features/home/ui/screens/upload_recipe_page.dart';
@@ -10,6 +16,7 @@ import 'package:cooking_app/features/home/ui/widgets/nav_bar.dart';
 import 'package:cooking_app/my_colors.dart';
 // import 'package:cooking_app/features/home/ui/screens/on_boarding.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'features/home/model/recipe.dart';

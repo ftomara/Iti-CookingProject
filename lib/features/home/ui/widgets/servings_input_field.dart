@@ -1,37 +1,33 @@
-import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/themes/my_text_style.dart';
+import '../../../../my_colors.dart';
 
-class TimeInputField extends StatelessWidget {
-  const TimeInputField({
-    super.key,
-    required this.minutesController,
-  });
+class ServingsInputField extends StatelessWidget {
+  const ServingsInputField({super.key, required this.servingsController});
 
-  final TextEditingController minutesController;
+  final TextEditingController servingsController;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            'Time :',
+            'Servings :',
             style: MyTextStyle.question,
           ),
           const SizedBox(
-            width: 12,
+            width: 8,
           ),
           Expanded(
             child: TextField(
-              controller: minutesController,
+              controller: servingsController,
               keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 8,
+                  horizontal: 20,
                   vertical: 8,
                 ),
                 border: OutlineInputBorder(
@@ -42,7 +38,7 @@ class TimeInputField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18),
                   borderSide: BorderSide(color: MyColors.greycolor, width: 2),
                 ),
-                hintText: 'Ex: 20 min',
+                hintText: 'No. Servings',
               ),
               style: MyTextStyle.input,
             ),
