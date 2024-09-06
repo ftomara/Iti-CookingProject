@@ -24,7 +24,7 @@ class MyTextStyle {
     textStyle: TextStyle(
       color: MyColors.greycolor,
     ),
-    fontSize: 17,
+    fontSize: 14,
     fontWeight: FontWeight.w300,
   );
 

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../../core/themes/my_text_style.dart';
 import '../../../../my_colors.dart';
 
-class CaloriesInputField extends StatelessWidget {
-  const CaloriesInputField({super.key, required this.caloriesController});
+class ServingsInputField extends StatelessWidget {
+  const ServingsInputField({super.key, required this.servingsController});
 
-  final TextEditingController caloriesController;
+  final TextEditingController servingsController;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class CaloriesInputField extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            'Calories :',
+            'Servings :',
             style: MyTextStyle.question,
           ),
           const SizedBox(
@@ -22,7 +22,7 @@ class CaloriesInputField extends StatelessWidget {
           ),
           Expanded(
             child: TextField(
-              controller: caloriesController,
+              controller: servingsController,
               keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
               decoration: InputDecoration(
@@ -38,7 +38,7 @@ class CaloriesInputField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18),
                   borderSide: BorderSide(color: MyColors.greycolor, width: 2),
                 ),
-                hintText: '60 kcal',
+                hintText: 'No. Servings',
               ),
               style: MyTextStyle.input,
             ),

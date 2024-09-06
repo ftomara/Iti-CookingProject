@@ -40,7 +40,9 @@ class _InstrcutionsListviewState extends State<InstrcutionsListview> {
       itemBuilder: (context, index) {
         final item = _items[index];
         final title = widget.isIngredients
-            ? '${item.amount % 1 == 0 ? (item.amount).toInt() : item.amount} ${item.unit} ${item.name}'
+            ? item.amount != null || item.amount != ''
+                ? '${item.amount % 1 == 0 ? (item.amount).toInt() : item.amount} ${item.unit} ${item.name}'
+                : item.name
             : item.step;
 
         return Padding(

@@ -1,5 +1,5 @@
 import 'package:cooking_app/core/themes/my_text_style.dart';
-import 'package:cooking_app/features/home/ui/widgets/calories_input_field.dart';
+import 'package:cooking_app/features/home/ui/widgets/servings_input_field.dart';
 import 'package:cooking_app/features/home/ui/widgets/add_list_field.dart';
 import 'package:cooking_app/features/home/ui/widgets/recipe_title_input_field.dart';
 import 'package:cooking_app/features/home/ui/widgets/recipe_type_radiobutton.dart';
@@ -18,9 +18,8 @@ class UploadRecipePage extends StatefulWidget {
 }
 
 class _UploadRecipePageState extends State<UploadRecipePage> {
-  final TextEditingController hoursController = TextEditingController();
   final TextEditingController minutesController = TextEditingController();
-  final TextEditingController caloriesController = TextEditingController();
+  final TextEditingController servingsController = TextEditingController();
   final TextEditingController titleController = TextEditingController();
   final List<String> ingreadientsList = [];
   final List<String> instructionsList = [];
@@ -31,27 +30,24 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
   void initState() {
     super.initState();
     // Add listeners to controllers
-    hoursController.addListener(_validateFields);
     minutesController.addListener(_validateFields);
-    caloriesController.addListener(_validateFields);
+    servingsController.addListener(_validateFields);
     titleController.addListener(_validateFields);
   }
 
   @override
   void dispose() {
     // Dispose controllers
-    hoursController.dispose();
     minutesController.dispose();
-    caloriesController.dispose();
+    servingsController.dispose();
     titleController.dispose();
     super.dispose();
   }
 
   void _validateFields() {
     setState(() {
-      isButtonEnabled = (hoursController.text.isNotEmpty ||
-              minutesController.text.isNotEmpty) &&
-          caloriesController.text.isNotEmpty &&
+      isButtonEnabled = minutesController.text.isNotEmpty &&
+          servingsController.text.isNotEmpty &&
           titleController.text.isNotEmpty;
     });
   }
@@ -95,13 +91,12 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
             Row(
               children: [
                 TimeInputField(
-                  hoursController: hoursController,
                   minutesController: minutesController,
                 ),
                 SizedBox(
                   width: 12.w,
                 ),
-                CaloriesInputField(caloriesController: caloriesController),
+                ServingsInputField(servingsController: servingsController),
               ],
             ),
             SizedBox(
