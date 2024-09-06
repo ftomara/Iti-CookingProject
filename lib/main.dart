@@ -1,3 +1,4 @@
+import 'package:cooking_app/checkuser.dart';
 import 'package:cooking_app/core/di/module.dart';
 import 'package:cooking_app/core/network/api/api_service.dart';
 import 'package:cooking_app/core/network/api/dio_config.dart';
@@ -12,5 +13,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyCookingApp());
+  
+  runApp(const Checkuser());
 }

@@ -1,7 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cooking_app/core/network/firebase/firebase_services.dart';
+import 'package:cooking_app/features/home/logic/user_cubit.dart';
+import 'package:cooking_app/features/home/model/user.dart';
+import 'package:cooking_app/my_cooking_app.dart';
 import 'package:cooking_app/util/extentions/snackbar_extention.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class Authenticate {
   void createUser(
@@ -10,6 +15,9 @@ abstract class Authenticate {
 }
 
 class AuthenticateImpl extends Authenticate {
+  late final UserCubit _userCubit;
+  final FirebaseService _firebaseService = FirebaseService();
+  AuthenticateImpl(this._userCubit);
   @override
   Future<void> createUser(String email, String password, String username,
       BuildContext context) async {
@@ -20,11 +28,14 @@ class AuthenticateImpl extends Authenticate {
         password: password,
       );
       String userId = credential.user!.uid;
-
-      await FirebaseFirestore.instance.collection('users').doc(userId).set({
-        'username': username,
-        'email': email,
-      });
+      _firebaseService
+          .addUser(Userfbs(userId: userId, email: email, username: username));
+      // await FirebaseFirestore.instance.collection('users').doc(userId).set({
+      //   'username': username,
+      //   'email': email,
+      // });
+      _userCubit.setUserId(userId);
+      print("state userid : ${_userCubit.state}");
       print('User ID: $userId');
       print(username);
       context.snackbar("Sign Up Successful!");
@@ -52,6 +63,9 @@ class AuthenticateImpl extends Authenticate {
         email: email,
         password: password,
       );
+      String userId = await FirebaseFirestore.instance.collection('users').id;
+      _userCubit.setUserId(userId);
+      print("Logged ${_userCubit.state}");
       context.snackbar("Log In Successful!");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -69,6 +83,20 @@ class AuthenticateImpl extends Authenticate {
     } catch (e) {
       context.snackbar("An unexpected error occurred");
       print(e);
+    }
+  }
+
+  Future<bool> checkUserAuthentication(BuildContext context) async {
+    // Here, check if a user is signed in with Firebase Auth
+    final user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      _userCubit.setUserId(user.uid);
+      print("checked user id already logged : ${_userCubit.state}");
+      return true;
+    } else {
+      _userCubit.clearUserId();
+      return false;
     }
   }
 }

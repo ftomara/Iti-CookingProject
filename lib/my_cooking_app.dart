@@ -29,7 +29,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
   List<Recipe> recipes = [
     Recipe(
       title: 'Spicy Ramen Noodles',
-      chef: 'Mady Miller',
+      // chef: 'Mady Miller',
       // rate: 2,
       calories: 602,
       ingreadiants: [
@@ -56,7 +56,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
     ),
     Recipe(
       title: 'Pancakes',
-      chef: 'Chef John',
+      // chef: 'Chef John',
       // rate: 3,
       calories: 200.0,
       ingreadiants: [
@@ -77,7 +77,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
     ),
     Recipe(
       title: 'Spaghetti Bolognese',
-      chef: 'Chef Anna',
+      // // chef: 'Chef Anna',
       // rate: 4,
       calories: 450.0,
       ingreadiants: [
@@ -98,7 +98,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
     ),
     Recipe(
       title: 'Caesar Salad',
-      chef: 'Chef Emma',
+      // // chef: 'Chef Emma',
       // rate: 5,
       calories: 150.0,
       ingreadiants: [
@@ -121,7 +121,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
     ),
     Recipe(
       title: 'Chocolate Cake',
-      chef: 'Chef Sophia',
+      // // chef: 'Chef Sophia',
       // rate: 5,
       calories: 400.0,
       ingreadiants: [
@@ -150,7 +150,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
     ),
     Recipe(
       title: 'Grilled Salmon',
-      chef: 'Chef Liam',
+      // // chef: 'Chef Liam',
       // rate: 4,
       calories: 300.0,
       ingreadiants: [
@@ -217,6 +217,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
         home: SafeArea(
           child: Scaffold(
             backgroundColor: MyColors.butterycolor,
+            // body: const UploadRecipePage(),
             body: _pages[_currentIndex],
             bottomNavigationBar: NavBar(
               currentIndex: _currentIndex,

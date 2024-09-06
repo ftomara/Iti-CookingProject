@@ -31,10 +31,11 @@ Result _$ResultFromJson(Map<String, dynamic> json) => Result(
           .map((e) => e as String)
           .toList(),
       json['label'] as String,
-      (json['totalTime'] as num).toInt(),
-    );
+      (json['totalTime'] as num).toInt(),);
+    // )..isFav = json['isFav'] as bool;
 
 Map<String, dynamic> _$ResultToJson(Result instance) => <String, dynamic>{
+      'isFav': instance.isFav,
       'image': instance.image,
       'label': instance.label,
       'ingredientLines': instance.ingredientLines,

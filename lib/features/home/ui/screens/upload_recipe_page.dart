@@ -1,4 +1,8 @@
 import 'package:cooking_app/core/themes/my_text_style.dart';
+import 'package:cooking_app/features/home/logic/upload_recipe_cubit.dart';
+import 'package:cooking_app/features/home/logic/user_cubit.dart';
+import 'package:cooking_app/features/home/model/recipe.dart';
+import 'package:cooking_app/features/home/ui/screens/home_page.dart';
 import 'package:cooking_app/features/home/ui/widgets/calories_input_field.dart';
 import 'package:cooking_app/features/home/ui/widgets/add_list_field.dart';
 import 'package:cooking_app/features/home/ui/widgets/recipe_title_input_field.dart';
@@ -6,8 +10,9 @@ import 'package:cooking_app/features/home/ui/widgets/recipe_type_radiobutton.dar
 import 'package:cooking_app/features/home/ui/widgets/time_input_field.dart';
 import 'package:cooking_app/features/home/ui/widgets/upload_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:cooking_app/features/home/model/recipe_types.dart';
 import '../../../../my_colors.dart';
 
 class UploadRecipePage extends StatefulWidget {
@@ -54,9 +59,23 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
           caloriesController.text.isNotEmpty && titleController.text.isNotEmpty;
     });
   }
+  void _uploadRecipe() {
+    final recipe = Recipe(
+      title: titleController.text,
+      calories: double.tryParse(caloriesController.text) ?? 0,
+      ingreadiants: ingreadientsList,
+      instructions: instructionsList,
+      type: RecipeTypes.dessert, // Replace with actual type if using enums
+      impPath: 'path_to_image',  // Replace with actual image path if needed
+    );
+
+    context.read<UploadRecipeCubit>().uploadRecipe(recipe,context.read<UserCubit>().state!);
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    // context.read<UploadRecipeCubit>().uploadRecipe(,context.read<UserCubit>().state);
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 20.w,
@@ -136,7 +155,7 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
             ),
             Center(
               child: ElevatedButton(
-                onPressed: isButtonEnabled ? () {} : null,
+                onPressed: isButtonEnabled ? () { _uploadRecipe();} : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: MyColors.orangecolor,
                   padding:

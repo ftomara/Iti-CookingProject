@@ -3,10 +3,13 @@ import 'package:cooking_app/core/common_widgets/button_widget.dart';
 import 'package:cooking_app/core/helper/navigation%20.dart';
 import 'package:cooking_app/core/network/firebase/authenticate%20.dart';
 import 'package:cooking_app/core/themes/my_text_style.dart';
+import 'package:cooking_app/features/home/logic/user_cubit.dart';
 import 'package:cooking_app/features/home/ui/screens/sign_up_page.dart';
 import 'package:cooking_app/features/home/ui/widgets/text_field_widget.dart';
+import 'package:cooking_app/my_cooking_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController email = TextEditingController();
@@ -16,6 +19,7 @@ class LoginPage extends StatelessWidget {
   final GlobalKey<FormState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
+    // final authenticate = GetIt.instance<Authenticate>();
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -53,10 +57,36 @@ class LoginPage extends StatelessWidget {
                     child: ButtonWidget(
                         style: MyTextStyle.textButton,
                         text: "LogIn",
-                        onPress: () {
+                        onPress: () async {
                           if (_key.currentState!.validate()) {
-                            AuthenticateImpl()
-                                .signInUser(email.text, password.text, context);
+                            await AuthenticateImpl(GetIt.instance<UserCubit>())
+                                .signInUser(email.text, password.text, context)
+                                .then((_) {
+                              if (context.mounted) {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const MyCookingApp()),
+                                );
+                              print("sucess navigation");
+
+                              }
+                            }).catchError((error) {
+                              print("failed navigation");
+                            });
+                            //  await AuthenticateImpl()
+                            //     .signInUser(email.text, password.text, context)
+                            //     .then((_) {
+                            //   if (context.mounted) {
+                            //     Navigator.pushReplacement(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //           builder: (context) => HomePage()),
+                            //     );
+                            //   }
+                            // }).catchError((error) {
+                            //   print("failed navigation");
+                            // });
                           }
                         },
                         height: 55.h,
