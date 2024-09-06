@@ -1,6 +1,5 @@
 import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/logic/id_recipe.dart';
-import 'package:cooking_app/features/home/model/recipe.dart';
 import 'package:cooking_app/features/home/model/recipe_api.dart';
 import 'package:cooking_app/gen/assets.gen.dart';
 import 'package:cooking_app/my_colors.dart';

@@ -87,8 +87,8 @@ Map<String, dynamic> _$IngredientToJson(Ingredient instance) =>
 
 Equipment _$EquipmentFromJson(Map<String, dynamic> json) => Equipment(
       json['name'] as String?,
+      json['image'] as String?,
     );
 
-Map<String, dynamic> _$EquipmentToJson(Equipment instance) => <String, dynamic>{
-      'name': instance.name,
-    };
+Map<String, dynamic> _$EquipmentToJson(Equipment instance) =>
+    <String, dynamic>{'name': instance.name, 'image': instance.image};

@@ -17,7 +17,7 @@ class InstrcutionsListview extends StatefulWidget {
 }
 
 class _InstrcutionsListviewState extends State<InstrcutionsListview> {
-  late List<dynamic> _items; 
+  late List<dynamic> _items;
   late List<bool> _checked;
 
   @override
@@ -33,47 +33,45 @@ class _InstrcutionsListviewState extends State<InstrcutionsListview> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: _items.length,
-        itemBuilder: (context, index) {
-          final item = _items[index];
-          final title = widget.isIngredients
-              ? item.name
-              : item.step; 
+    return ListView.builder(
+      shrinkWrap: true, // Ensure ListView only takes up as much space as needed
+      physics: NeverScrollableScrollPhysics(), // Disable ListView scrolling
+      itemCount: _items.length,
+      itemBuilder: (context, index) {
+        final item = _items[index];
+        final title = widget.isIngredients
+            ? '${item.amount % 1 == 0 ? (item.amount).toInt() : item.amount} ${item.unit} ${item.name}'
+            : item.step;
 
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 0.1),
-            child: CheckboxListTile(
-              title: Text(
-                title,
-                style: GoogleFonts.oswald(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                  color: const Color(0xFF333333),
-                  decoration: _checked[index]
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none,
-                ),
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 0.1),
+          child: CheckboxListTile(
+            title: Text(
+              title,
+              style: GoogleFonts.oswald(
+                fontSize: 20,
+                fontWeight: FontWeight.w300,
+                color: const Color(0xFF333333),
+                decoration: _checked[index]
+                    ? TextDecoration.lineThrough
+                    : TextDecoration.none,
               ),
-              value: _checked[index],
-              onChanged: (value) {
-                setState(() {
-                  _checked[index] = value ?? false;
-                });
-              },
-              controlAffinity: ListTileControlAffinity.leading,
-              checkboxShape: const CircleBorder(),
-              contentPadding: const EdgeInsets.only(
-                right: 18,
-              ),
-              activeColor: const Color(0xFF333333),
-              checkColor: const Color(0xFFFCF6E0),
-              visualDensity: const VisualDensity(horizontal: -4.0),
             ),
-          );
-        },
-      ),
+            value: _checked[index],
+            onChanged: (value) {
+              setState(() {
+                _checked[index] = value ?? false;
+              });
+            },
+            controlAffinity: ListTileControlAffinity.leading,
+            checkboxShape: const CircleBorder(),
+            contentPadding: const EdgeInsets.only(right: 18),
+            activeColor: const Color(0xFF333333),
+            checkColor: const Color(0xFFFCF6E0),
+            visualDensity: const VisualDensity(horizontal: -4.0),
+          ),
+        );
+      },
     );
   }
 }

@@ -22,9 +22,11 @@ class RecipeInfo {
   @JsonKey(name: "image")
   String? image;
 
-  RecipeInfo(this.extendedIngredients, this.analyzedInstructions, this.image, this.readyInMinutes, this.servings, this.title);
+  RecipeInfo(this.extendedIngredients, this.analyzedInstructions, this.image,
+      this.readyInMinutes, this.servings, this.title);
 
-  factory RecipeInfo.fromJson(Map<String, dynamic> json) => _$RecipeInfoFromJson(json);
+  factory RecipeInfo.fromJson(Map<String, dynamic> json) =>
+      _$RecipeInfoFromJson(json);
 }
 
 @JsonSerializable()
@@ -43,7 +45,8 @@ class ExtendedIngredient {
 
   ExtendedIngredient(this.name, this.amount, this.unit, this.image);
 
-  factory ExtendedIngredient.fromJson(Map<String, dynamic> json) => _$ExtendedIngredientFromJson(json);
+  factory ExtendedIngredient.fromJson(Map<String, dynamic> json) =>
+      _$ExtendedIngredientFromJson(json);
 }
 
 @JsonSerializable()
@@ -53,7 +56,8 @@ class AnalyzedInstruction {
 
   AnalyzedInstruction(this.steps);
 
-  factory AnalyzedInstruction.fromJson(Map<String, dynamic> json) => _$AnalyzedInstructionFromJson(json);
+  factory AnalyzedInstruction.fromJson(Map<String, dynamic> json) =>
+      _$AnalyzedInstructionFromJson(json);
 }
 
 @JsonSerializable()
@@ -82,7 +86,8 @@ class Ingredient {
 
   Ingredient(this.name);
 
-  factory Ingredient.fromJson(Map<String, dynamic> json) => _$IngredientFromJson(json);
+  factory Ingredient.fromJson(Map<String, dynamic> json) =>
+      _$IngredientFromJson(json);
 }
 
 @JsonSerializable()
@@ -90,7 +95,11 @@ class Equipment {
   @JsonKey(name: "name")
   String? name;
 
-  Equipment(this.name);
+  @JsonKey(name: "image")
+  String? image;
 
-  factory Equipment.fromJson(Map<String, dynamic> json) => _$EquipmentFromJson(json);
+  Equipment(this.name, this.image);
+
+  factory Equipment.fromJson(Map<String, dynamic> json) =>
+      _$EquipmentFromJson(json);
 }
