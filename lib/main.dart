@@ -7,19 +7,17 @@ import 'package:cooking_app/firebase_options.dart';
 import 'package:cooking_app/my_cooking_app.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:cooking_app/core/network/firebase/firebase_services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  setupDependinces(); 
+  setupDependinces();
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  
-  runApp(const Checkuser());
 
+  runApp(const Checkuser());
 
   // runApp( MyCookingApp());
 }
-

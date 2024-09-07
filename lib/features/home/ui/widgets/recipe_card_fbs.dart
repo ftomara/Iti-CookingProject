@@ -48,13 +48,11 @@ class _RecipeCardfbsState extends State<RecipeCardfbs> {
                   child: AspectRatio(
                     aspectRatio:
                         1.2, // Adjust this to fit your desired aspect ratio
-                    child: widget.result.impPath != null
-                        ? Image.file(
-                            File(widget.result
-                                .impPath!), // Create a File object from the path
+                    child: widget.result.imageUrl != null
+                        ? Image.network(
+                            widget.result.imageUrl!,
                             fit: BoxFit.cover,
                             errorBuilder: (context, error, stackTrace) {
-                              // Handle case when the file is not found or can't be loaded
                               return const Text("Error loading image");
                             },
                           )

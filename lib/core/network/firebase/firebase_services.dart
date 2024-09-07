@@ -1,12 +1,16 @@
 import 'dart:ffi';
+import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cooking_app/features/home/model/recipe.dart';
 import 'package:cooking_app/features/home/model/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
+// Initialize Firebase Storage
 class FirebaseService<T> {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final FirebaseStorage _storage = FirebaseStorage.instance;
   Future<void> addUser(Userfbs user) async {
     var collection = _db.collection('users');
     await collection.doc(user.userId).set(user.toFirestore());
@@ -66,38 +70,60 @@ class FirebaseService<T> {
           .where('title', isEqualTo: recipetitle)
           .limit(1)
           .get();
-      // Check if the query returned any documents
       if (recipe.docs.isNotEmpty) {
-        // Get the first document from the query result
         final documentSnapshot = recipe.docs.first;
 
-        // Convert the document snapshot to a Recipe object
         return Recipe.fromFirestore(documentSnapshot);
       } else {
-        // Handle case where no recipes are found
         print("No recipe found with title: $recipetitle");
         return null;
       }
     } catch (e) {
-      // Handle any errors that occur
       print("Error fetching recipe: $e");
-      return null; // Alternatively, you could rethrow the error if needed
+      return null;
     }
   }
 
   Future<void> addRecipe(Recipe recipe, String userId) async {
     try {
+      if (recipe.impPath != null) {
+        Reference ref =
+            _storage.ref().child('recipe_images/${recipe.title}.png');
+        await ref.putFile(File(recipe.impPath!));
+        final downloadUrl = await ref.getDownloadURL();
+        recipe.setUrl = downloadUrl;
+        print('Recipe image uploaded successfully, URL: $downloadUrl');
+      } else {
+        print('Error uploading image');
+      }
       await _db
           .collection('users')
           .doc(userId)
           .collection('recipes')
           .add(recipe.toFirestore());
+      print('Recipe added to Firestore successfully.');
       await _db.collection('users').doc(userId).update({
         'recipeslength': FieldValue.increment(1),
       });
+      print('User recipe count updated.');
     } catch (e) {
       print("Error adding recipe: $e");
     }
   }
 
+  // Future<void> uploadimage(Recipe recipe, String userId) async {
+  //   try {
+  //     if (recipe.impPath != null) {
+  //       Reference ref =
+  //           _storage.ref().child('recipe_images/${recipe.title}.png');
+  //       await ref.putFile(File(recipe.impPath!));
+  //       final downloadUrl = await ref.getDownloadURL();
+  //       print('Recipe image uploaded successfully, URL: $downloadUrl');
+  //     } else {
+  //       print('Error uploading image');
+  //     }
+  //   } catch (e) {
+  //     print("Error uplaoding recipe: $e");
+  //   }
+  // }
 }
