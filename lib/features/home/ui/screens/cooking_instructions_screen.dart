@@ -35,7 +35,9 @@ class CookingInstructionsScreen extends StatelessWidget {
             },
             builder: (context, state) {
               if (state is RecipeStateLoading) {
-                return Center(child: CircularProgressIndicator());
+                return Center(child:  CircularProgressIndicator(
+            color: MyColors.orangecolor,
+          ),);
               } else if (state is RecipeStateLoaded) {
                 RecipeInfo recipeInfo = state.data;
 

@@ -27,12 +27,12 @@ class _MainPageState extends State<MainPage> {
     super.initState();
     _pages = [
       HomePage(),
-      UserProfilePage(
-        recipes: recipes,
-      ),
+      const UsersPage(),
       const UploadRecipePage(),
       const FavoritePage(),
-      const UsersPage(),
+      const UserProfilePage(
+        // recipes: recipes,
+      ),
     ];
   }
 

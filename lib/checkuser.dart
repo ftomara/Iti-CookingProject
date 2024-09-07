@@ -55,18 +55,10 @@ class _CheckuserState extends State<Checkuser> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ItemCubit>(
-          create: (context) => ItemCubit(),
-        ),
-        BlocProvider<RecipeCubit>(
-          create: (context) => get<RecipeCubit>(),
-        ),
         // BlocProvider<SearchCubit>(
         //   create: (context) => get<SearchCubit>(),
         // ),
-        // BlocProvider<UserCubit>(
-        //   create: (context) => UserCubit(),
-        // ),
+
         BlocProvider<IdRecipe>(
           create: (context) => IdRecipe(),
         ),
@@ -82,10 +74,10 @@ class _CheckuserState extends State<Checkuser> {
         BlocProvider<UserCubit>(
           create: (context) => get<UserCubit>(), // Use get<UserCubit>()
         ),
-         BlocProvider<ImageCubit>(
+        BlocProvider<ImageCubit>(
           create: (context) => ImageCubit(), // Use get<UserCubit>()
         ),
-          BlocProvider<RecipeTypeCubit>(
+        BlocProvider<RecipeTypeCubit>(
           create: (context) => RecipeTypeCubit(), // Use get<UserCubit>()
         ),
         BlocProvider<UploadRecipeCubit>(
@@ -107,7 +99,9 @@ class _CheckuserState extends State<Checkuser> {
             future: loggedFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
+                return Center(child:  CircularProgressIndicator(
+            color: MyColors.orangecolor,
+          ),);
               } else if (snapshot.hasError) {
                 return Center(child: Text('Error: ${snapshot.error}'));
               } else {

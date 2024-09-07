@@ -136,7 +136,9 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
                 child: BlocBuilder<UploadRecipeCubit, UploadRecipeState>(
                   builder: (context, state) {
                     if (state is UploadRecipeStateLoading) {
-                      return const CircularProgressIndicator(); 
+                      return CircularProgressIndicator(
+            color: MyColors.orangecolor,
+          ); 
                     }
 
                     return ElevatedButton(

@@ -19,9 +19,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../model/recipe.dart';
 
 class UserProfilePage extends StatelessWidget {
-  const UserProfilePage({super.key, required this.recipes});
+  const UserProfilePage({super.key,});
 
-  final List<Recipe> recipes;
+  // final List<Recipe> recipes;
 
   @override
   Widget build(BuildContext context) {

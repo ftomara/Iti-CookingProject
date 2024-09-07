@@ -182,32 +182,26 @@ class _MyCookingAppState extends State<MyCookingApp> {
   //   ),
   // ];
 
-  // late List<Widget> _pages;
+  late final List<Widget> _pages;
 
-  // @override
-  // void initState() {
-  //   super.initState();
+  @override
+  void initState() {
+    super.initState();
 
-  //   _pages = [
-  //     HomePage(
-  //         //  recipes: recipes,
-  //         ),
-  //     const UsersPage(),
-  //     const UploadRecipePage(),
-  //     FavoritePage(
-  //       recipes: recipes,
-  //     ),
-  //     UserProfilePage(
-  //       recipes: recipes,
-  //     ),
-  //   ];
-  // }
+    _pages = [
+      HomePage(),
+      const UsersPage(),
+      const UploadRecipePage(),
+      const FavoritePage(),
+      const UserProfilePage(),
+    ];
+  }
 
-  // void _onNavBarTap(int index) {
-  //   setState(() {
-  //     _currentIndex = index;
-  //   });
-  // }
+  void _onNavBarTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -215,31 +209,24 @@ class _MyCookingAppState extends State<MyCookingApp> {
       designSize: const Size(430, 932),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider<IdRecipe>(
-            create: (context) => IdRecipe(),
+      child: MaterialApp(
+          theme: ThemeData(
+            scaffoldBackgroundColor: MyColors.butterycolor,
+            colorScheme: ColorScheme.fromSeed(seedColor: MyColors.butterycolor),
+            useMaterial3: true,
           ),
-          BlocProvider<RecipeInfoCubit>(
-            create: (context) => get<RecipeInfoCubit>(),
-          ),
-          BlocProvider<ItemCubit>(
-            create: (context) => ItemCubit(),
-          ),
-          BlocProvider<RecipeCubit>(
-            create: (context) => get<RecipeCubit>(),
-          ),
-        ],
-        child: MaterialApp(
-            theme: ThemeData(
-              scaffoldBackgroundColor: MyColors.butterycolor,
-              colorScheme:
-                  ColorScheme.fromSeed(seedColor: MyColors.butterycolor),
-              useMaterial3: true,
+          debugShowCheckedModeBanner: false,
+          home: SafeArea(
+          child: Scaffold(
+            backgroundColor: MyColors.butterycolor,
+            // body: const UploadRecipePage(),
+            body: _pages[_currentIndex],
+            bottomNavigationBar: NavBar(
+              currentIndex: _currentIndex,
+              onTap: _onNavBarTap,
             ),
-            debugShowCheckedModeBanner: false,
-            home: OnBoardingPage()),
-      ),
+          ),
+        ),),
     );
   }
 }

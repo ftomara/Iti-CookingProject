@@ -10,6 +10,7 @@ import 'package:cooking_app/my_cooking_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 
 class WelcomingBar extends StatelessWidget {
@@ -24,12 +25,12 @@ class WelcomingBar extends StatelessWidget {
           print("welcome : $userId");
           return Row(
             children: [
-              const SizedBox(width: 24),
+               SizedBox(width: 24.w),
               CircleAvatar(
-                radius: 30,
+                radius: 30.sp,
                 backgroundColor: MyColors.orangecolor,
               ),
-              const SizedBox(width: 12),
+              SizedBox(width: 12.w),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -39,7 +40,7 @@ class WelcomingBar extends StatelessWidget {
                       overflow: TextOverflow.ellipsis),
                 ],
               ),
-              const SizedBox(width: 16),
+               SizedBox(width: 16.w),
             ],
           );
         } else {
@@ -47,12 +48,12 @@ class WelcomingBar extends StatelessWidget {
           print("welcome good : $userId");
           return Row(
             children: [
-              const SizedBox(width: 24),
+               SizedBox(width: 24.w),
               CircleAvatar(
-                radius: 30,
+                radius: 30.sp,
                 backgroundColor: MyColors.orangecolor,
               ),
-              const SizedBox(width: 12),
+               SizedBox(width: 12.w),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -78,7 +79,7 @@ class WelcomingBar extends StatelessWidget {
                       overflow: TextOverflow.ellipsis),
                 ],
               ),
-              const SizedBox(width: 16),
+               SizedBox(width: 16.w),
             ],
           );
         }

@@ -8,6 +8,7 @@ import 'package:cooking_app/features/home/model/recipe.dart';
 import 'package:cooking_app/features/home/model/recipe_api.dart';
 import 'package:cooking_app/features/home/ui/widgets/recipe_card.dart';
 import 'package:cooking_app/features/home/ui/widgets/recipe_card_fbs.dart';
+import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +20,9 @@ class RecipeCardGen extends StatelessWidget {
     return BlocBuilder<RecipeCubit, RecipeState>(
       builder: (context, state) {
         if (state is RecipeStateLoading) {
-          return Center(child: CircularProgressIndicator());
+          return Center(child:  CircularProgressIndicator(
+            color: MyColors.orangecolor,
+          ),);
         } else if (state is RecipeStateError) {
           return Center(
               child: Text("Failed to load recipes: ${state.e.message}"));

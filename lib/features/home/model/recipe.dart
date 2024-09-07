@@ -12,18 +12,27 @@ class Recipe {
   final String? impPath;
   bool isFav = false;
   factory Recipe.fromFirestore(DocumentSnapshot<Map<String, dynamic>> recipe) {
-    final data = recipe.data();
-    return Recipe(
-      title: data?['title'] ?? '',
-      readyInMinutes: data?['time'] ?? 0,
-      servings: data?['servings'] ?? 1,
-      ingreadiants: List<String>.from(data?['ingredients'] ?? []),
-      instructions: List<String>.from(data?['instructions'] ?? []),
-      impPath: data?['imagePath'] ?? '',
-      type: RecipeTypes.values.firstWhere((e) => e.name == data?['type']),
-      isFav: data?['isFav'] ?? false,
-    );
-  }
+  final data = recipe.data();
+  print("Received data: $data");
+
+  return Recipe(
+    title: data?['title'] ?? '',
+    readyInMinutes: data?['time'] ??0,
+    servings: data?['servings']??1 ,
+    ingreadiants: data?['ingredients'] != null
+        ? List<String>.from(data?['ingredients'] as List)
+        : [],
+    instructions: data?['instructions'] != null
+        ? List<String>.from(data?['instructions'] as List)
+        : [],
+    impPath: data?['imagePath'] ?? '',
+    type: RecipeTypes.values.firstWhere(
+      (e) => e.name == data?['type'],
+      orElse: () => RecipeTypes.breakfast  // Handle invalid or missing type
+    ),
+    isFav: data?['isFav'] ?? false,
+  );
+}
 
   Map<String, dynamic> toFirestore() => {
         'title': title,
@@ -46,5 +55,4 @@ class Recipe {
     this.isFav = false,
     this.servings = 1,
   });
-
 }
