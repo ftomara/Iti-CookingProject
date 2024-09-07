@@ -3,6 +3,15 @@ import 'package:cooking_app/features/home/model/recipe_info.dart';
 import 'package:cooking_app/features/home/ui/widgets/favorite_bar.dart';
 import 'package:cooking_app/features/home/ui/widgets/favourite_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cooking_app/features/home/ui/widgets/nav_bar.dart';
+import 'package:cooking_app/features/home/ui/widgets/recipe_card.dart';
+import 'package:cooking_app/features/home/ui/widgets/recipe_card_gen_fbs.dart';
+import 'package:cooking_app/features/home/ui/widgets/recipe_card_gen.dart';
+import 'package:cooking_app/features/home/ui/widgets/search.dart';
+import 'package:cooking_app/features/home/ui/widgets/welcoming_bar.dart';
+import 'package:cooking_app/gen/assets.gen.dart';
+import 'package:cooking_app/my_colors.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

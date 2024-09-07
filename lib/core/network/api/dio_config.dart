@@ -10,7 +10,7 @@ class DioConfig {
 
    static Dio getDio() {
     BaseOptions options = BaseOptions(
-        receiveTimeout: Duration(seconds: 6), connectTimeout: Duration(seconds: 6), baseUrl: baseUrl);
+        receiveTimeout: Duration(seconds: 12), connectTimeout: Duration(seconds: 12), baseUrl: baseUrl);
     dio ??= Dio(options);
     dio!.interceptors.add(
         PrettyDioLogger(requestHeader: true, responseBody: true, error: true));

@@ -1,6 +1,12 @@
 import 'package:cooking_app/core/themes/my_text_style.dart';
+import 'package:cooking_app/features/home/logic/Recipe_Type_cubit.dart';
 import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/material.dart';
+<<<<<<< Updated upstream
+=======
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+>>>>>>> Stashed changes
 
 import '../../model/recipe_types.dart';
 
@@ -33,15 +39,23 @@ class _RecipeTypeRadiobuttonState extends State<RecipeTypeRadiobutton> {
   }
 
   Widget _myRadio(RecipeTypes type, String label) {
-    return Radio<RecipeTypes>(
-      value: type,
-      groupValue: selectedRecipeType,
-      fillColor: WidgetStateProperty.all(MyColors.greycolor),
-      onChanged: (value) {
-        setState(() {
-          selectedRecipeType = value!;
-        });
-      },
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Radio<RecipeTypes>(
+          value: type,
+          groupValue: selectedRecipeType,
+          fillColor: WidgetStatePropertyAll(MyColors.greycolor),
+          // visualDensity: VisualDensity(),
+          onChanged: (value) {
+            setState(() {
+              selectedRecipeType = value!;
+              context.read<RecipeTypeCubit>().setRecipeTypeCubitpath(selectedRecipeType);
+            });
+          },
+        ),
+        Text(label, style: MyTextStyle.hellothin),
+      ],
     );
   }
 }

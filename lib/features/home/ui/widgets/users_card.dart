@@ -1,11 +1,14 @@
 // ignore_for_file: use_key_in_widget_constructors, sized_box_for_whitespace
 
 import 'package:cooking_app/core/themes/my_text_style.dart';
+import 'package:cooking_app/features/home/model/user.dart';
 import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UsersCard extends StatefulWidget {
+  UsersCard(this.user);
+  Userfbs user;
   @override
   State<UsersCard> createState() => _UsersCardState();
 }
@@ -16,10 +19,7 @@ class _UsersCardState extends State<UsersCard> {
     return Column(
       children: [
         GestureDetector(
-          onTap: ()
-          {
-            
-          },
+          onTap: () {},
           child: Container(
             height: 90.h,
             width: 330.w,
@@ -30,8 +30,8 @@ class _UsersCardState extends State<UsersCard> {
                 BoxShadow(
                   color:
                       Colors.grey.withOpacity(0.5), // Shadow color with opacity
-                  spreadRadius: 2, // How much the shadow spreads
-                  blurRadius: 4, // How much the shadow is blurred
+                  spreadRadius: 2.dg, // How much the shadow spreads
+                  blurRadius: 4.dg  , // How much the shadow is blurred
                   offset: const Offset(0, 3), // Position of the shadow (x, y)
                 ),
               ],
@@ -56,7 +56,7 @@ class _UsersCardState extends State<UsersCard> {
                       height: 16.h,
                     ),
                     Text(
-                      'Mady',
+                      widget.user.username??'Guest',
                       style: MyTextStyle.recipe_title,
                     ),
                     Row(
@@ -73,7 +73,7 @@ class _UsersCardState extends State<UsersCard> {
                           width: 8.w,
                         ),
                         Text(
-                          '''512 ''',
+                          '''${widget.user.recipeslength} ''',
                           style: MyTextStyle.user_follower_number,
                         ),
                         Text(

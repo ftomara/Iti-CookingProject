@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UserProfileAppbar extends StatelessWidget {
-  const UserProfileAppbar({super.key});
+   UserProfileAppbar(this.username, {super.key});
+  String? username;
   @override
   Widget build(BuildContext context) {
     return  Row(
@@ -16,7 +17,7 @@ class UserProfileAppbar extends StatelessWidget {
            SizedBox(width: 18.w,),
            Icon(Icons.arrow_back, color: MyColors.greycolor,),
            SizedBox(width: 18.w,),
-           Text('Mady' , style: MyTextStyle.user_name,),
+           Text(username!, style: MyTextStyle.user_name,),
         ],
         
       );
