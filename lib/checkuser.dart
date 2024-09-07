@@ -13,6 +13,7 @@ import 'package:cooking_app/features/home/logic/recipe_info_cubit.dart';
 import 'package:cooking_app/features/home/logic/upload_recipe_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_info_cubit.dart';
+import 'package:cooking_app/features/home/logic/user_info_list_cubit.dart';
 import 'package:cooking_app/features/home/ui/screens/favorite_page.dart';
 import 'package:cooking_app/features/home/ui/screens/home_page.dart';
 import 'package:cooking_app/features/home/ui/screens/login_page.dart';
@@ -83,6 +84,8 @@ class _CheckuserState extends State<Checkuser> {
         BlocProvider<UploadRecipeCubit>(
             create: (context) => get<UploadRecipeCubit>()),
         BlocProvider<UserInfoCubit>(create: (context) => get<UserInfoCubit>()),
+        BlocProvider<UserInfoListCubit>(
+            create: (context) => get<UserInfoListCubit>()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(430, 932),
@@ -99,9 +102,11 @@ class _CheckuserState extends State<Checkuser> {
             future: loggedFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child:  CircularProgressIndicator(
-            color: MyColors.orangecolor,
-          ),);
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: MyColors.orangecolor,
+                  ),
+                );
               } else if (snapshot.hasError) {
                 return Center(child: Text('Error: ${snapshot.error}'));
               } else {

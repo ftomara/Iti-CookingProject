@@ -33,36 +33,39 @@ class FavoritePage extends StatelessWidget {
         builder:
             (BuildContext context, AsyncSnapshot<List<RecipeInfo>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasError) {
             return Center(
                 child: Text("Something went wrong: ${snapshot.error}"));
           }
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No favorites found for this user'));
+            return const Center(child: Text('No favorites found for this user'));
           }
 
           final favoriteRecipes = snapshot.data!;
 
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 36.h),
-            child: Column(
-              children: [
-                FavoriteBar(),
-                Expanded(
-                  child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.75,
+          return SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 36.h),
+              child: Column(
+                children: [
+                  const FavoriteBar(),
+                  SizedBox(height: 12.h,),
+                  Expanded(
+                    child: GridView.builder(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.75,
+                      ),
+                      itemCount: favoriteRecipes.length,
+                      itemBuilder: (context, index) {
+                        return FavouriteCard(result: favoriteRecipes[index]);
+                      },
                     ),
-                    itemCount: favoriteRecipes.length,
-                    itemBuilder: (context, index) {
-                      return FavouriteCard(result: favoriteRecipes[index]);
-                    },
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },

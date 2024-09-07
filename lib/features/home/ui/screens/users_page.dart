@@ -2,6 +2,7 @@
 
 import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/logic/user_info_cubit.dart';
+import 'package:cooking_app/features/home/logic/user_info_list_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_info_state.dart';
 import 'package:cooking_app/features/home/model/user.dart';
 import 'package:cooking_app/features/home/ui/widgets/search.dart';
@@ -15,8 +16,8 @@ class UsersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<UserInfoCubit>().getusers();
-    return BlocBuilder<UserInfoCubit, UserinfoState>(
+    context.read<UserInfoListCubit>().getusers();
+    return BlocBuilder<UserInfoListCubit, UserinfoState>(
         builder: (context, usersState) {
       if (usersState is UserinfoStateLoading) {
         return Center(

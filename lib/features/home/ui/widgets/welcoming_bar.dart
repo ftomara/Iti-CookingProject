@@ -20,7 +20,6 @@ class WelcomingBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UserCubit, String?>(
       builder: (context, userId) {
-        // Check if the userId is null or not
         if (userId == null || userId.isEmpty) {
           print("welcome : $userId");
           return Row(
