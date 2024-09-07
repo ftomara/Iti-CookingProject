@@ -3,6 +3,9 @@ import 'package:cooking_app/core/network/firebase/firebase_services.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
 import 'package:cooking_app/features/home/model/user.dart';
 import 'package:cooking_app/my_cooking_app.dart';
+import 'package:cooking_app/core/helper/navigation%20.dart';
+import 'package:cooking_app/features/home/ui/screens/home_page.dart';
+import 'package:cooking_app/features/home/ui/screens/main_page.dart';
 import 'package:cooking_app/util/extentions/snackbar_extention.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +70,7 @@ class AuthenticateImpl extends Authenticate {
       _userCubit.setUserId(userId);
       print("Logged ${_userCubit.state}");
       context.snackbar("Log In Successful!");
+      PushNavigation(context, MainPage());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         context.snackbar("No user found for that email");

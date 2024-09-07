@@ -31,7 +31,7 @@ class _RecipeCardState extends State<RecipeCard> {
           width: 164.w,
           decoration: BoxDecoration(
             color: MyColors.orangecolor,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(16.r),
           ),
           child: //Stack(
               // children: [
@@ -53,7 +53,7 @@ class _RecipeCardState extends State<RecipeCard> {
                     },
                   ),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 8.h,
                 ),
                 Text(
@@ -62,7 +62,7 @@ class _RecipeCardState extends State<RecipeCard> {
                   overflow: TextOverflow.ellipsis,
                   style: MyTextStyle.recipe_title,
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 8.h,
                 ),
                 GestureDetector(
@@ -87,7 +87,7 @@ class _RecipeCardState extends State<RecipeCard> {
                           color: const Color.fromARGB(255, 40, 40, 40)
                               .withOpacity(0.5), // Shadow color with opacity
                           spreadRadius: 0, // How much the shadow spreads
-                          blurRadius: 2, // How much the shadow is blurred
+                          blurRadius: 2,
                           offset: const Offset(0, 2),
                         )
                       ],
@@ -100,6 +100,29 @@ class _RecipeCardState extends State<RecipeCard> {
                     ),
                   ),
                 ),
+
+                // Positioned(
+                //   top: 4, // 20 from the top
+                //   right: 8, // 20 from the right
+                //   child: IconButton(
+                //     onPressed: () {
+                //       setState(() {
+                //         // Toggle favorite state here
+                //       });
+                //     },
+                //     icon: SvgPicture.asset(
+                //       const $AssetsImagesGen().filledHeart,
+                //       colorFilter: ColorFilter.mode(
+                //         MyColors.butterycolor,
+                //         BlendMode.srcIn,
+                //       ),
+                //       width: 16, // Adjust width as needed
+                //       height: 16, // Adjust height as needed
+                //     ),
+                //   ),
+                // ),
+                //   ],
+                // ),
               ],
             ),
           ),

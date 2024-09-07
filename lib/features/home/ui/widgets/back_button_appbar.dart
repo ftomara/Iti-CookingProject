@@ -1,4 +1,4 @@
-import 'package:cooking_app/my_cooking_app.dart';
+import 'package:cooking_app/features/home/ui/screens/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -24,7 +24,7 @@ class _BackButtonAppbarState extends State<BackButtonAppbar> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const MyCookingApp(),
+                builder: (context) => MainPage(),
               ),
             );
           },

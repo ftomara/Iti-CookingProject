@@ -4,6 +4,7 @@ import 'package:cooking_app/core/helper/navigation%20.dart';
 import 'package:cooking_app/core/network/firebase/authenticate%20.dart';
 import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
+import 'package:cooking_app/features/home/ui/screens/home_page.dart';
 import 'package:cooking_app/features/home/ui/screens/sign_up_page.dart';
 import 'package:cooking_app/features/home/ui/widgets/text_field_widget.dart';
 import 'package:cooking_app/my_cooking_app.dart';

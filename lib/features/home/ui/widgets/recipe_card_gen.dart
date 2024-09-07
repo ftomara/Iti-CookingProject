@@ -29,12 +29,12 @@ class RecipeCardGen extends StatelessWidget {
 
           return GridView.builder(
             padding: EdgeInsets.symmetric(
-                horizontal: 24, vertical: 0), // Padding around the grid
+                horizontal: 24, vertical: 0), 
             physics: BouncingScrollPhysics(),
             itemCount: results.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, // Two cards per row
-              childAspectRatio: 0.75, // Aspect ratio to make the cards taller
+              crossAxisCount: 2, 
+              childAspectRatio: 0.75, 
             ),
             itemBuilder: (context, index) {
               return RecipeCard(result: results[index]);

@@ -46,4 +46,5 @@ class Recipe {
     this.isFav = false,
     this.servings = 1,
   });
+
 }

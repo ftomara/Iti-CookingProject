@@ -45,7 +45,7 @@ class CookingInstructionsScreen extends StatelessWidget {
                     StartCookingScreen(pageController: _pageController),
                     IngreadientsScreen(recipe: recipeInfo),
                     IncstructionsScreen(recipe: recipeInfo),
-                    const FinishCookingScreen(),
+                     FinishCookingScreen(recipe:recipeInfo),
                   ],
                 );
               } else {

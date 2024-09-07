@@ -14,6 +14,7 @@ RecipeInfo _$RecipeInfoFromJson(Map<String, dynamic> json) => RecipeInfo(
           ?.map((e) => AnalyzedInstruction.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['image'] as String?,
+      (json['id'] as num?)?.toInt(),
       (json['readyInMinutes'] as num?)?.toInt(),
       (json['servings'] as num?)?.toInt(),
       json['title'] as String?,
@@ -23,6 +24,7 @@ Map<String, dynamic> _$RecipeInfoToJson(RecipeInfo instance) =>
     <String, dynamic>{
       'extendedIngredients': instance.extendedIngredients,
       'analyzedInstructions': instance.analyzedInstructions,
+      'id': instance.id,
       'title': instance.title,
       'servings': instance.servings,
       'readyInMinutes': instance.readyInMinutes,
@@ -90,5 +92,7 @@ Equipment _$EquipmentFromJson(Map<String, dynamic> json) => Equipment(
       json['image'] as String?,
     );
 
-Map<String, dynamic> _$EquipmentToJson(Equipment instance) =>
-    <String, dynamic>{'name': instance.name, 'image': instance.image};
+Map<String, dynamic> _$EquipmentToJson(Equipment instance) => <String, dynamic>{
+      'name': instance.name,
+      'image': instance.image,
+    };
