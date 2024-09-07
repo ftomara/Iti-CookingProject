@@ -3,11 +3,13 @@
 import 'package:cooking_app/core/di/module.dart';
 import 'package:cooking_app/core/helper/navigation%20.dart';
 import 'package:cooking_app/core/network/firebase/authenticate%20.dart';
+import 'package:cooking_app/features/home/logic/Recipe_Type_cubit.dart';
 import 'package:cooking_app/features/home/logic/id_recipe.dart';
+import 'package:cooking_app/features/home/logic/image_cubit.dart';
 import 'package:cooking_app/features/home/logic/item_cubit.dart';
 import 'package:cooking_app/features/home/logic/recipe_cubit.dart';
 import 'package:cooking_app/features/home/logic/recipe_info_cubit.dart';
-import 'package:cooking_app/features/home/logic/search_cubit.dart';
+// import 'package:cooking_app/features/home/logic/search_cubit.dart';
 import 'package:cooking_app/features/home/logic/upload_recipe_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_info_cubit.dart';
@@ -79,6 +81,12 @@ class _CheckuserState extends State<Checkuser> {
         ),
         BlocProvider<UserCubit>(
           create: (context) => get<UserCubit>(), // Use get<UserCubit>()
+        ),
+         BlocProvider<ImageCubit>(
+          create: (context) => ImageCubit(), // Use get<UserCubit>()
+        ),
+          BlocProvider<RecipeTypeCubit>(
+          create: (context) => RecipeTypeCubit(), // Use get<UserCubit>()
         ),
         BlocProvider<UploadRecipeCubit>(
             create: (context) => get<UploadRecipeCubit>()),

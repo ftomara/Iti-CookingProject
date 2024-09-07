@@ -24,6 +24,8 @@ class Result {
   @JsonKey(name: "id")
   int? id;
 
+  var isFav;
+
   Result(this.image, this.title,this.id);
 
   factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(json);

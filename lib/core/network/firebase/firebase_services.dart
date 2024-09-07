@@ -29,7 +29,7 @@ class FirebaseService<T> {
       final users = await _db.collection('users').get();
       return users.docs.map((doc) => Userfbs.fromFirestore(doc)).toList();
     } catch (e) {
-      print("Error fetching recipes: $e");
+      print("Error fetching users: $e");
       return [];
     }
   }
@@ -38,7 +38,17 @@ class FirebaseService<T> {
     try {
       final recipes =
           await _db.collection('users').doc(userId).collection('recipes').get();
-      return recipes.docs.map((doc) => Recipe.fromFirestore(doc)).toList();
+
+      if (recipes.docs.isEmpty) {
+        print("No recipes found for user $userId.");
+        return [];
+      }
+
+      print("Fetched ${recipes.docs.length} recipes.");
+      return recipes.docs.map((doc) {
+        // print("Mapping document: ${doc.data()}");
+        return Recipe.fromFirestore(doc);
+      }).toList();
     } catch (e) {
       print("Error fetching recipes: $e");
       return [];
@@ -80,6 +90,9 @@ class FirebaseService<T> {
           .doc(userId)
           .collection('recipes')
           .add(recipe.toFirestore());
+      await _db.collection('users').doc(userId).update({
+        'recipeslength': FieldValue.increment(1),
+      });
     } catch (e) {
       print("Error adding recipe: $e");
     }

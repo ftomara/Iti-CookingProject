@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UserProfileInfo extends StatelessWidget {
-  const UserProfileInfo({super.key});
+   UserProfileInfo(this.length, {super.key});
+  int? length ;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -47,7 +48,7 @@ class UserProfileInfo extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      '512',
+                      '$length',
                       style: MyTextStyle.hello,
                     ),
                     Text(

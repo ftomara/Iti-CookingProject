@@ -19,10 +19,10 @@ class UploadRecipeCubit extends Cubit<UploadRecipeState<void>> {
     }
   }
 
-  Future<void> fetchAllRecipes(String userId) async {
+  Future<void> fetchAllRecipes(String? userId) async {
     emit(UploadRecipeState.loading());
     try {
-      final recipes = await repo.getRecipes(userId);
+      final recipes = await repo.getRecipes(userId!);
       emit(UploadRecipeState.loaded(recipes));
     } catch (e) {
       emit(UploadRecipeState.error(FirebaseException(plugin: e.toString())));

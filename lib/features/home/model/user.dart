@@ -6,6 +6,7 @@ class Userfbs {
   String? email = '';
   String? username = '';
   List<Recipe>? recipes = [];
+  int? recipeslength = 0;
   List<Recipe>? favorites = [];
 
   Userfbs(
@@ -13,7 +14,9 @@ class Userfbs {
       this.email,
       this.username,
       this.favorites,
+      this.recipeslength = 0,
       this.recipes});
+
   factory Userfbs.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
     final data = doc.data()!;
     return Userfbs(
@@ -25,17 +28,18 @@ class Userfbs {
       favorites: (data['favorites'] as List<dynamic>?)
           ?.map((e) => Recipe.fromFirestore(e))
           .toList(),
+      recipeslength: data['recipeslength'] ?? 0,
     );
   }
 
-   Map<String, dynamic> toFirestore() {
+  Map<String, dynamic> toFirestore() {
     return {
       'userId': userId,
       'email': email,
       'username': username,
       'recipes': recipes?.map((e) => e.toFirestore()).toList(),
       'favorites': favorites?.map((e) => e.toFirestore()).toList(),
+      'recipeslength': recipeslength,
     };
   }
-
 }

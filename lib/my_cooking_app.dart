@@ -38,7 +38,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
       title: 'Spicy Ramen Noodles',
       // chef: 'Mady Miller',
       // rate: 2,
-      calories: 602,
+      // calories: 602,
       ingreadiants: [
         '1 tbsp Garlic',
         '1 Green onion',
@@ -65,7 +65,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
       title: 'Pancakes',
       // chef: 'Chef John',
       // rate: 3,
-      calories: 200.0,
+      // calories: 200.0,
       ingreadiants: [
         'Flour',
         'Milk',
@@ -86,7 +86,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
       title: 'Spaghetti Bolognese',
       // // chef: 'Chef Anna',
       // rate: 4,
-      calories: 450.0,
+      // calories: 450.0,
       ingreadiants: [
         'Pasta',
         'Tomato Sauce',
@@ -107,7 +107,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
       title: 'Caesar Salad',
       // // chef: 'Chef Emma',
       // rate: 5,
-      calories: 150.0,
+      // calories: 150.0,
       ingreadiants: [
         'Romaine lettuce',
         'Croutons',
@@ -130,7 +130,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
       title: 'Chocolate Cake',
       // // chef: 'Chef Sophia',
       // rate: 5,
-      calories: 400.0,
+      // calories: 400.0,
       ingreadiants: [
         'Flour',
         'Cocoa powder',
@@ -159,7 +159,7 @@ class _MyCookingAppState extends State<MyCookingApp> {
       title: 'Grilled Salmon',
       // // chef: 'Chef Liam',
       // rate: 4,
-      calories: 300.0,
+      // calories: 300.0,
       ingreadiants: [
         'Salmon fillets',
         'Olive oil',

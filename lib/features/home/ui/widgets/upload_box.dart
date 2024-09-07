@@ -1,10 +1,14 @@
 import 'dart:io';
 
+import 'package:cooking_app/core/di/module.dart';
 import 'package:cooking_app/core/themes/my_text_style.dart';
+import 'package:cooking_app/features/home/logic/image_cubit.dart';
+import 'package:cooking_app/features/home/ui/screens/upload_recipe_page.dart';
 import 'package:cooking_app/gen/assets.gen.dart';
 import 'package:cooking_app/my_colors.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -60,6 +64,8 @@ class _UploadBoxState extends State<UploadBox>
     if (image != null) {
       setState(() {
         _image = File(image.path);
+        print("uploadbox wedget path : ${image.path}");
+        context.read<ImageCubit>().setImagepath(image.path);
       });
     }
   }

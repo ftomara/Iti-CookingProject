@@ -44,7 +44,7 @@ void setupDependinces() {
   get.registerLazySingleton<UserCubit>(() => UserCubit());
   // get.registerLazySingleton<ApiService>(() => ApiServiceImpl(get()));
   // get.registerLazySingleton<Repository>(() => RepositoryImp(get()));
-   get.registerLazySingleton<RecipeCubit>(() => RecipeCubit(get())); 
+  //  get.registerLazySingleton<RecipeCubit>(() => RecipeCubit(get())); 
   get.registerLazySingleton<RecipeInfoCubit>(() => RecipeInfoCubit(get()));
 
 }

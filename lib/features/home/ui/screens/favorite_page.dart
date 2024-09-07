@@ -4,6 +4,7 @@ import 'package:cooking_app/features/home/ui/widgets/catigories.dart';
 import 'package:cooking_app/features/home/ui/widgets/favorite_bar.dart';
 import 'package:cooking_app/features/home/ui/widgets/nav_bar.dart';
 import 'package:cooking_app/features/home/ui/widgets/recipe_card.dart';
+import 'package:cooking_app/features/home/ui/widgets/recipe_card_gen_fbs.dart';
 import 'package:cooking_app/features/home/ui/widgets/recipe_card_gen.dart';
 import 'package:cooking_app/features/home/ui/widgets/search.dart';
 import 'package:cooking_app/features/home/ui/widgets/welcoming_bar.dart';

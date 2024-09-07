@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/logic/id_recipe.dart';
+import 'package:cooking_app/features/home/model/recipe.dart';
 import 'package:cooking_app/features/home/model/recipe_api.dart';
 import 'package:cooking_app/gen/assets.gen.dart';
 import 'package:cooking_app/my_colors.dart';
@@ -10,15 +13,15 @@ import 'package:flutter_svg/svg.dart';
 
 import '../screens/cooking_instructions_screen.dart';
 
-class RecipeCard extends StatefulWidget {
-  const RecipeCard({super.key, required this.result});
-  final Result result;
+class RecipeCardfbs extends StatefulWidget {
+  const RecipeCardfbs({super.key, required this.result});
+  final Recipe result;
 
   @override
-  State<RecipeCard> createState() => _RecipeCardState();
+  State<RecipeCardfbs> createState() => _RecipeCardfbsState();
 }
 
-class _RecipeCardState extends State<RecipeCard> {
+class _RecipeCardfbsState extends State<RecipeCardfbs> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -42,32 +45,37 @@ class _RecipeCardState extends State<RecipeCard> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.network(
-                    widget.result.image!,
-                    width: 112.w,
-                    height: 112.h,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Icon(Icons
-                          .error); // Display an error icon or a placeholder
-                    },
+                  child: AspectRatio(
+                    aspectRatio:
+                        1.2, // Adjust this to fit your desired aspect ratio
+                    child: widget.result.impPath != null
+                        ? Image.file(
+                            File(widget.result
+                                .impPath!), // Create a File object from the path
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              // Handle case when the file is not found or can't be loaded
+                              return const Text("Error loading image");
+                            },
+                          )
+                        : const Text("No image found"),
                   ),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 8.h,
                 ),
                 Text(
-                  widget.result.title!,
+                  widget.result.title,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: MyTextStyle.recipe_title,
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 8.h,
                 ),
                 GestureDetector(
                   onTap: () {
-                    context.read<IdRecipe>().setId(widget.result.id!);
+                    // context.read<IdRecipe>().setId(widget.result.!);
 
                     Navigator.push(
                       context,
