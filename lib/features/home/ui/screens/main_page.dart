@@ -1,5 +1,4 @@
 import 'package:cooking_app/features/home/model/recipe.dart';
-import 'package:cooking_app/features/home/model/recipe_types.dart';
 import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:cooking_app/features/home/ui/screens/home_page.dart';
@@ -10,8 +9,10 @@ import 'package:cooking_app/features/home/ui/screens/users_page.dart';
 import 'package:cooking_app/features/home/ui/widgets/nav_bar.dart';
 
 class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
   @override
-  _MainPageState createState() => _MainPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
@@ -29,9 +30,9 @@ class _MainPageState extends State<MainPage> {
       UserProfilePage(
         recipes: recipes,
       ),
-      UploadRecipePage(),
-      FavoritePage(),
-      UsersPage(),
+      const UploadRecipePage(),
+      const FavoritePage(),
+      const UsersPage(),
     ];
   }
 
