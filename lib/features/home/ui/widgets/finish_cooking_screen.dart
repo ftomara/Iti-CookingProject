@@ -4,6 +4,7 @@ import 'package:cooking_app/features/home/model/recipe_info.dart';
 import 'package:cooking_app/features/home/ui/screens/main_page.dart';
 import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
@@ -22,25 +23,25 @@ class FinishCookingScreen extends StatelessWidget {
             const BackButtonAppbar(),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 352,
-                      height: 480,
+                      width: 356.w,
+                      height: 500.h,
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: MyColors.orangecolor,
-                          width: 4,
+                          width: 4.w,
                         ),
-                        borderRadius: BorderRadius.circular(24),
+                        borderRadius: BorderRadius.circular(24.r),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 40,
-                          vertical: 64,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 40.h,
+                          vertical: 48.w,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -52,7 +53,7 @@ class FinishCookingScreen extends StatelessWidget {
                               style: GoogleFonts.oswald(
                                 color: MyColors.orangecolor,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 32,
+                                fontSize: 28,
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -61,14 +62,14 @@ class FinishCookingScreen extends StatelessWidget {
                               style: GoogleFonts.oswald(
                                 color: MyColors.greycolor,
                                 fontWeight: FontWeight.normal,
-                                fontSize: 24,
+                                fontSize: 20,
                               ),
                               textAlign: TextAlign.center,
                             ),
                             Lottie.asset(
                               'assets/animations/rate_meal_animation.json',
-                              height: 260,
-                              width: 260,
+                              height: 260.h,
+                              width: 260.w,
                               fit: BoxFit.fill,
                             ),
                           ],

@@ -130,12 +130,10 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
               SizedBox(height: 12.h),
               AddListField(
                   hintText: '+   Add food to recipe.', list: ingreadientsList),
-              SizedBox(height: 12.h),
               Text('Instructions :', style: MyTextStyle.question),
               SizedBox(height: 12.h),
               AddListField(
                   hintText: '+   Add Instruction.', list: instructionsList),
-              SizedBox(height: 18.h),
               Center(
                 child: BlocBuilder<UploadRecipeCubit, UploadRecipeState>(
                   builder: (context, state) {
