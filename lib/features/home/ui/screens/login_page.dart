@@ -68,7 +68,9 @@ class LoginPage extends StatelessWidget {
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           const MyCookingApp()),
-                                );
+                                ).catchError((error) {
+                                  print('failed navigation');
+                                });
                                 print("sucess navigation");
                               }
                             }).catchError((error) {

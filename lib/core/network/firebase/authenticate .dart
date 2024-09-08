@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cooking_app/core/network/firebase/firebase_services.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
 import 'package:cooking_app/features/home/model/user.dart';
+import 'package:cooking_app/features/home/ui/screens/biteguide_page.dart';
 import 'package:cooking_app/my_cooking_app.dart';
 import 'package:cooking_app/core/helper/navigation%20.dart';
 import 'package:cooking_app/features/home/ui/screens/home_page.dart';
@@ -66,9 +67,8 @@ class AuthenticateImpl extends Authenticate {
         email: email,
         password: password,
       );
-      String userId = await FirebaseFirestore.instance.collection('users').id;
+      String userId = credential.user!.uid;
       _userCubit.setUserId(userId);
-      print("Logged ${_userCubit.state}");
       context.snackbar("Log In Successful!");
       PushNavigation(context, MainPage());
     } on FirebaseAuthException catch (e) {
@@ -84,9 +84,11 @@ class AuthenticateImpl extends Authenticate {
       } else {
         context.snackbar("An error occurred: ${e.message}");
       }
+      return; // Return early if there was an error
     } catch (e) {
       context.snackbar("An unexpected error occurred");
       print(e);
+      return; // Return early on unexpected errors
     }
   }
 
@@ -101,6 +103,27 @@ class AuthenticateImpl extends Authenticate {
     } else {
       _userCubit.clearUserId();
       return false;
+    }
+  }
+
+  @override
+  Future<void> signOutUser(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signOut(); // Sign out from Firebase
+      _userCubit.clearUserId(); // Clear the user ID in your app state
+
+      // Show a snackbar notification
+      context.snackbar("Log Out Successful!");
+
+      // Navigate to the initial screen (BiteGuide screen)
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const BiteguidePage()),
+        (route) => false, // Remove all routes and replace with the new one
+      );
+    } catch (e) {
+      context.snackbar("An error occurred while logging out: ${e.toString()}");
+      print("Logout error: $e");
     }
   }
 }

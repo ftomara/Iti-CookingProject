@@ -115,7 +115,9 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
               SizedBox(height: 20.h),
               Text('Recipe Type :', style: MyTextStyle.question),
               const RecipeTypeRadiobutton(),
+              SizedBox(height: 8.h),
               RecipeTitleInputField(titleController: titleController),
+              SizedBox(height: 18.h),
               Row(
                 children: [
                   TimeInputField(minutesController: minutesController),
@@ -123,10 +125,17 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
                   ServingsInputField(servingsController: servingsController),
                 ],
               ),
+              SizedBox(height: 18.h),
+              Text('Ingreadients :', style: MyTextStyle.question),
+              SizedBox(height: 12.h),
               AddListField(
                   hintText: '+   Add food to recipe.', list: ingreadientsList),
+              SizedBox(height: 12.h),
+              Text('Instructions :', style: MyTextStyle.question),
+              SizedBox(height: 12.h),
               AddListField(
                   hintText: '+   Add Instruction.', list: instructionsList),
+              SizedBox(height: 18.h),
               Center(
                 child: BlocBuilder<UploadRecipeCubit, UploadRecipeState>(
                   builder: (context, state) {

@@ -20,8 +20,8 @@ class BiteguideWidget extends StatelessWidget {
           child: Lottie.asset("assets/animations/5qdZDIR369.json",
               fit: BoxFit.cover, width: 321.w, height: 318.h),
         ),
-        Padding(
-          padding: EdgeInsets.only(top: 40.h, left: 125.w, right: 125.w),
+        Center(
+          // padding: EdgeInsets.only(top: 40.h, left: 120.w, right: 120.w),
           child: Text(
             "BiteGuide",
             style: MyTextStyle.biteguide,
