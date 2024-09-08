@@ -9,14 +9,11 @@ import 'package:cooking_app/features/home/logic/upload_recipe_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_info_cubit.dart';
 import 'package:cooking_app/features/home/logic/id_recipe.dart';
-import 'package:cooking_app/features/home/logic/item_cubit.dart';
-import 'package:cooking_app/features/home/logic/recipe_cubit.dart';
 import 'package:cooking_app/features/home/logic/recipe_info_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_info_list_cubit.dart';
 
 import 'package:cooking_app/features/home/repository/repository.dart';
 import 'package:dio/dio.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt get = GetIt.instance;

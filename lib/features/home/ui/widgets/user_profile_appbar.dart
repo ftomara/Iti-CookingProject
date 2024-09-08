@@ -11,8 +11,8 @@ import 'package:get_it/get_it.dart';
 import '../../logic/user_cubit.dart';
 
 class UserProfileAppbar extends StatelessWidget {
-  UserProfileAppbar(this.username, {super.key});
-  String? username;
+  const UserProfileAppbar(this.username, {super.key});
+  final String? username;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -43,6 +43,3 @@ class UserProfileAppbar extends StatelessWidget {
     );
   }
 }
-// backgroundColor: MyColors.butterycolor,
-//         title: Text('Mady' , style: MyTextStyle.user_name,),
-//         leading: Icon(Icons.arrow_back, color: MyColors.greycolor,),

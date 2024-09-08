@@ -40,7 +40,8 @@ class FavoritePage extends StatelessWidget {
                 child: Text("Something went wrong: ${snapshot.error}"));
           }
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No favorites found for this user'));
+            return const Center(
+                child: Text('No favorites found for this user'));
           }
 
           final favoriteRecipes = snapshot.data!;
@@ -51,12 +52,15 @@ class FavoritePage extends StatelessWidget {
               child: Column(
                 children: [
                   const FavoriteBar(),
-                  SizedBox(height: 12.h,),
+                  SizedBox(
+                    height: 12.h,
+                  ),
                   Expanded(
                     child: GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 0.75,
+                        childAspectRatio: 0.65,
                       ),
                       itemCount: favoriteRecipes.length,
                       itemBuilder: (context, index) {

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:json_annotation/json_annotation.dart';
 part 'recipe_api.g.dart';
 
@@ -26,7 +28,7 @@ class Result {
 
   var isFav;
 
-  Result(this.image, this.title,this.id);
+  Result(this.image, this.title, this.id);
 
   factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(json);
 }

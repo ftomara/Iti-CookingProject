@@ -35,7 +35,7 @@ class _RecipeCardState extends State<FavouriteCard> {
           child: Stack(
             children: [
               Padding(
-                padding: const EdgeInsets.all(18),
+                padding: EdgeInsets.all(18.h),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';

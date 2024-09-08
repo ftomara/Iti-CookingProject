@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cooking_app/core/network/api/api_result.dart';
 import 'package:cooking_app/features/home/logic/recipe_state.dart';
-import 'package:cooking_app/features/home/model/recipe_api.dart';
 import 'package:cooking_app/features/home/model/recipe_info.dart';
 import 'package:cooking_app/features/home/repository/repository.dart';
 

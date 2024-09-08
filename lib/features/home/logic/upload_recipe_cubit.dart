@@ -1,10 +1,10 @@
+// ignore_for_file: void_checks
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cooking_app/core/network/firebase/firebase_result.dart';
 import 'package:cooking_app/features/home/model/recipe.dart';
 import 'package:cooking_app/features/home/logic/upload_recipe_state.dart';
 import 'package:cooking_app/features/home/repository/repository.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 class UploadRecipeCubit extends Cubit<UploadRecipeState<void>> {
   Repository repo;

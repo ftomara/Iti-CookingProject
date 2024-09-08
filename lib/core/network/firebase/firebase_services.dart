@@ -1,10 +1,10 @@
-import 'dart:ffi';
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cooking_app/features/home/model/recipe.dart';
 import 'package:cooking_app/features/home/model/user.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 // Initialize Firebase Storage
@@ -26,7 +26,7 @@ class FirebaseService<T> {
       }
     } catch (e) {
       print("Error getting user: $e");
-      throw e;
+      rethrow;
     }
   }
 

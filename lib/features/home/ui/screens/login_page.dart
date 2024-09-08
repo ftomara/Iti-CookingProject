@@ -1,6 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:cooking_app/core/common_widgets/account_status_widget.dart';
 import 'package:cooking_app/core/common_widgets/button_widget.dart';
-import 'package:cooking_app/core/helper/navigation%20.dart';
+import 'package:cooking_app/core/helper/navigation .dart';
 import 'package:cooking_app/core/network/firebase/authenticate%20.dart';
 import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';

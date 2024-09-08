@@ -1,4 +1,4 @@
-import 'package:cooking_app/core/helper/navigation%20.dart';
+import 'package:cooking_app/core/helper/navigation .dart';
 import 'package:cooking_app/core/network/firebase/favourite.dart';
 import 'package:cooking_app/features/home/model/recipe_info.dart';
 import 'package:cooking_app/features/home/ui/screens/main_page.dart';
@@ -11,7 +11,7 @@ import 'package:lottie/lottie.dart';
 import 'back_button_appbar.dart';
 
 class FinishCookingScreen extends StatelessWidget {
-  FinishCookingScreen({super.key, this.recipe});
+  const FinishCookingScreen({super.key, this.recipe});
   final RecipeInfo? recipe;
 
   @override
@@ -85,7 +85,7 @@ class FinishCookingScreen extends StatelessWidget {
                           FavouriteImp().addData(recipe!, context);
                         }
 
-                        PushNavigation(context, MainPage());
+                        PushNavigation(context, const MainPage());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: MyColors.orangecolor,
@@ -110,7 +110,7 @@ class FinishCookingScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MainPage(),
+                            builder: (context) => const MainPage(),
                           ),
                         );
                       },

@@ -1,16 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore_for_file: avoid_print, use_build_context_synchronously, file_names
+
 import 'package:cooking_app/core/network/firebase/firebase_services.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
 import 'package:cooking_app/features/home/model/user.dart';
 import 'package:cooking_app/features/home/ui/screens/biteguide_page.dart';
-import 'package:cooking_app/my_cooking_app.dart';
-import 'package:cooking_app/core/helper/navigation%20.dart';
-import 'package:cooking_app/features/home/ui/screens/home_page.dart';
+import 'package:cooking_app/core/helper/navigation .dart';
 import 'package:cooking_app/features/home/ui/screens/main_page.dart';
 import 'package:cooking_app/util/extentions/snackbar_extention.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class Authenticate {
   void createUser(
@@ -70,7 +68,7 @@ class AuthenticateImpl extends Authenticate {
       String userId = credential.user!.uid;
       _userCubit.setUserId(userId);
       context.snackbar("Log In Successful!");
-      PushNavigation(context, MainPage());
+      PushNavigation(context, const MainPage());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         context.snackbar("No user found for that email");
@@ -106,7 +104,6 @@ class AuthenticateImpl extends Authenticate {
     }
   }
 
-  @override
   Future<void> signOutUser(BuildContext context) async {
     try {
       await FirebaseAuth.instance.signOut(); // Sign out from Firebase

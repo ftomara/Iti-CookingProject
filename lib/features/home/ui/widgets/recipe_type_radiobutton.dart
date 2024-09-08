@@ -6,10 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-
 import '../../model/recipe_types.dart';
 
 class RecipeTypeRadiobutton extends StatefulWidget {
@@ -32,16 +28,16 @@ class _RecipeTypeRadiobuttonState extends State<RecipeTypeRadiobutton> {
           children: [
             _myRadio(RecipeTypes.breakfast, "Breakfast"),
             _myRadio(RecipeTypes.lunch, "Lunch"),
-         
           ],
         ),
-         Row(
+        Row(
           // mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-         
             _myRadio(RecipeTypes.dinner, "Dinner"),
-            SizedBox(width: 18.w,),
+            SizedBox(
+              width: 18.w,
+            ),
             _myRadio(RecipeTypes.dessert, "Dessert"),
           ],
         ),
@@ -61,12 +57,14 @@ class _RecipeTypeRadiobuttonState extends State<RecipeTypeRadiobutton> {
           onChanged: (value) {
             setState(() {
               selectedRecipeType = value!;
-              context.read<RecipeTypeCubit>().setRecipeTypeCubitpath(selectedRecipeType);
+              context
+                  .read<RecipeTypeCubit>()
+                  .setRecipeTypeCubitpath(selectedRecipeType);
             });
           },
         ),
         Text(label, style: MyTextStyle.hellothin),
       ],
     );
-      }
+  }
 }

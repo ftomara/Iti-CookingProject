@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UsersCardGen extends StatefulWidget {
-  UsersCardGen(this.users, {super.key});
-  List<Userfbs> users;
+  const UsersCardGen(this.users, {super.key});
+  final List<Userfbs> users;
   @override
-  State<StatefulWidget> createState() => _UsersCardGenState();
+  State<UsersCardGen> createState() => _UsersCardGenState();
 }
 
 class _UsersCardGenState extends State<UsersCardGen> {

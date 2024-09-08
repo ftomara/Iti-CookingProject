@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, avoid_print
 
 import 'dart:io';
 
@@ -16,6 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
+// ignore: must_be_immutable
 class UserProfileInfo extends StatefulWidget {
   UserProfileInfo({super.key});
 
@@ -71,7 +72,7 @@ class _UserProfileInfoState extends State<UserProfileInfo> {
               const SizedBox(
                 width: 36,
               ),
-              Container(
+              SizedBox(
                 width: 100,
                 height: 100,
                 child: Stack(children: [
@@ -94,7 +95,7 @@ class _UserProfileInfoState extends State<UserProfileInfo> {
                                 Icons.camera_alt_rounded,
                                 color: MyColors.greycolor,
                               )
-                            : Icon(Icons.edit)),
+                            : const Icon(Icons.edit)),
                   ),
                 ]),
               ),

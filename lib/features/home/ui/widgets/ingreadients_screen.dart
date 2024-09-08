@@ -118,6 +118,6 @@ class IngreadientsScreen extends StatelessWidget {
     }
 
     // If neither recipeapi nor recipefbs is available
-    return Center(child: Text("No recipe data available"));
+    return const Center(child: Text("No recipe data available"));
   }
 }

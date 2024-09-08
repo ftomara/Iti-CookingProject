@@ -1,6 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:cooking_app/core/common_widgets/account_status_widget.dart';
 import 'package:cooking_app/core/common_widgets/button_widget.dart';
-import 'package:cooking_app/core/helper/navigation%20.dart';
+import 'package:cooking_app/core/helper/navigation .dart';
 import 'package:cooking_app/core/network/firebase/authenticate%20.dart';
 import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
@@ -61,21 +63,21 @@ class SignUpPage extends StatelessWidget {
                       text: "Create Account",
                       onPress: () async {
                         if (_key.currentState!.validate()) {
-                        await AuthenticateImpl(GetIt.instance<UserCubit>())
-                                .createUser(email.text, password.text, username.text, context)
-                                .then((_) {
-                              if (context.mounted) {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const MyCookingApp()),
-                                );
+                          await AuthenticateImpl(GetIt.instance<UserCubit>())
+                              .createUser(email.text, password.text,
+                                  username.text, context)
+                              .then((_) {
+                            if (context.mounted) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const MyCookingApp()),
+                              );
                               print("sucess navigation");
-
-                              }
-                            }).catchError((error) {
-                              print("failed navigation");
-                            });
+                            }
+                          }).catchError((error) {
+                            print("failed navigation");
+                          });
                         }
                       },
                       height: 55.h,

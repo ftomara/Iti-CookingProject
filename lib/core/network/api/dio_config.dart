@@ -5,12 +5,13 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 class DioConfig {
   DioConfig._();
 
+  static Dio? dio;
 
-   static Dio? dio;
-
-   static Dio getDio() {
+  static Dio getDio() {
     BaseOptions options = BaseOptions(
-        receiveTimeout: Duration(seconds: 12), connectTimeout: Duration(seconds: 12), baseUrl: baseUrl);
+        receiveTimeout: const Duration(seconds: 12),
+        connectTimeout: const Duration(seconds: 12),
+        baseUrl: baseUrl);
     dio ??= Dio(options);
     dio!.interceptors.add(
         PrettyDioLogger(requestHeader: true, responseBody: true, error: true));

@@ -24,7 +24,7 @@ class _BackButtonAppbarState extends State<BackButtonAppbar> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MainPage(),
+                builder: (context) => const MainPage(),
               ),
             );
           },

@@ -20,17 +20,17 @@ class IncstructionsScreen extends StatelessWidget {
       final imageUrl =
           recipeapi != null ? recipeapi?.image : recipefbs?.imageUrl;
       final title = recipeapi != null ? recipeapi?.title : recipefbs?.title;
-      final servings =
-          recipeapi != null ? recipeapi?.servings : recipefbs?.servings;
-      final ingredients = recipeapi != null
-          ? recipeapi?.extendedIngredients ?? []
-          : recipefbs?.ingreadiants ?? [];
-      final instructions = recipeapi != null
-          ? recipeapi?.analyzedInstructions
-                  ?.expand((instruction) => instruction.steps ?? [])
-                  .toList() ??
-              []
-          : recipefbs?.instructions ?? [];
+      // final servings =
+      //     recipeapi != null ? recipeapi?.servings : recipefbs?.servings;
+      // final ingredients = recipeapi != null
+      //     ? recipeapi?.extendedIngredients ?? []
+      //     : recipefbs?.ingreadiants ?? [];
+      // final instructions = recipeapi != null
+      //     ? recipeapi?.analyzedInstructions
+      //             ?.expand((instruction) => instruction.steps ?? [])
+      //             .toList() ??
+      //         []
+      //     : recipefbs?.instructions ?? [];
       return SafeArea(
         child: SingleChildScrollView(
           // Wrap the whole content in SingleChildScrollView
