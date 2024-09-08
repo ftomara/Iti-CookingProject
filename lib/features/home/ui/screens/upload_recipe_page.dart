@@ -6,7 +6,6 @@ import 'package:cooking_app/features/home/logic/upload_recipe_cubit.dart';
 import 'package:cooking_app/features/home/logic/upload_recipe_state.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
 import 'package:cooking_app/features/home/model/recipe.dart';
-import 'package:cooking_app/features/home/ui/screens/home_page.dart';
 // import 'package:cooking_app/features/home/ui/widgets/calories_input_field.dart';
 
 import 'package:cooking_app/features/home/ui/widgets/servings_input_field.dart';
@@ -18,11 +17,7 @@ import 'package:cooking_app/features/home/ui/widgets/upload_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:cooking_app/features/home/model/recipe_types.dart';
 import '../../../../my_colors.dart';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/material.dart';
 
 // Assuming UploadRecipeCubit has states like UploadInitial, UploadInProgress, UploadSuccess, UploadFailure
 
@@ -137,8 +132,8 @@ class _UploadRecipePageState extends State<UploadRecipePage> {
                   builder: (context, state) {
                     if (state is UploadRecipeStateLoading) {
                       return CircularProgressIndicator(
-            color: MyColors.orangecolor,
-          ); 
+                        color: MyColors.orangecolor,
+                      );
                     }
 
                     return ElevatedButton(

@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:cooking_app/core/themes/my_text_style.dart';
-import 'package:cooking_app/features/home/logic/upload_recipe_cubit.dart';
-import 'package:cooking_app/features/home/logic/upload_recipe_state.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_info_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_info_state.dart';
@@ -16,10 +14,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../model/recipe.dart';
-
 class UserProfilePage extends StatelessWidget {
-  const UserProfilePage({super.key,});
+  const UserProfilePage({
+    super.key,
+  });
 
   // final List<Recipe> recipes;
 
@@ -32,7 +30,7 @@ class UserProfilePage extends StatelessWidget {
         if (state is UserinfoStateLoading) {
           return Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircularProgressIndicator(
                 color: MyColors.orangecolor,

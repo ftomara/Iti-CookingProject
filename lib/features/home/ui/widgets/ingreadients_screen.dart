@@ -1,7 +1,6 @@
 import 'package:cooking_app/features/home/model/recipe.dart';
 import 'package:cooking_app/features/home/model/recipe_info.dart';
 import 'package:cooking_app/features/home/ui/widgets/equipments_listview.dart';
-import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -36,15 +35,21 @@ class IngreadientsScreen extends StatelessWidget {
       final title = recipeapi != null ? recipeapi?.title : recipefbs?.title;
       final servings =
           recipeapi != null ? recipeapi?.servings : recipefbs?.servings;
-      final ingredients = recipeapi != null
-          ? recipeapi?.extendedIngredients ?? []
-          : recipefbs?.ingreadiants ?? [];
-      final instructions = recipeapi != null
-          ? recipeapi?.analyzedInstructions
-                  ?.expand((instruction) => instruction.steps ?? [])
-                  .toList() ??
-              []
-          : recipefbs?.instructions ?? [];
+      // final ingredients = recipeapi != null
+      //     ? recipeapi?.extendedIngredients ?? []
+      //     : recipefbs?.ingreadiants ?? [];
+      // final instructions = recipeapi != null
+      //     ? recipeapi?.analyzedInstructions
+      //             ?.expand((instruction) => instruction.steps ?? [])
+      //             .toList() ??
+      //         []
+      //     : recipefbs?.instructions ?? [];
+
+      final equipmentList = recipeapi?.analyzedInstructions
+          ?.expand((instruction) => instruction.steps ?? [])
+          .expand((step) => step.equipment ?? [])
+          .toSet() // Convert to Set to remove duplicates
+          .toList(); // Convert back to List for displaying
 
       return SafeArea(
         child: SingleChildScrollView(
@@ -86,6 +91,15 @@ class IngreadientsScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
+                if (equipmentList != null && equipmentList.isNotEmpty) ...[
+                  Text(
+                    'Equipment:',
+                    style: MyTextStyle.instructionsAndIngreadiants,
+                  ),
+                  const SizedBox(height: 16),
+                  EquipmentListView(equipmentList: equipmentList),
+                  const SizedBox(height: 20),
+                ],
                 Text(
                   'Ingredients:',
                   style: MyTextStyle.instructionsAndIngreadiants,
