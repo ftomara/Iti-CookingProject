@@ -61,36 +61,33 @@ class LoginPage extends StatelessWidget {
                         text: "LogIn",
                         onPress: () async {
                           if (_key.currentState!.validate()) {
-                            await AuthenticateImpl(GetIt.instance<UserCubit>())
-                                .signInUser(email.text, password.text, context)
-                                .then((_) {
-                              if (context.mounted) {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const MyCookingApp()),
-                                ).catchError((error) {
-                                  print('failed navigation');
-                                });
-                                print("sucess navigation");
-                              }
-                            }).catchError((error) {
-                              print("failed navigation");
-                            });
-                            //  await AuthenticateImpl()
-                            //     .signInUser(email.text, password.text, context)
-                            //     .then((_) {
-                            //   if (context.mounted) {
-                            //     Navigator.pushReplacement(
-                            //       context,
-                            //       MaterialPageRoute(
-                            //           builder: (context) => HomePage()),
-                            //     );
-                            //   }
-                            // }).catchError((error) {
-                            //   print("failed navigation");
-                            // });
+                            try {
+                              await AuthenticateImpl(
+                                      GetIt.instance<UserCubit>())
+                                  .signInUser(
+                                      email.text, password.text, context)
+                                  .then((_) async {
+                                bool isAuthenticated = await AuthenticateImpl(
+                                        GetIt.instance<UserCubit>())
+                                    .checkUserAuthentication(context);
+
+                                if (isAuthenticated) {
+                                  if (context.mounted) {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const MyCookingApp()),
+                                    );
+                                  }
+                                  print("Successful login and navigation");
+                                } else {
+                                  print("Login failed, no navigation");
+                                }
+                              });
+                            } catch (error) {
+                              print("failed login or navigation: $error");
+                            }
                           }
                         },
                         height: 55.h,
