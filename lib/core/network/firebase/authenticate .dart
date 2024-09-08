@@ -13,8 +13,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class Authenticate {
   void createUser(
-      String email, String Password, String username, BuildContext context);
-  void signInUser(String email, String Password, BuildContext context);
+      String email, String password, String username, BuildContext context);
+  void signInUser(String email, String password, BuildContext context);
 }
 
 class AuthenticateImpl extends Authenticate {

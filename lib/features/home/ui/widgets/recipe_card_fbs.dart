@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cooking_app/core/themes/my_text_style.dart';
+import 'package:cooking_app/features/home/logic/api_or_fbs_cubit.dart';
 import 'package:cooking_app/features/home/logic/id_recipe.dart';
 import 'package:cooking_app/features/home/model/recipe.dart';
 import 'package:cooking_app/features/home/model/recipe_api.dart';
@@ -74,11 +75,11 @@ class _RecipeCardfbsState extends State<RecipeCardfbs> {
                 GestureDetector(
                   onTap: () {
                     // context.read<IdRecipe>().setId(widget.result.!);
-
+                      context.read<ApiOrFbsCubit>().setdatasource(false);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CookingInstructionsScreen(),
+                        builder: (context) => CookingInstructionsScreen(recipeTitle: widget.result.title,),
                       ),
                     );
                   },

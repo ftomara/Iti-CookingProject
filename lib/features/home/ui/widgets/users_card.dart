@@ -43,6 +43,7 @@ class _UsersCardState extends State<UsersCard> {
                   width: 16.w,
                 ),
                 CircleAvatar(
+                  backgroundImage:  NetworkImage(widget.user.imageUrl),
                   radius: 16,
                   backgroundColor: MyColors.greycolor,
                 ),

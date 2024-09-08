@@ -32,6 +32,7 @@ class UserProfilePage extends StatelessWidget {
         if (state is UserinfoStateLoading) {
           return Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircularProgressIndicator(
                 color: MyColors.orangecolor,
@@ -47,7 +48,7 @@ class UserProfilePage extends StatelessWidget {
               child: Column(
                 children: [
                   UserProfileAppbar(user?.username),
-                  UserProfileInfo(user?.recipeslength ?? 0),
+                  UserProfileInfo(),
                   FollowButton(),
                   SizedBox(
                     height: 8.h,

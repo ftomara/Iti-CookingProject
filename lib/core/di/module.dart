@@ -3,6 +3,7 @@ import 'package:cooking_app/core/network/api/dio_config.dart';
 import 'package:cooking_app/core/network/firebase/firebase_services.dart';
 import 'package:cooking_app/features/home/logic/item_cubit.dart';
 import 'package:cooking_app/features/home/logic/recipe_cubit.dart';
+import 'package:cooking_app/features/home/logic/recipe_info_list_cubit.dart';
 // import 'package:cooking_app/features/home/logic/search_cubit.dart';
 import 'package:cooking_app/features/home/logic/upload_recipe_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
@@ -43,6 +44,8 @@ void setupDependinces() {
 
   get.registerLazySingleton<UploadRecipeCubit>(
       () => UploadRecipeCubit(get<Repository>()));
+  get.registerLazySingleton<RecipeListCubit>(
+      () => RecipeListCubit(get<Repository>()));
 
   get.registerLazySingleton<UserCubit>(() => UserCubit());
   get.registerLazySingleton<RecipeInfoCubit>(() => RecipeInfoCubit(get()));

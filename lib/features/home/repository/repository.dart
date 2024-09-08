@@ -13,9 +13,10 @@ abstract class Repository {
   Future<Recipe?> getRecipe(String userId, String recipetitle);
   Future<Userfbs?> getuser(String userId);
   Future<List<Userfbs>?> getusers();
-   Future<void> adduser(Userfbs user);
+  Future<void> adduser(Userfbs user);
   Future<ApiResult<RecipeApi>> getRecipeCategory(String recipe);
   Future<ApiResult<RecipeInfo>> getRecipeInfo(int id);
+  Future<void> uploaduserimage(String userId, String url);
 }
 
 class RepositoryImp extends Repository {
@@ -51,13 +52,13 @@ class RepositoryImp extends Repository {
   Future<List<Userfbs>?> getusers() async {
     return fbs.getUserss();
   }
+
   @override
-  Future<void> adduser(Userfbs user)async
-  {
+  Future<void> adduser(Userfbs user) async {
     fbs.addUser(user);
   }
-  
- @override
+
+  @override
   Future<ApiResult<RecipeApi>> getRecipeCategory(String recipe) {
     return api.getRecipeCategory(recipe);
   }
@@ -67,4 +68,8 @@ class RepositoryImp extends Repository {
     return api.getInfo(id);
   }
 
+  @override
+  Future<void> uploaduserimage(String userId, String url) async {
+    fbs.uploadimage(userId, url);
+  }
 }

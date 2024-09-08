@@ -86,22 +86,34 @@ class FirebaseService<T> {
 
   Future<void> addRecipe(Recipe recipe, String userId) async {
     try {
-      if (recipe.impPath != null) {
-        Reference ref =
-            _storage.ref().child('recipe_images/${recipe.title}.png');
-        await ref.putFile(File(recipe.impPath!));
-        final downloadUrl = await ref.getDownloadURL();
-        recipe.setUrl = downloadUrl;
-        print('Recipe image uploaded successfully, URL: $downloadUrl');
-      } else {
-        print('Error uploading image');
-      }
-      await _db
+      // Upload recipe to Firestore first
+      DocumentReference recipeRef = await _db
           .collection('users')
           .doc(userId)
           .collection('recipes')
           .add(recipe.toFirestore());
+
       print('Recipe added to Firestore successfully.');
+
+      // Now handle image upload
+      if (recipe.impPath != null) {
+        try {
+          Reference ref = _storage
+              .ref()
+              .child('recipe_images/${_sanitizeTitle(recipe.title)}.png');
+          await ref.putFile(File(recipe.impPath!));
+          final downloadUrl = await ref.getDownloadURL();
+          recipe.setUrl = downloadUrl;
+
+          // Update Firestore with the image URL
+          await recipeRef.update({'imageUrl': downloadUrl});
+          print('Recipe image uploaded successfully, URL: $downloadUrl');
+        } catch (e) {
+          print('Error uploading image: $e');
+        }
+      }
+
+      // Increment the user's recipe count
       await _db.collection('users').doc(userId).update({
         'recipeslength': FieldValue.increment(1),
       });
@@ -111,19 +123,31 @@ class FirebaseService<T> {
     }
   }
 
-  // Future<void> uploadimage(Recipe recipe, String userId) async {
-  //   try {
-  //     if (recipe.impPath != null) {
-  //       Reference ref =
-  //           _storage.ref().child('recipe_images/${recipe.title}.png');
-  //       await ref.putFile(File(recipe.impPath!));
-  //       final downloadUrl = await ref.getDownloadURL();
-  //       print('Recipe image uploaded successfully, URL: $downloadUrl');
-  //     } else {
-  //       print('Error uploading image');
-  //     }
-  //   } catch (e) {
-  //     print("Error uplaoding recipe: $e");
-  //   }
-  // }
+// Utility function to sanitize file paths
+  String _sanitizeTitle(String title) {
+    return title.replaceAll(
+        RegExp(r'[^\w\s-]'), ''); // Removes special characters
+  }
+
+  Future<void> uploadimage(String? userId, String url) async {
+    try {
+      if (userId == null || userId.isEmpty) {
+        print('Error: userId is null or empty');
+        return;
+      }
+
+      Reference ref =
+          _storage.ref().child('users_images/${_sanitizeTitle(userId)}.png');
+      await ref.putFile(File(url));
+      final downloadUrl = await ref.getDownloadURL();
+      await _db.collection('users').doc(userId).update({
+        'imageUrl': downloadUrl,
+      });
+      print('User image uploaded successfully, URL: $downloadUrl');
+    } catch (e) {
+      print('Error uploading user image: $e');
+    }
+  }
+
+  // Increment the user's recipe count
 }

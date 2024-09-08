@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/logic/recipe_cubit.dart';
+import 'package:cooking_app/features/home/logic/recipe_info_list_cubit.dart';
 import 'package:cooking_app/features/home/logic/recipe_state.dart';
 import 'package:cooking_app/features/home/logic/upload_recipe_cubit.dart';
 import 'package:cooking_app/features/home/logic/upload_recipe_state.dart';
@@ -18,31 +20,39 @@ class RecipeCardGenfbs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<UploadRecipeCubit>().fetchAllRecipes(context.read<UserCubit>().state);
-      return BlocBuilder<UploadRecipeCubit, UploadRecipeState>(
+    context
+        .read<RecipeListCubit>()
+        .fetchAllRecipes(context.read<UserCubit>().state);
+    return BlocBuilder<RecipeListCubit, UploadRecipeState>(
       builder: (context, state) {
         if (state is UploadRecipeStateLoading) {
-          return Center(child:  CircularProgressIndicator(
-            color: MyColors.orangecolor,
-          ),);
+          return Center(
+            child: CircularProgressIndicator(
+              color: MyColors.orangecolor,
+            ),
+          );
         } else if (state is UploadRecipeStateError) {
           return Center(
               child: Text("Failed to load recipes: ${state.e.message}"));
         } else if (state is UploadRecipeStateLoaded) {
           List<Recipe> results = state.data as List<Recipe>;
-          return GridView.builder(
-            padding: EdgeInsets.symmetric(
-                horizontal: 24, vertical: 0), // Padding around the grid
-            physics: BouncingScrollPhysics(),
-            itemCount: results.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, // Two cards per row
-              childAspectRatio: 0.75, // Aspect ratio to make the cards taller
-            ),
-            itemBuilder: (context, index) {
-              return RecipeCardfbs(result: results[index]);
-            },
-          );
+          if (results.isNotEmpty) {
+            return GridView.builder(
+              padding: EdgeInsets.symmetric(
+                  horizontal: 24, vertical: 0), // Padding around the grid
+              physics: BouncingScrollPhysics(),
+              itemCount: results.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // Two cards per row
+                childAspectRatio: 0.75, // Aspect ratio to make the cards taller
+              ),
+              itemBuilder: (context, index) {
+                return RecipeCardfbs(result: results[index]);
+              },
+            );
+          } else {
+            return Center(child: Text("No Recipes to Show Yet! , Go Upload one" , style: MyTextStyle.hello,));
+          }
         } else {
           return Center(child: Text("Please select a recipe category"));
         }

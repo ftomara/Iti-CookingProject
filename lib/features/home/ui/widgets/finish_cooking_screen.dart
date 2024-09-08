@@ -17,8 +17,8 @@ import 'back_button_appbar.dart';
 import 'rating_stars.dart';
 
 class FinishCookingScreen extends StatelessWidget {
-  FinishCookingScreen({super.key, required this.recipe});
-  final RecipeInfo recipe;
+  FinishCookingScreen({super.key, this.recipe});
+  final RecipeInfo? recipe;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,9 @@ class FinishCookingScreen extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        FavouriteImp().addData(recipe, context);
+                        if (recipe != null) {
+                          FavouriteImp().addData(recipe!, context);
+                        }
 
                         PushNavigation(context, MainPage());
                       },

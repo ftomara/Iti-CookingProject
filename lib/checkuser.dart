@@ -4,11 +4,13 @@ import 'package:cooking_app/core/di/module.dart';
 import 'package:cooking_app/core/helper/navigation%20.dart';
 import 'package:cooking_app/core/network/firebase/authenticate%20.dart';
 import 'package:cooking_app/features/home/logic/Recipe_Type_cubit.dart';
+import 'package:cooking_app/features/home/logic/api_or_fbs_cubit.dart';
 import 'package:cooking_app/features/home/logic/id_recipe.dart';
 import 'package:cooking_app/features/home/logic/image_cubit.dart';
 import 'package:cooking_app/features/home/logic/item_cubit.dart';
 import 'package:cooking_app/features/home/logic/recipe_cubit.dart';
 import 'package:cooking_app/features/home/logic/recipe_info_cubit.dart';
+import 'package:cooking_app/features/home/logic/recipe_info_list_cubit.dart';
 // import 'package:cooking_app/features/home/logic/search_cubit.dart';
 import 'package:cooking_app/features/home/logic/upload_recipe_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
@@ -83,9 +85,14 @@ class _CheckuserState extends State<Checkuser> {
         ),
         BlocProvider<UploadRecipeCubit>(
             create: (context) => get<UploadRecipeCubit>()),
+        BlocProvider<RecipeListCubit>(
+            create: (context) => get<RecipeListCubit>()),
         BlocProvider<UserInfoCubit>(create: (context) => get<UserInfoCubit>()),
+
         BlocProvider<UserInfoListCubit>(
             create: (context) => get<UserInfoListCubit>()),
+
+        BlocProvider<ApiOrFbsCubit>(create: (context) => ApiOrFbsCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(430, 932),
