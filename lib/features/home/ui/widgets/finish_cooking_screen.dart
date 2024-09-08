@@ -1,20 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cooking_app/core/helper/navigation%20.dart';
-import 'package:cooking_app/core/network/firebase/authenticate%20.dart';
 import 'package:cooking_app/core/network/firebase/favourite.dart';
 import 'package:cooking_app/features/home/model/recipe_info.dart';
-import 'package:cooking_app/features/home/ui/screens/home_page.dart';
 import 'package:cooking_app/features/home/ui/screens/main_page.dart';
 import 'package:cooking_app/my_colors.dart';
-import 'package:cooking_app/util/extentions/snackbar_extention.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../../my_cooking_app.dart';
 import 'back_button_appbar.dart';
-import 'rating_stars.dart';
 
 class FinishCookingScreen extends StatelessWidget {
   FinishCookingScreen({super.key, this.recipe});

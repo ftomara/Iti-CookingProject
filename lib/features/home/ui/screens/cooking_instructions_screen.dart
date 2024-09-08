@@ -1,6 +1,5 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:cooking_app/core/di/module.dart';
 import 'package:cooking_app/features/home/logic/api_or_fbs_cubit.dart';
 import 'package:cooking_app/features/home/logic/id_recipe.dart';
 import 'package:cooking_app/features/home/logic/recipe_info_cubit.dart';
