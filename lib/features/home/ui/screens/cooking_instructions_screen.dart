@@ -1,7 +1,13 @@
-import 'package:cooking_app/core/di/module.dart';
+// ignore_for_file: must_be_immutable
+
+import 'package:cooking_app/features/home/logic/api_or_fbs_cubit.dart';
 import 'package:cooking_app/features/home/logic/id_recipe.dart';
 import 'package:cooking_app/features/home/logic/recipe_info_cubit.dart';
 import 'package:cooking_app/features/home/logic/recipe_state.dart';
+import 'package:cooking_app/features/home/logic/upload_recipe_cubit.dart';
+import 'package:cooking_app/features/home/logic/upload_recipe_state.dart';
+import 'package:cooking_app/features/home/logic/user_cubit.dart';
+import 'package:cooking_app/features/home/model/recipe.dart';
 import 'package:cooking_app/features/home/model/recipe_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,39 +19,79 @@ import '../widgets/finish_cooking_screen.dart';
 import '../widgets/start_cooking_screen.dart';
 
 class CookingInstructionsScreen extends StatelessWidget {
-  CookingInstructionsScreen({super.key});
-
+  CookingInstructionsScreen({this.recipeTitle, this.userId, super.key});
+  String? recipeTitle;
+  String? userId;
   final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
+    userId = context.read<UserCubit>().state;
     return Scaffold(
       backgroundColor: MyColors.butterycolor,
-      body: BlocBuilder<IdRecipe, int>(
-        builder: (context, id) {
-          context.read<RecipeInfoCubit>().emitState(id);
+      body: BlocBuilder<ApiOrFbsCubit, bool?>(builder: (context, state) {
+        if (state!) {
+          return BlocBuilder<IdRecipe, int>(
+            builder: (context, id) {
+              context.read<RecipeInfoCubit>().emitState(id);
 
-          return BlocConsumer<RecipeInfoCubit, RecipeState>(
-            listener: (context, state) {
-              if (state is RecipeStateError) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Failed to load recipes: ${state.e}")),
-                );
-              }
+              return BlocConsumer<RecipeInfoCubit, RecipeState>(
+                listener: (context, state) {
+                  if (state is RecipeStateError) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Failed to load recipes: ${state.e}"),
+                      ),
+                    );
+                  }
+                },
+                builder: (context, state) {
+                  if (state is RecipeStateLoading) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: MyColors.orangecolor,
+                      ),
+                    );
+                  } else if (state is RecipeStateLoaded) {
+                    RecipeInfo recipeInfo = state.data;
+
+                    return PageView(
+                      controller: _pageController,
+                      children: [
+                        StartCookingScreen(pageController: _pageController),
+                        IngreadientsScreen(recipeapi: recipeInfo),
+                        IncstructionsScreen(recipeapi: recipeInfo),
+                        FinishCookingScreen(recipe: recipeInfo),
+                      ],
+                    );
+                  } else {
+                    return const Center(child: Text("Unexpected state"));
+                  }
+                },
+              );
             },
+          );
+        } else {
+          context.read<UploadRecipeCubit>().fetchRecipe(userId!, recipeTitle!);
+
+          return BlocBuilder<UploadRecipeCubit, UploadRecipeState>(
             builder: (context, state) {
-              if (state is RecipeStateLoading) {
-                return Center(child: CircularProgressIndicator());
-              } else if (state is RecipeStateLoaded) {
-                RecipeInfo recipeInfo = state.data;
+              if (state is UploadRecipeStateLoading) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: MyColors.orangecolor,
+                  ),
+                );
+              } else if (state is UploadRecipeStateLoaded) {
+                Recipe recipeInfo = state.data;
 
                 return PageView(
                   controller: _pageController,
                   children: [
                     StartCookingScreen(pageController: _pageController),
-                    IngreadientsScreen(recipe: recipeInfo),
-                    IncstructionsScreen(recipe: recipeInfo),
-                     FinishCookingScreen(recipe:recipeInfo),
+                    IngreadientsScreen(recipefbs: recipeInfo),
+                    IncstructionsScreen(recipefbs: recipeInfo),
+                    const FinishCookingScreen(recipe: null),
                   ],
                 );
               } else {
@@ -53,8 +99,8 @@ class CookingInstructionsScreen extends StatelessWidget {
               }
             },
           );
-        },
-      ),
+        }
+      }),
     );
   }
 }

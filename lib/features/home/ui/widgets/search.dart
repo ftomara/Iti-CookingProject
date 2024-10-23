@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Search extends StatelessWidget {
-  TextEditingController controller;
-  Search({super.key, required this.onchange, required this.controller});
-  ValueChanged<String> onchange;
+  final TextEditingController controller;
+  const Search({super.key, required this.onchange, required this.controller});
+  final ValueChanged<String> onchange;
 
   @override
   Widget build(BuildContext context) {

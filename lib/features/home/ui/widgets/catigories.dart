@@ -7,6 +7,7 @@ import 'package:cooking_app/my_colors.dart';
 import 'package:cooking_app/my_cooking_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Catigories extends StatefulWidget {
   const Catigories({super.key});
@@ -24,8 +25,8 @@ class _CatigoriesState extends State<Catigories> {
   Widget build(BuildContext context) {
     return Center(
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        const SizedBox(
-          width: 8,
+        SizedBox(
+          width: 8.w,
         ),
         _buildTab(text[0], 0),
         _buildTab(text[1], 1),
@@ -44,16 +45,17 @@ class _CatigoriesState extends State<Catigories> {
           _index = index;
           context
               .read<ItemCubit>()
-              .change(text[_index],""); // Update the selected tab index
+              .change(text[_index], ""); // Update the selected tab index
         });
       },
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           Container(
-            margin: EdgeInsets.only(top: isSelected ? 7 : 21),
-            height: isSelected ? 54 : 40, // Adjust height based on selection
-            width: 90,
+            margin: EdgeInsets.only(top: isSelected ? 7.h : 21.h),
+            height:
+                isSelected ? 54.h : 40.h, // Adjust height based on selection
+            width: 90.h,
             decoration: BoxDecoration(
               color: isSelected
                   ? MyColors.orangecolor
@@ -62,12 +64,12 @@ class _CatigoriesState extends State<Catigories> {
                 topLeft: radius,
                 topRight: radius,
               ),
-              border: Border.all(color: Colors.black, width: 1),
+              border: Border.all(color: Colors.black, width: 1.w),
               boxShadow: [
                 BoxShadow(
                   color:
                       Colors.grey.withOpacity(0.5), // Shadow color with opacity
-                  spreadRadius: 2, // How much the shadow spreads
+                  spreadRadius: 2.r, // How much the shadow spreads
                   blurRadius: 4, // How much the shadow is blurred
                   offset: const Offset(0, 3), // Position of the shadow (x, y)
                 ),

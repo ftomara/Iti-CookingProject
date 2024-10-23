@@ -2,11 +2,9 @@ import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/logic/Recipe_Type_cubit.dart';
 import 'package:cooking_app/my_colors.dart';
 import 'package:flutter/material.dart';
-<<<<<<< Updated upstream
-=======
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
->>>>>>> Stashed changes
 
 import '../../model/recipe_types.dart';
 
@@ -22,18 +20,27 @@ class _RecipeTypeRadiobuttonState extends State<RecipeTypeRadiobutton> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      // mainAxisAlignment: MainAxisAlignment.start,
+    return Column(
       children: [
-        _myRadio(RecipeTypes.breakfast, "Breakfast"),
-        Text("Breakfast", style: MyTextStyle.hellothin),
-        _myRadio(RecipeTypes.lunch, "Lunch"),
-        Text("Lunch", style: MyTextStyle.hellothin),
-        _myRadio(RecipeTypes.dinner, "Dinner"),
-        Text("Dinner", style: MyTextStyle.hellothin),
-        _myRadio(RecipeTypes.dessert, "Dessert"),
-        Text("Dessert", style: MyTextStyle.hellothin),
+        Row(
+          // mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            _myRadio(RecipeTypes.breakfast, "Breakfast"),
+            _myRadio(RecipeTypes.lunch, "Lunch"),
+          ],
+        ),
+        Row(
+          // mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            _myRadio(RecipeTypes.dinner, "Dinner"),
+            SizedBox(
+              width: 18.w,
+            ),
+            _myRadio(RecipeTypes.dessert, "Dessert"),
+          ],
+        ),
       ],
     );
   }
@@ -50,7 +57,9 @@ class _RecipeTypeRadiobuttonState extends State<RecipeTypeRadiobutton> {
           onChanged: (value) {
             setState(() {
               selectedRecipeType = value!;
-              context.read<RecipeTypeCubit>().setRecipeTypeCubitpath(selectedRecipeType);
+              context
+                  .read<RecipeTypeCubit>()
+                  .setRecipeTypeCubitpath(selectedRecipeType);
             });
           },
         ),

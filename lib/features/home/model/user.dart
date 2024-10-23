@@ -8,14 +8,17 @@ class Userfbs {
   List<Recipe>? recipes = [];
   int? recipeslength = 0;
   List<Recipe>? favorites = [];
-
+  String imageUrl;
+  set setUrl(String url) {
+    imageUrl = url;
+  }
   Userfbs(
       {required this.userId,
       this.email,
       this.username,
       this.favorites,
       this.recipeslength = 0,
-      this.recipes});
+      this.recipes, this.imageUrl =''});
 
   factory Userfbs.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
     final data = doc.data()!;
@@ -29,6 +32,7 @@ class Userfbs {
           ?.map((e) => Recipe.fromFirestore(e))
           .toList(),
       recipeslength: data['recipeslength'] ?? 0,
+      imageUrl : data['imageUrl']??'',
     );
   }
 
@@ -40,6 +44,7 @@ class Userfbs {
       'recipes': recipes?.map((e) => e.toFirestore()).toList(),
       'favorites': favorites?.map((e) => e.toFirestore()).toList(),
       'recipeslength': recipeslength,
+      'imageURl' :imageUrl,
     };
   }
 }

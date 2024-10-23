@@ -52,7 +52,7 @@ dependencies:
   image_picker:
   cloud_firestore: ^5.4.0
   json_annotation: ^4.9.0
-  
+  firebase_storage:
 
 
 dev_dependencies:

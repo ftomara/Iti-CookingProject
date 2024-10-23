@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: unused_element
+
 part of 'recipe_api.dart';
 
 // **************************************************************************
@@ -23,6 +25,7 @@ Result _$ResultFromJson(Map<String, dynamic> json) => Result(
     );
 
 Map<String, dynamic> _$ResultToJson(Result instance) => <String, dynamic>{
+      'isFav': instance.isFav,
       'image': instance.image,
       'title': instance.title,
       'id': instance.id,

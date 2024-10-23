@@ -11,6 +11,7 @@ ApiException _$ApiExceptionFromJson(Map<String, dynamic> json) => ApiException(
       json['message'] as String?,
     );
 
+// ignore: unused_element
 Map<String, dynamic> _$ApiExceptionToJson(ApiException instance) =>
     <String, dynamic>{
       'status': instance.status,

@@ -1,9 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
-import 'package:cooking_app/core/di/module.dart';
 import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/logic/image_cubit.dart';
-import 'package:cooking_app/features/home/ui/screens/upload_recipe_page.dart';
 import 'package:cooking_app/gen/assets.gen.dart';
 import 'package:cooking_app/my_colors.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -148,9 +148,3 @@ class _UploadBoxState extends State<UploadBox>
     );
   }
 }
-
-
-
-    // if (_image != null)
-    //                 
-                      

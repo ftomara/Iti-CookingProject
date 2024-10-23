@@ -7,7 +7,7 @@ import 'package:dio/dio.dart';
 
 abstract class ApiService {
   Future<ApiResult<RecipeApi>> getRecipeCategory(String recipe);
-    Future<ApiResult<RecipeInfo>> getInfo(int id);
+  Future<ApiResult<RecipeInfo>> getInfo(int id);
 }
 
 class ApiServiceImpl extends ApiService {
@@ -15,8 +15,7 @@ class ApiServiceImpl extends ApiService {
   ApiServiceImpl(this.dio);
   @override
   Future<ApiResult<RecipeApi>> getRecipeCategory(String recipe) async {
-    Response response =
-        await dio.get("${endpoint1}$recipe&${apiKey}&number=20");
+    Response response = await dio.get("$endpoint1$recipe&$apiKey&number=20");
 
     if (response.statusCode == 200) {
       return ApiResult.success(RecipeApi.fromJson(response.data));
@@ -24,11 +23,12 @@ class ApiServiceImpl extends ApiService {
       return ApiResult.failure(ApiException.fromJson(response.data));
     }
   }
-  
+
   @override
-  Future<ApiResult<RecipeInfo>> getInfo(int id)async {
-    Response response =//660185/information?apiKey=f874544e654a4496b23785ff91bc26dd
-        await dio.get("${id}$endpoint2${apiKey}");
+  Future<ApiResult<RecipeInfo>> getInfo(int id) async {
+    Response
+        response = //660185/information?apiKey=f874544e654a4496b23785ff91bc26dd
+        await dio.get("$id$endpoint2$apiKey");
 
     if (response.statusCode == 200) {
       return ApiResult.success(RecipeInfo.fromJson(response.data));

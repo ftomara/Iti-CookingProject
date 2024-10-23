@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UsersCard extends StatefulWidget {
-  UsersCard(this.user);
-  Userfbs user;
+  const UsersCard(this.user, {super.key});
+  final Userfbs user;
   @override
   State<UsersCard> createState() => _UsersCardState();
 }
@@ -31,7 +31,7 @@ class _UsersCardState extends State<UsersCard> {
                   color:
                       Colors.grey.withOpacity(0.5), // Shadow color with opacity
                   spreadRadius: 2.dg, // How much the shadow spreads
-                  blurRadius: 4.dg  , // How much the shadow is blurred
+                  blurRadius: 4.dg, // How much the shadow is blurred
                   offset: const Offset(0, 3), // Position of the shadow (x, y)
                 ),
               ],
@@ -43,6 +43,7 @@ class _UsersCardState extends State<UsersCard> {
                   width: 16.w,
                 ),
                 CircleAvatar(
+                  backgroundImage: NetworkImage(widget.user.imageUrl),
                   radius: 16,
                   backgroundColor: MyColors.greycolor,
                 ),
@@ -56,7 +57,7 @@ class _UsersCardState extends State<UsersCard> {
                       height: 16.h,
                     ),
                     Text(
-                      widget.user.username??'Guest',
+                      widget.user.username ?? 'Guest',
                       style: MyTextStyle.recipe_title,
                     ),
                     Row(

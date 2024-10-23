@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:cooking_app/core/themes/my_text_style.dart';
-import 'package:cooking_app/features/home/logic/upload_recipe_cubit.dart';
-import 'package:cooking_app/features/home/logic/upload_recipe_state.dart';
 import 'package:cooking_app/features/home/logic/user_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_info_cubit.dart';
 import 'package:cooking_app/features/home/logic/user_info_state.dart';
@@ -16,12 +14,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../model/recipe.dart';
-
 class UserProfilePage extends StatelessWidget {
-  const UserProfilePage({super.key, required this.recipes});
+  const UserProfilePage({
+    super.key,
+  });
 
-  final List<Recipe> recipes;
+  // final List<Recipe> recipes;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +30,7 @@ class UserProfilePage extends StatelessWidget {
         if (state is UserinfoStateLoading) {
           return Center(
               child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircularProgressIndicator(
                 color: MyColors.orangecolor,
@@ -47,7 +46,7 @@ class UserProfilePage extends StatelessWidget {
               child: Column(
                 children: [
                   UserProfileAppbar(user?.username),
-                  UserProfileInfo(user?.recipeslength ?? 0),
+                  UserProfileInfo(),
                   FollowButton(),
                   SizedBox(
                     height: 8.h,

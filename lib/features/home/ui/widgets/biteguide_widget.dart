@@ -1,6 +1,6 @@
 import 'package:cooking_app/core/common_widgets/account_status_widget.dart';
 import 'package:cooking_app/core/common_widgets/button_widget.dart';
-import 'package:cooking_app/core/helper/navigation%20.dart';
+import 'package:cooking_app/core/helper/navigation .dart';
 import 'package:cooking_app/core/themes/my_text_style.dart';
 import 'package:cooking_app/features/home/ui/screens/login_page.dart';
 import 'package:cooking_app/features/home/ui/screens/sign_up_page.dart';
@@ -20,8 +20,8 @@ class BiteguideWidget extends StatelessWidget {
           child: Lottie.asset("assets/animations/5qdZDIR369.json",
               fit: BoxFit.cover, width: 321.w, height: 318.h),
         ),
-        Padding(
-          padding: EdgeInsets.only(top: 40.h, left: 125.w, right: 125.w),
+        Center(
+          // padding: EdgeInsets.only(top: 40.h, left: 120.w, right: 120.w),
           child: Text(
             "BiteGuide",
             style: MyTextStyle.biteguide,

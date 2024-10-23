@@ -1,7 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'recipe_types.dart';
-// import 'time.dart';
 
 class Recipe {
   final String title;
@@ -11,18 +12,32 @@ class Recipe {
   final List<String> instructions;
   final RecipeTypes? type;
   final String? impPath;
+  String? imageUrl;
+  set setUrl(String url) {
+    imageUrl = url;
+  }
+
   bool isFav = false;
   factory Recipe.fromFirestore(DocumentSnapshot<Map<String, dynamic>> recipe) {
     final data = recipe.data();
+    print("Received data: $data");
+
     return Recipe(
       title: data?['title'] ?? '',
       readyInMinutes: data?['time'] ?? 0,
       servings: data?['servings'] ?? 1,
-      ingreadiants: List<String>.from(data?['ingredients'] ?? []),
-      instructions: List<String>.from(data?['instructions'] ?? []),
+      ingreadiants: data?['ingredients'] != null
+          ? List<String>.from(data?['ingredients'] as List)
+          : [],
+      instructions: data?['instructions'] != null
+          ? List<String>.from(data?['instructions'] as List)
+          : [],
       impPath: data?['imagePath'] ?? '',
-      type: RecipeTypes.values.firstWhere((e) => e.name == data?['type']),
+      type: RecipeTypes.values.firstWhere((e) => e.name == data?['type'],
+          orElse: () => RecipeTypes.breakfast // Handle invalid or missing type
+          ),
       isFav: data?['isFav'] ?? false,
+      imageUrl: data?['imageUrl'],
     );
   }
 
@@ -35,10 +50,12 @@ class Recipe {
         'imagePath': impPath,
         'type': type?.name,
         'isFav': isFav,
+        'imageUrl': imageUrl,
       };
 
   Recipe({
     required this.title,
+    this.imageUrl,
     required this.ingreadiants,
     required this.instructions,
     required this.type,
@@ -47,19 +64,4 @@ class Recipe {
     this.isFav = false,
     this.servings = 1,
   });
-<<<<<<< Updated upstream
-
-  final String title;
-  final String chef;
-  // final int rate;
-  final int servings;
-  final double calories;
-  final List<String> ingreadiants;
-  final List<String> instructions;
-  final RecipeTypes type;
-  final String impPath;
-  // final Time time;
-  bool isFav = false;
-=======
->>>>>>> Stashed changes
 }

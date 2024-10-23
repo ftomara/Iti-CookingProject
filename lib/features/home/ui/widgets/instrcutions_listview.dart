@@ -1,3 +1,4 @@
+import 'package:cooking_app/features/home/model/recipe.dart';
 import 'package:cooking_app/features/home/model/recipe_info.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,11 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 class InstrcutionsListview extends StatefulWidget {
   const InstrcutionsListview({
     super.key,
-    required this.recipe,
+    this.recipe,
+    this.recipefbs,
     required this.isIngredients,
   });
 
-  final RecipeInfo recipe;
+  final RecipeInfo? recipe;
+  final Recipe? recipefbs;
   final bool isIngredients;
 
   @override
@@ -17,33 +20,47 @@ class InstrcutionsListview extends StatefulWidget {
 }
 
 class _InstrcutionsListviewState extends State<InstrcutionsListview> {
-  late List<dynamic> _items;
-  late List<bool> _checked;
+  late List<dynamic>? _items;
+  late List<bool>? _checked;
 
   @override
   void initState() {
     super.initState();
-    _items = widget.isIngredients
-        ? widget.recipe.extendedIngredients!
-        : widget.recipe.analyzedInstructions!
-            .expand((instruction) => instruction.steps ?? [])
-            .toList();
-    _checked = List<bool>.filled(_items.length, false);
+
+    // if (widget.recipe != null) {
+    _items = widget.recipe != null
+        ? (widget.isIngredients
+            ? (widget.recipe?.extendedIngredients ?? [])
+            : (widget.recipe?.analyzedInstructions ?? [])
+                .expand((instruction) => instruction.steps ?? [])
+                .toList())
+        : (widget.isIngredients
+            ? widget.recipefbs?.ingreadiants ?? []
+            : widget.recipefbs?.instructions ?? []);
+    // } else if (widget.recipefbs != null) {
+    //   _items =
+    // } else {
+    //   _items = [];
+    // }
+
+    _checked = List<bool>.filled(_items?.length ?? 0, false);
   }
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      shrinkWrap: true, 
-      physics: NeverScrollableScrollPhysics(), 
-      itemCount: _items.length,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: _items?.length,
       itemBuilder: (context, index) {
-        final item = _items[index];
-        final title = widget.isIngredients
-            ? item.amount != null || item.amount != ''
-                ? '${item.amount % 1 == 0 ? (item.amount).toInt() : item.amount} ${item.unit} ${item.name}'
-                : item.name
-            : item.step;
+        final item = _items?[index];
+        final title = widget.recipe != null
+            ? (widget.isIngredients
+                ? item.amount != null || item.amount != ''
+                    ? '${item.amount % 1 == 0 ? (item.amount).toInt() : item.amount} ${item.unit} ${item.name}'
+                    : item.name
+                : item.step)
+            : item;
 
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 0.1),
@@ -54,15 +71,15 @@ class _InstrcutionsListviewState extends State<InstrcutionsListview> {
                 fontSize: 20,
                 fontWeight: FontWeight.w300,
                 color: const Color(0xFF333333),
-                decoration: _checked[index]
+                decoration: _checked?[index] ?? false
                     ? TextDecoration.lineThrough
                     : TextDecoration.none,
               ),
             ),
-            value: _checked[index],
+            value: _checked?[index],
             onChanged: (value) {
               setState(() {
-                _checked[index] = value ?? false;
+                _checked?[index] = value ?? false;
               });
             },
             controlAffinity: ListTileControlAffinity.leading,
